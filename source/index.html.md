@@ -5,6 +5,7 @@ language_tabs:
   - Java
   - Javascript
   - Node.js
+  - Python
   - REST API
 
 toc_footers:
@@ -19,22 +20,34 @@ search: true
 
 # Introduction
 
-Welcome to Enigma Bridge API documentation! You can use our API to access Enigma Bridge encryption service, which provides functions for:
+Welcome to Enigma Bridge API documentation! Enigma Bridge provides managed hardware encryption. The hardware security ensures that your secrets can't be extracted using any physical attacks. This protection is validated according to the FIPS 140-2 standard on **Level 3**. The **Level 3** means that the hardware device will erase secrets it stores when it detects an attack. 
 
-* authentication - create user context, verify passwords and one-time passwords, reset passwords;
-* payment systems - re-encryption between transport and database keys, tokenization;
-* key management; and
-* data encryption.
+Side-channel, and logical attacks are also significantly limited. Assurance of this protection is provided by Common Criteria certifications on EAL5 ([EAL5 explained on Wikipedia](https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL5:_Semiformally_Designed_and_Tested)).
 
-The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), and Java. This page provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
+You can use our API to access Enigma Bridge encryption service directly or transparently via production integrations. The set of operations available via the API includes:
+
+* **authentication** - create user context, verify passwords and one-time passwords, reset passwords;
+* **payment systems** - re-encryption between transport and database keys, tokenization;
+* **key management** - generate, unwrap, manage keys; 
+* **random data generation** - using FIPS140-2 certified generators;
+* **encryption** - just encrypt, MAC, sign, ...; or
+* **re-encryption** - atomic re-encryption from asymetric to symetric algorithms.
+
+The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
 
 # Basics
 
-Use of Enigma Bridge consists of two phases:
-1. enrolment - introduction of a new "user object" into Enigma Bridge secure hardware; and
-2. data processing - operational use.
+Use of Enigma Bridge consists of four phases:
 
-Each of them is represented by a single execution command regardless of the type of operation and data. The result of the enrolment is a configuration string that uniquely identifies the new user object and also contains all network and other details.
+1. **user enrolment** - creating user account;
+2. **API key creation** - obtaining API key with authorizations and also networkconnection details to a suitable Enigma Bridge instance;
+3. **operation enrolment** - introduction of a new use request into Enigma Bridge; and
+4. data processing - operational use.
+
+Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.
+
+
+Each of the steps can be represented by a single API command regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.
 
 
 # Enrolment 
