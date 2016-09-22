@@ -1,16 +1,16 @@
 ---
-title: API Reference
+title: Enigma Bridge API Reference
 
 language_tabs:
-  - Java
-  - Javascript
-  - Node.js
-  - Python
-  - REST API
+  - java: Java
+  - javascript: Javascript
+  - python: Python
+  - json: RESTful
+  - shell: cURL
 
 toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/tripit/slate'>Documentation Powered by Slate</a>
+  - <a href='https://enigmabridge.freshdesk.com'>Ask a question, raise a support ticket</a>
+  - <a href='https://enigmabridge.com'>Visit our main website</a>
 
 includes:
   - errors
@@ -42,7 +42,7 @@ Use of Enigma Bridge consists of four phases:
 1. **user enrolment** - creating user account;
 2. **API key creation** - obtaining API key with authorizations and also networkconnection details to a suitable Enigma Bridge instance;
 3. **operation enrolment** - introduction of a new use request into Enigma Bridge; and
-4. data processing - operational use.
+4. **data processing** - operational use.
 
 Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.
 
@@ -50,7 +50,103 @@ Depending on the use case and limits on usage, all steps can be completed fully 
 Each of the steps can be represented by a single API command regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.
 
 
-# Enrolment 
+# Getting Started
+
+We provide several language bindings. 
+
+```python
+"sudo pip install ebclient.py"
+```
+
+```javascript
+"npm install -g ebclient.js"
+or
+"git clone https://github.com/EnigmaBridge/client.js"
+```
+
+```shell
+"nothing required"
+```
+
+```java
+"git clone https://github.com/EnigmaBridge/client.java"
+```
+
+```json
+"nothing required"
+```
+
+
+Our goal is to make any library installation as simple as possible, and using standard deployment mechanisms wherever possible. 
+
+# Register as Enigma Client
+
+The first step for using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
+
+```java
+"coming soon"
+```
+
+```json
+"coming soon"
+```
+
+```shell
+curl -i \
+  -H "Content-Type: application/json" \
+  -H "X-Auth-Token: public" \
+  -X POST
+  -d '{
+         "nonce":"arbitrary string that will be included in the response",
+         "version":1,
+         "function":"create",
+         "environment":"dev",
+         "client":{
+             "name":"name of the client - it should be unique",
+             "authentication":"type",
+             "type":"pre-defined type of clients",
+             "token":"initial type authentication token"
+         }
+    }'\
+  https://hut3.enigmabridge.com/api/v1/client
+```
+
+```javascript
+cfg = Configuration()
+cfg.endpoint_register = Endpoint.url('https://hut3.enigmabridge.com:8445')
+cfg.retry = SimpleRetry()
+
+client_data_reg = {
+    'name': 'name of the client - it should be unique',
+    'authentication': 'type',
+    'type': 'pre-defined type of clients',
+    'token': 'initial type authentication token'
+}
+regreq = RegistrationRequest(client_data=client_data_reg, env=ENVIRONMENT_DEVELOPMENT, config=cfg)
+regresponse = regreq.call()
+print(regresponse)
+```
+
+```python
+"coming soon"
+```
+We have created three end-points for client registration. We named them in memory of wartime sections of the Government Code and Cypher School (GC&CS) at [Bletchley Park](https://en.wikipedia.org/wiki/Bletchley_Park)
+
+ - **hut3.enigmabridge.com** - Hut 3 translated, interpretated and distributed German Army (Heer) and Air Force (Luftwaffe) messages deciphered by Hut 6.
+ - **hut6.enigmabridge.com** - Hut 6's task was to break German Army and Air Force [Enigma machine](https://en.wikipedia.org/wiki/Enigma_machine) cyphers.
+ - **hut8.enigmabridge.com** - Hut 8 was solving German naval (Kriegsmarine) Enigma messages. The section was led initially by Alan Turing.
+
+Automated registration requires knowledge of your use-case. In certain cases, we pre-define types of clients for automated deployments. For example, [AMI](https://en.wikipedia.org/wiki/Amazon_Machine_Image) available from [Amazon AWS Marketplace](https://aws.amazon.com/marketplace) will be assigned such a client type. 
+
+<aside class="notice">
+Availability of automated execution of client registration depends on the use case and required operation.
+</aside>
+<aside class="notice">
+In some cases, it is possible to use a default "TEST" user and "TEST_API" key - these credentials are only available for demonstration purposes.
+</aside>
+
+
+#  API Key Enrolment 
 
 > To authorize, use this code:
 
@@ -91,62 +187,35 @@ Kittn expects for the API key to be included in all API requests to the server i
 You must replace <code>meowmeowmeow</code> with your personal API key.
 </aside>
 
-# Kittens
+# Use
 
-## Get All Kittens
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
+```json
+"coming soon"
 ```
 
 ```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
+"coming soon"
 ```
 
 ```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
+"coming soon
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
+"coming soon"
 ```
+
+```java
+"coming soon"
+```
+
 
 > The above command returns JSON structured like this:
 
 ```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
+"coming soon"
 ```
-
-This endpoint retrieves all kittens.
-
-### HTTP Request
-
-`GET http://example.com/api/kittens`
 
 ### Query Parameters
 
@@ -158,58 +227,4 @@ available | true | If set to false, the result will include kittens that have al
 <aside class="success">
 Remember — a happy kitten is an authenticated kitten!
 </aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
 
