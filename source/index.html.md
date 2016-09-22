@@ -2,10 +2,10 @@
 title: API Reference
 
 language_tabs:
-  - shell
-  - ruby
-  - python
-  - javascript
+  - Java
+  - Javascript
+  - Node.js
+  - REST API
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -19,15 +19,28 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
+Welcome to Enigma Bridge API documentation! You can use our API to access Enigma Bridge encryption service, which provides functions for:
 
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+* authentication - create user context, verify passwords and one-time passwords, reset passwords;
+* payment systems - re-encryption between transport and database keys, tokenization;
+* key management; and
+* data encryption.
 
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), and Java. This page provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
 
-# Authentication
+# Basics
+
+Use of Enigma Bridge consists of two phases:
+1. enrolment - introduction of a new "user object" into Enigma Bridge secure hardware; and
+2. data processing - operational use.
+
+Each of them is represented by a single execution command regardless of the type of operation and data. The result of the enrolment is a configuration string that uniquely identifies the new user object and also contains all network and other details.
+
+
+# Enrolment 
 
 > To authorize, use this code:
+
 
 ```ruby
 require 'kittn'
