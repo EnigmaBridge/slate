@@ -91,7 +91,7 @@
       <script src="javascripts/all.js"></script>
   </head>
 
-  <body class="index" data-languages="[&quot;Java&quot;,&quot;Javascript&quot;,&quot;Node.js&quot;,&quot;REST API&quot;]">
+  <body class="index" data-languages="[&quot;Java&quot;,&quot;Javascript&quot;,&quot;Node.js&quot;,&quot;Python&quot;,&quot;REST API&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
@@ -104,6 +104,7 @@
               <a href="#" data-language-name="Java">Java</a>
               <a href="#" data-language-name="Javascript">Javascript</a>
               <a href="#" data-language-name="Node.js">Node.js</a>
+              <a href="#" data-language-name="Python">Python</a>
               <a href="#" data-language-name="REST API">REST API</a>
         </div>
         <div class="search">
@@ -122,24 +123,37 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to Enigma Bridge API documentation! You can use our API to access Enigma Bridge encryption service, which provides functions for:</p>
+<p>Welcome to Enigma Bridge API documentation! Enigma Bridge provides managed hardware encryption. The hardware security ensures that your secrets can&rsquo;t be extracted using any physical attacks. This protection is validated according to the FIPS 140-2 standard on <strong>Level 3</strong>. The <strong>Level 3</strong> means that the hardware device will erase secrets it stores when it detects an attack. </p>
+
+<p>Side-channel, and logical attacks are also significantly limited. Assurance of this protection is provided by Common Criteria certifications on EAL5 (<a href="https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL5:_Semiformally_Designed_and_Tested">EAL5 explained on Wikipedia</a>).</p>
+
+<p>You can use our API to access Enigma Bridge encryption service directly or transparently via production integrations. The set of operations available via the API includes:</p>
 
 <ul>
-<li>authentication - create user context, verify passwords and one-time passwords, reset passwords;</li>
-<li>payment systems - re-encryption between transport and database keys, tokenization;</li>
-<li>key management; and</li>
-<li>data encryption.</li>
+<li><strong>authentication</strong> - create user context, verify passwords and one-time passwords, reset passwords;</li>
+<li><strong>payment systems</strong> - re-encryption between transport and database keys, tokenization;</li>
+<li><strong>key management</strong> - generate, unwrap, manage keys; </li>
+<li><strong>random data generation</strong> - using FIPS140-2 certified generators;</li>
+<li><strong>encryption</strong> - just encrypt, MAC, sign, &hellip;; or</li>
+<li><strong>re-encryption</strong> - atomic re-encryption from asymetric to symetric algorithms.</li>
 </ul>
 
-<p>The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), and Java. This page provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.</p>
+<p>The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.</p>
 
 <h1 id="basics">Basics</h1>
 
-<p>Use of Enigma Bridge consists of two phases:
-1. enrolment - introduction of a new &ldquo;user object&rdquo; into Enigma Bridge secure hardware; and
-2. data processing - operational use.</p>
+<p>Use of Enigma Bridge consists of four phases:</p>
 
-<p>Each of them is represented by a single execution command regardless of the type of operation and data. The result of the enrolment is a configuration string that uniquely identifies the new user object and also contains all network and other details.</p>
+<ol>
+<li><strong>user enrolment</strong> - creating user account;</li>
+<li><strong>API key creation</strong> - obtaining API key with authorizations and also networkconnection details to a suitable Enigma Bridge instance;</li>
+<li><strong>operation enrolment</strong> - introduction of a new use request into Enigma Bridge; and</li>
+<li>data processing - operational use.</li>
+</ol>
+
+<p>Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.</p>
+
+<p>Each of the steps can be represented by a single API command regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.</p>
 
 <h1 id="enrolment">Enrolment</h1>
 
@@ -307,9 +321,12 @@ Remember — a happy kitten is an authenticated kitten!
 
           <h1 id="errors">Errors</h1>
 
-<aside class="notice">This error section is stored in a separate file in `includes/_errors.md`. Slate allows you to optionally separate out your docs into many files&hellip;just save them to the `includes` folder and add them to the top of your `index.md`&rsquo;s frontmatter. Files are included in the order listed.</aside>
+<aside class="notice">Each response form the Enigma Bridge service will contain a numerical code, as well as a short text with explanation of the error. 
 
-<p>The Kittn API uses the following error codes:</p>
+The response code for successful processiong of a request is 36864 (0x9000).
+</aside>
+
+<p>Clients using Enigma Bridge API may encounter the following error codes:</p>
 
 <table><thead>
 <tr>
@@ -318,48 +335,288 @@ Remember — a happy kitten is an authenticated kitten!
 </tr>
 </thead><tbody>
 <tr>
-<td>400</td>
-<td>Bad Request &ndash; Your request sucks</td>
+<td>4101 (0x1005)</td>
+<td>object capacity reached</td>
 </tr>
 <tr>
-<td>401</td>
-<td>Unauthorized &ndash; Your API key is wrong</td>
+<td>4102 (0x1006)</td>
+<td>timeout</td>
 </tr>
 <tr>
-<td>403</td>
-<td>Forbidden &ndash; The kitten requested is hidden for administrators only</td>
+<td>4111 (0x100F)</td>
+<td>service shutting down</td>
 </tr>
 <tr>
-<td>404</td>
-<td>Not Found &ndash; The specified kitten could not be found</td>
+<td>4213 (0x1075)</td>
+<td>object processing limit reached</td>
 </tr>
 <tr>
-<td>405</td>
-<td>Method Not Allowed &ndash; You tried to access a kitten with an invalid method</td>
+<td>4262 (0x10A6)</td>
+<td>processing queues full</td>
 </tr>
 <tr>
-<td>406</td>
-<td>Not Acceptable &ndash; You requested a format that isn&rsquo;t json</td>
+<td>4304 (0x10D0)</td>
+<td>no authorization tokens left</td>
 </tr>
 <tr>
-<td>410</td>
-<td>Gone &ndash; The kitten requested has been removed from our servers</td>
+<td>8364 (0x20AC)</td>
+<td>integrity error / attack detected</td>
 </tr>
 <tr>
-<td>418</td>
-<td>I&rsquo;m a teapot</td>
+<td>8380 (0x20BC)</td>
+<td>request not authorized</td>
 </tr>
 <tr>
-<td>429</td>
-<td>Too Many Requests &ndash; You&rsquo;re requesting too many kittens! Slow down!</td>
+<td>16504 (0x4078)</td>
+<td>object already exists</td>
 </tr>
 <tr>
-<td>500</td>
-<td>Internal Server Error &ndash; We had a problem with our server. Try again later.</td>
+<td>16512 (0x4080)</td>
+<td>public key not available</td>
 </tr>
 <tr>
-<td>503</td>
-<td>Service Unavailable &ndash; We&rsquo;re temporarially offline for maintanance. Please try again later.</td>
+<td>32769 (0x8001)</td>
+<td>unknown operation</td>
+</tr>
+<tr>
+<td>32772 (0x8004)</td>
+<td>operation not available</td>
+</tr>
+<tr>
+<td>32818 (0x8032)</td>
+<td>input data length incorrect</td>
+</tr>
+<tr>
+<td>32819 (0x8033)</td>
+<td>invalid key provided</td>
+</tr>
+<tr>
+<td>32820 (0x8034)</td>
+<td>invalid handle/APIkey</td>
+</tr>
+<tr>
+<td>32822 (0x8036)</td>
+<td>missing or invalid argument</td>
+</tr>
+<tr>
+<td>32823 (0x8037)</td>
+<td>request JSON parsing failed</td>
+</tr>
+<tr>
+<td>32824 (0x8038)</td>
+<td>request JSON version not supported</td>
+</tr>
+<tr>
+<td>32825 (0x8039)</td>
+<td>request JSON data invalid</td>
+</tr>
+<tr>
+<td>32826 (0x803A)</td>
+<td>request JSON missing nonce</td>
+</tr>
+<tr>
+<td>32827 (0x803B)</td>
+<td>invalid object</td>
+</tr>
+<tr>
+<td>32828 (0x803C)</td>
+<td>unsupported operation</td>
+</tr>
+<tr>
+<td>32829 (0x803D)</td>
+<td>incorrect data padding</td>
+</tr>
+<tr>
+<td>32830 (0x803E)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32833 (0x8041)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32835 (0x8043)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32839 (0x8047)</td>
+<td>data is incorrect</td>
+</tr>
+<tr>
+<td>32840 (0x8048)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32841 (0x8049)</td>
+<td>MAC length incorrect</td>
+</tr>
+<tr>
+<td>32842 (0x804A)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32844 (0x804C)</td>
+<td>object format error</td>
+</tr>
+<tr>
+<td>32846 (0x804E)</td>
+<td>encrypt data padding error</td>
+</tr>
+<tr>
+<td>32847 (0x804F)</td>
+<td>encrypt data padding error</td>
+</tr>
+<tr>
+<td>32851 (0x8053)</td>
+<td>incorrect key length</td>
+</tr>
+<tr>
+<td>32852 (0x8054)</td>
+<td>data too long</td>
+</tr>
+<tr>
+<td>32853 (0x8055)</td>
+<td>malformed data</td>
+</tr>
+<tr>
+<td>32856 (0x8058)</td>
+<td>authorization cards required</td>
+</tr>
+<tr>
+<td>32866 (0x8062)</td>
+<td>invalid user context</td>
+</tr>
+<tr>
+<td>32871 (0x8067)</td>
+<td>object classification is incorrect</td>
+</tr>
+<tr>
+<td>32872 (0x8068)</td>
+<td>invalid API key</td>
+</tr>
+<tr>
+<td>32873 (0x8069)</td>
+<td>unrecognized client</td>
+</tr>
+<tr>
+<td>32899 (0x8083)</td>
+<td>invalid operation type</td>
+</tr>
+<tr>
+<td>32909 (0x808D)</td>
+<td>key component length incorrect</td>
+</tr>
+<tr>
+<td>32910 (0x808E)</td>
+<td>key component index incorrect</td>
+</tr>
+<tr>
+<td>32911 (0x808F)</td>
+<td>key component already set</td>
+</tr>
+<tr>
+<td>32912 (0x8090)</td>
+<td>key component not set</td>
+</tr>
+<tr>
+<td>32918 (0x8096)</td>
+<td>length of application key is incorrect</td>
+</tr>
+<tr>
+<td>32919 (0x8097)</td>
+<td>length of communication key is incorrect</td>
+</tr>
+<tr>
+<td>32921 (0x8099)</td>
+<td>incorrect usage flags or keys not generated</td>
+</tr>
+<tr>
+<td>32943 (0x80AF)</td>
+<td>data encryption error</td>
+</tr>
+<tr>
+<td>32948 (0x80B4)</td>
+<td>OTP code length request incorrect</td>
+</tr>
+<tr>
+<td>32953 (0x80B9)</td>
+<td>authentication method not allowed</td>
+</tr>
+<tr>
+<td>36864 (0x9000)</td>
+<td>Success</td>
+</tr>
+<tr>
+<td>41046 (0xA056)</td>
+<td>incorrect length of OTP key</td>
+</tr>
+<tr>
+<td>41059 (0xA063)</td>
+<td>too many password tries</td>
+</tr>
+<tr>
+<td>41060 (0xA064)</td>
+<td>incorrect password length</td>
+</tr>
+<tr>
+<td>41061 (0xA065)</td>
+<td>incorrect password</td>
+</tr>
+<tr>
+<td>41062 (0xA066)</td>
+<td>too many HOTP tries</td>
+</tr>
+<tr>
+<td>41121 (0xA0A1)</td>
+<td>wrong MAC on data</td>
+</tr>
+<tr>
+<td>41136 (0xA0B0)</td>
+<td>incorrect HOTP code</td>
+</tr>
+<tr>
+<td>41137 (0xA0B1)</td>
+<td>too many account tries</td>
+</tr>
+<tr>
+<td>41138 (0xA0B2)</td>
+<td>keys stored in the user object are incorrect</td>
+</tr>
+<tr>
+<td>41139 (0xA0B3)</td>
+<td>OTP counter overflow</td>
+</tr>
+<tr>
+<td>41142 (0xA0B6)</td>
+<td>incorrect user ID / malicious request</td>
+</tr>
+<tr>
+<td>41146 (0xA0BA)</td>
+<td>unknown authentication method</td>
+</tr>
+<tr>
+<td>41170(0xA0D2)</td>
+<td>no authorization credits left</td>
+</tr>
+<tr>
+<td>61458(0xF012)</td>
+<td>processor failure</td>
+</tr>
+<tr>
+<td>61465(0xF019)</td>
+<td>server not ready</td>
+</tr>
+<tr>
+<td>61488(0xF030)</td>
+<td>invalid authorization token</td>
+</tr>
+<tr>
+<td>61489(0xF031)</td>
+<td>input data too long</td>
+</tr>
+<tr>
+<td>61493(0xF035)</td>
+<td>invalid object</td>
 </tr>
 </tbody></table>
 
@@ -369,6 +626,7 @@ Remember — a happy kitten is an authenticated kitten!
                 <a href="#" data-language-name="Java">Java</a>
                 <a href="#" data-language-name="Javascript">Javascript</a>
                 <a href="#" data-language-name="Node.js">Node.js</a>
+                <a href="#" data-language-name="Python">Python</a>
                 <a href="#" data-language-name="REST API">REST API</a>
           </div>
       </div>
