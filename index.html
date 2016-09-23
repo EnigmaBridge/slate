@@ -236,19 +236,37 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
 <h1 id="api-key-enrolment">API Key Enrolment</h1>
 
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>To authorize, you first have to get client authentication data.</p>
 </blockquote>
-<pre class="highlight ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="o">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre>
-<pre class="highlight shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  -H <span class="s2">"Authorization: meowmeowmeow"</span>
+<pre class="highlight shell"><code>curl -i <span class="se">\</span>
+  -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
+  -H <span class="s2">"X-Auth-Token: public"</span> <span class="se">\</span>
+  -X POST
+  -d <span class="s1">'{
+         "nonce":"arbitrary string that will be included in the response",
+         "version":1,
+         "function":"addapi",
+         "authentication":("name" | "type" | "password" | "hotp" | "totp" | "ocra" | "challenge" | "signature"),
+         "client":{
+             "username":"as provided by function create",
+             "authentication":"type",
+             "password":"as provided",
+         },
+         "endpoint":{
+             "ipv4":"IPv4",
+             "ipv6":"IPv6",
+             "email":"contact@mail",
+             "country":"2 letter code, e.g. gb, us",
+             "network":"network or IP space",
+             "location":[0.34,10],
+             "datacenter":"name",
+             "hostid":"hostid",
+             "productcode":"product code",
+             "instancetype":"instance type"
+         },
+         "operations":["name","name2","nameX"]
+    }'</span><span class="se">\</span>
+  https://hut3.enigmabridge.com/api/v1/client
 </code></pre>
 <pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -256,17 +274,85 @@ curl <span class="s2">"api_endpoint_here"</span>
 </code></pre>
 
 <blockquote>
-<p>Make sure to replace <code class="prettyprint">meowmeowmeow</code> with your API key.</p>
+<p>Make sure to replace default values with proper ones.</p>
 </blockquote>
 
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
+<h3 id="query-parameters">Query Parameters</h3>
 
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
+<table><thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Optional</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ipv4</td>
+<td>string</td>
+<td>true</td>
+<td>IPv4 address provided by the client software</td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>string</td>
+<td>true</td>
+<td>IPv6 address provided by the client software</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td>true</td>
+<td>contact email address</td>
+</tr>
+<tr>
+<td>country</td>
+<td>string</td>
+<td>true</td>
+<td>2 character ISO country code</td>
+</tr>
+<tr>
+<td>network</td>
+<td>string</td>
+<td>true</td>
+<td>string - name or IP space</td>
+</tr>
+<tr>
+<td>location</td>
+<td>array</td>
+<td>true</td>
+<td>geographic location as an array of two float numbers</td>
+</tr>
+<tr>
+<td>datacenter</td>
+<td>string</td>
+<td>true</td>
+<td>name / identification of the datacenter</td>
+</tr>
+<tr>
+<td>hostid</td>
+<td>string</td>
+<td>true</td>
+<td>host ID - e.g. AMI name (Amazon), server fqdn</td>
+</tr>
+<tr>
+<td>productcode</td>
+<td>string</td>
+<td>true</td>
+<td>identification of the client host if a VM</td>
+</tr>
+<tr>
+<td>instancetype</td>
+<td>string</td>
+<td>true</td>
+<td>another identification</td>
+</tr>
+</tbody></table>
 
-<p><code class="prettyprint">Authorization: meowmeowmeow</code></p>
+<p>Enigma Bridge servers require API keys to allow access to the API. You can register a new API key either programmaticaly or via our support portal at <a href="https://enigmabridge.freshdesk.com">support portal</a>.</p>
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>default key</code> with your personal API key.
 </aside>
 
 <h1 id="use">Use</h1>
