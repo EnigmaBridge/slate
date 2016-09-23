@@ -148,25 +148,39 @@ In some cases, it is possible to use a default "TEST" user and "TEST_API" key - 
 
 #  API Key Enrolment 
 
-> To authorize, use this code:
+> To authorize, you first have to get client authentication data.
 
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+curl -i \
+  -H "Content-Type: application/json" \
+  -H "X-Auth-Token: public" \
+  -X POST
+  -d '{
+         "nonce":"arbitrary string that will be included in the response",
+         "version":1,
+         "function":"addapi",
+         "authentication":("name" | "type" | "password" | "hotp" | "totp" | "ocra" | "challenge" | "signature"),
+         "client":{
+             "username":"as provided by function create",
+             "authentication":"type",
+             "password":"as provided",
+         },
+         "endpoint":{
+             "ipv4":"IPv4",
+             "ipv6":"IPv6",
+             "email":"contact@mail",
+             "country":"2 letter code, e.g. gb, us",
+             "network":"network or IP space",
+             "location":[0.34,10],
+             "datacenter":"name",
+             "hostid":"hostid",
+             "productcode":"product code",
+             "instancetype":"instance type"
+         },
+         "operations":["name","name2","nameX"]
+    }'\
+  https://hut3.enigmabridge.com/api/v1/client
 ```
 
 ```javascript
@@ -175,16 +189,27 @@ const kittn = require('kittn');
 let api = kittn.authorize('meowmeowmeow');
 ```
 
-> Make sure to replace `meowmeowmeow` with your API key.
+> Make sure to replace default values with proper ones.
 
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
+### Query Parameters
 
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
+Parameter |Type | Optional | Description
+--------- | --- | -------- | -----------
+ipv4 | string| true |  IPv4 address provided by the client software
+ipv6 | string|true | IPv6 address provided by the client software
+email |string|true| contact email address
+country| string|true|2 character ISO country code 
+network|string|true|string - name or IP space
+location|array|true|geographic location as an array of two float numbers
+datacenter|string|true|name / identification of the datacenter
+hostid|string|true|host ID - e.g. AMI name (Amazon), server fqdn
+productcode|string|true|identification of the client host if a VM
+instancetype|string|true|another identification 
 
-`Authorization: meowmeowmeow`
+Enigma Bridge servers require API keys to allow access to the API. You can register a new API key either programmaticaly or via our support portal at [support portal](https://enigmabridge.freshdesk.com).
 
 <aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
+You must replace <code>default key</code> with your personal API key.
 </aside>
 
 # Use
