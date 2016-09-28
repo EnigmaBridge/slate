@@ -158,6 +158,11 @@ see the RESTful column
 }
 ```
 
+The request uses the following URL:
+
+`https://hut:8445/api/v1/client`
+
+
 name | optional |type| note
 ---- |--------- |----|----
 nonce|NO|string|
@@ -310,6 +315,11 @@ see the RESTful column
     }
 }
 ```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/client`
+
 Clients can repeatedly request information about their API keys.
 
 name | optional |type| note
@@ -334,11 +344,204 @@ Responses have the same format as for "addapi" requests.
 
 ## Enrol for DNS Domain (api)
 
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "enroldomain",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b",
+        "certificate":"base64 encoded X.509 certificate"
+    }
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
 
 
+###Structure of 'apidata'
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|client username as provided during registration
+apikey|NO|string|apikey as provided during registration
+
+### Response 
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version": 1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce": "my nonce",
+    "timestamp": 1475078668177,
+    "response": {
+        "domain": "pki.enigmabridge.net",
+        "controllers": [
+            {
+                "domain": "ns.enigmabridge.net"
+            }
+        ]
+    }
+}
+```
 
 ## Get Challenge (api)
 
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "getdomainchallenge",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b"
+    }
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version": 1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce": "my nonce",
+    "timestamp": 1475078668177,
+    "response": {
+        "challenge": "a random string for authenticated requests",
+        "authorization": "signature"
+    }
+}
+```
+
+The response to these requests provides a **challenge** that has to be used to authenticate requests like **Update Domain**.
+
 ## Update Domain (api)
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "updatedomain",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b",
+        "authorization":"signature"
+    }
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version": 1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce": "my nonce",
+    "timestamp": 1475078668177,
+    "response": {
+        "domainame": "assigned domain name"
+    }
+}
+```
 
 

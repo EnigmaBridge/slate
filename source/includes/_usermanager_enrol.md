@@ -1,5 +1,5 @@
 
-# User Manager - Enrolment Role (Internal API)
+# User Manager - Enrolment (Private API)
 
 ## API Endpoint
 
