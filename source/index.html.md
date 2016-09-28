@@ -14,6 +14,8 @@ toc_footers:
 
 includes:
   - errors
+  - usermanager_client
+  - usermanager_enrol
 
 search: true
 ---

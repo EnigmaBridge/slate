@@ -1,0 +1,344 @@
+
+# User Manager - Client Role
+
+<aside class="notice">
+
+User Manager is available on the following domain names managed by Enigma Bridge. Whenever we use <strong>hut</strong>, it has to be replased with one of these three domain names.
+</aside>
+
+User Manager domain names to replace **hut** in the text below are:
+
+ 1. hut3.enigmabridge.com
+ 1. hut6.enigmabridge.com
+ 1. hut8.enigmabridge.com
+
+## Data Flow
+
+The usual data-flow and sequence of actions is as follows:
+
+ 1. New client process (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically for virtual machines configured by Enigma Bridge.
+ 1. This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own APIkeys and will be authorized to use the Enigma Bridge service.
+     1. The client process will use its EB type to request a new client account.
+     1. The customer will request a new client account via our support system at: [https://enigmabridge.freshdesk.com](https://enigmabridge.freshdesk.com).
+ 1. Once the client ID and authentication details are available, the client process can request a new API key.
+ 1. The API key allows create of new user objects according to the client type definition.
+
+## Register Client (client)
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"nonce",
+    "version":1,
+    "function":"create",
+    "environment":"dev",
+    "client":{
+        "name":"my test name",
+        "authentication":"type",
+        "type":"test",
+        "token":"token-assigned-to-client-type"
+    }
+}
+```
+
+
+The request uses the following URL: 
+
+`https://hut:8445/api/v1/client`
+
+###Parameters
+
+name | optional |type| note
+---- |--------- |----|----
+nonce| NO| string|random string that will be returned back
+version|NO| integer| must be 1
+function|NO|string| must be "create"
+environment|NO|string| must be "dev", "test", or "prod"
+<strong>client</strong>|NO|sequence|contains information about the new client
+
+###Structure of 'client'
+
+name | optional |type| note
+---- |--------- |----|----
+name |NO|string|name provided by the user
+authentication|NO|string| must be "type"
+type|NO|string| Name of EB client type (pre-defined)
+token|YES|string|authentication token for the client type
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "my nonce",
+  "timestamp": 1475077216548,
+  "response": {
+    "username": "dc5c2081-2a13-4566-ac8d-592ee955dc48",
+    "password": "106..............571e0f53",
+    "max_api_keys": 5,
+    "authenticationType": "PASSWORD",
+    "status": "ENABLED",
+    "maxobjects": 5
+  }
+}
+```
+
+This is a typical response. The new items are:
+
+name | optional |type| note
+---- |--------- |----|----
+status|NO|integer|status code - see Error codes
+error|NO|string|text explaining the error code
+timestamp|NO|long|timestamp of the response
+<strong>response</strong>|NO|sequence|data returned to the request
+
+###Structure of 'response'
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|authentication username
+password|YES|string|authentication password, depends on authenticationmethod
+max_api_keys|NO|integer|max number of API keys the client can create
+authenticationtype|NO|string|one of methods
+status|NO|string|enabled, disabled, or removed
+maxobjects|NO|integer|max number of objects this client can create
+
+
+## Add API for Client (client)
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"d",
+    "version":1,
+    "function": "addapi",
+    "environment":"dev",
+    "client":{
+        "authentication": "password",
+        "username": "dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "password": "1067...................71e0f53"
+    },
+    "endpoint":{
+        "country":"gb"
+    }
+}
+```
+
+name | optional |type| note
+---- |--------- |----|----
+nonce|NO|string|
+version|NO|integer|must be 1
+function|NO| must be "addapi"
+environment|NO|must be "dev", "test", or "prod"
+client|NO|sequence|
+endpoint|NO|sequence| properties of the client server to identify best Enigma Bridge servers
+
+
+###Structure of 'client'
+
+name | optional |type| note
+---- |--------- |----|----
+authentication|NO|string|at the moment must be "password"
+username|NO|string|as provided during registration
+password|NO|string|as provided during registration
+
+###Structure of 'endpoint'
+
+name | optional |type| note
+---- |--------- |----|----
+country|YES|string|ISO country code
+email|YES|string|
+productcode|YES|string|
+instancetype|YES|string|
+network|YES|string|
+location|YES|pair of float|
+ipv4|YES|string|
+ipv6|YES|string|
+hostid|YES|string|
+
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "d",
+  "timestamp": 1475078668177,
+  "response": {
+    "apikey": "0b75.................d057593b",
+    "servers": [
+      {
+        "name": "gb_cambridge_damselfly",
+        "domain": "default",
+        "environment": "dev",
+        "enrolEndpoints": [
+          {
+            "protocol": "tcp",
+            "port": 11112
+          },
+          {
+            "protocol": "https",
+            "port": 11182
+          }
+        ],
+        "useEndpoints": [
+          {
+            "protocol": "tcp",
+            "port": 11110
+          },
+          {
+            "protocol": "https",
+            "port": 11180
+          }
+        ],
+        "fqdn": "site2.enigmabridge.com"
+      }
+    ],
+    "operations": [
+      {
+        "status": "enabled",
+        "operation": 4,
+        "operationname": "basic_aes128_encrypt"
+      },
+      {
+        "status": "enabled",
+        "operation": 5,
+        "operationname": "basic_rsa1024_decrypt"
+      },
+      {
+        "status": "enabled",
+        "operation": 6,
+        "operationname": "basic_rsa2048_decrypt"
+      }
+    ],
+    "status": "enabled"
+  }
+}
+```
+A response example is on the right. The new items are:
+
+name | optional |type| note
+---- |--------- |----|----
+apikey|NO|string|apikey used to authenticate requests
+<strong>servers</strong>|NO|array|connection details for Enigma Bridge servers
+operations|NO|array|list of operations available for the API key
+
+###Structure of 'servers' each item
+
+name | optional |type| note
+---- |--------- |----|----
+name|NO|string|
+domain|NO|string|name of Enigma Bridge security domain
+environment|NO|string|"dev" or "test" or "prod"
+enrolendpoints|NO|array|array of {protocol,port}
+useendpoints|NO|array|array of {protocol,port}
+
+## View API for Client (client)
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "showapi",
+    "environment":"dev",
+    "client":{
+        "authentication": "password",
+        "username": "dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "password": "1067....................1e0f53"
+    },
+    "apidata":{
+        "apikey":"0b75f...............d057593b"
+    }
+}
+```
+Clients can repeatedly request information about their API keys.
+
+name | optional |type| note
+---- |--------- |----|----
+nonce|NO|string|
+version|NO|integer|must be 1
+function|NO| must be "showapi"
+environment|NO|must be "dev", "test", or "prod"
+client|NO|sequence|
+apidata|NO|string|sequence of just "apikey" - string
+
+###Structure of 'client'
+
+name | optional |type| note
+---- |--------- |----|----
+authentication|NO|string|at the moment must be "password"
+username|NO|string|as provided during registration
+password|NO|string|as provided during registration
+
+
+Responses have the same format as for "addapi" requests.
+
+## Enrol for DNS Domain (api)
+
+
+
+
+## Get Challenge (api)
+
+## Update Domain (api)
+
+
