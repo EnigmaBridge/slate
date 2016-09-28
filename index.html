@@ -699,6 +699,865 @@ The response code for successful processiong of a request is 36864 (0x9000).
 </tr>
 </tbody></table>
 
+          <h1 id="user-manager-client-role">User Manager - Client Role</h1>
+
+<aside class="notice">
+
+User Manager is available on the following domain names managed by Enigma Bridge. Whenever we use <strong>hut</strong>, it has to be replased with one of these three domain names.
+</aside>
+
+<p>User Manager domain names to replace <strong>hut</strong> in the text below are:</p>
+
+<ol>
+<li>hut3.enigmabridge.com</li>
+<li>hut6.enigmabridge.com</li>
+<li>hut8.enigmabridge.com</li>
+</ol>
+
+<h2 id="data-flow">Data Flow</h2>
+
+<p>The usual data-flow and sequence of actions is as follows:</p>
+
+<ol>
+<li>New client process (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically for virtual machines configured by Enigma Bridge.</li>
+<li>This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own APIkeys and will be authorized to use the Enigma Bridge service.
+
+<ol>
+<li>The client process will use its EB type to request a new client account.</li>
+<li>The customer will request a new client account via our support system at: <a href="https://enigmabridge.freshdesk.com">https://enigmabridge.freshdesk.com</a>.</li>
+</ol></li>
+<li>Once the client ID and authentication details are available, the client process can request a new API key.</li>
+<li>The API key allows create of new user objects according to the client type definition.</li>
+</ol>
+
+<h2 id="register-client-client">Register Client (client)</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"create"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"my test name"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"authentication"</span><span class="p">:</span><span class="s2">"type"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"token"</span><span class="p">:</span><span class="s2">"token-assigned-to-client-type"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL: </p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nonce</td>
+<td>NO</td>
+<td>string</td>
+<td>random string that will be returned back</td>
+</tr>
+<tr>
+<td>version</td>
+<td>NO</td>
+<td>integer</td>
+<td>must be 1</td>
+</tr>
+<tr>
+<td>function</td>
+<td>NO</td>
+<td>string</td>
+<td>must be &ldquo;create&rdquo;</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>NO</td>
+<td>string</td>
+<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+</tr>
+<tr>
+<td><strong>client</strong></td>
+<td>NO</td>
+<td>sequence</td>
+<td>contains information about the new client</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-client-39">Structure of &lsquo;client&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>NO</td>
+<td>string</td>
+<td>name provided by the user</td>
+</tr>
+<tr>
+<td>authentication</td>
+<td>NO</td>
+<td>string</td>
+<td>must be &ldquo;type&rdquo;</td>
+</tr>
+<tr>
+<td>type</td>
+<td>NO</td>
+<td>string</td>
+<td>Name of EB client type (pre-defined)</td>
+</tr>
+<tr>
+<td>token</td>
+<td>YES</td>
+<td>string</td>
+<td>authentication token for the client type</td>
+</tr>
+</tbody></table>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475077216548</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"106..............571e0f53"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"max_api_keys"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"authenticationType"</span><span class="p">:</span><span class="w"> </span><span class="s2">"PASSWORD"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ENABLED"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"maxobjects"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This is a typical response. The new items are:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>status</td>
+<td>NO</td>
+<td>integer</td>
+<td>status code - see Error codes</td>
+</tr>
+<tr>
+<td>error</td>
+<td>NO</td>
+<td>string</td>
+<td>text explaining the error code</td>
+</tr>
+<tr>
+<td>timestamp</td>
+<td>NO</td>
+<td>long</td>
+<td>timestamp of the response</td>
+</tr>
+<tr>
+<td><strong>response</strong></td>
+<td>NO</td>
+<td>sequence</td>
+<td>data returned to the request</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-response-39">Structure of &#39;response&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>authentication username</td>
+</tr>
+<tr>
+<td>password</td>
+<td>YES</td>
+<td>string</td>
+<td>authentication password, depends on authenticationmethod</td>
+</tr>
+<tr>
+<td>max_api_keys</td>
+<td>NO</td>
+<td>integer</td>
+<td>max number of API keys the client can create</td>
+</tr>
+<tr>
+<td>authenticationtype</td>
+<td>NO</td>
+<td>string</td>
+<td>one of methods</td>
+</tr>
+<tr>
+<td>status</td>
+<td>NO</td>
+<td>string</td>
+<td>enabled, disabled, or removed</td>
+</tr>
+<tr>
+<td>maxobjects</td>
+<td>NO</td>
+<td>integer</td>
+<td>max number of objects this client can create</td>
+</tr>
+</tbody></table>
+
+<h2 id="add-api-for-client-client">Add API for Client (client)</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"d"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addapi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1067...................71e0f53"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"endpoint"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"country"</span><span class="p">:</span><span class="s2">"gb"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nonce</td>
+<td>NO</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>version</td>
+<td>NO</td>
+<td>integer</td>
+<td>must be 1</td>
+</tr>
+<tr>
+<td>function</td>
+<td>NO</td>
+<td>must be &ldquo;addapi&rdquo;</td>
+<td></td>
+</tr>
+<tr>
+<td>environment</td>
+<td>NO</td>
+<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td></td>
+</tr>
+<tr>
+<td>client</td>
+<td>NO</td>
+<td>sequence</td>
+<td></td>
+</tr>
+<tr>
+<td>endpoint</td>
+<td>NO</td>
+<td>sequence</td>
+<td>properties of the client server to identify best Enigma Bridge servers</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication</td>
+<td>NO</td>
+<td>string</td>
+<td>at the moment must be &ldquo;password&rdquo;</td>
+</tr>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as provided during registration</td>
+</tr>
+<tr>
+<td>password</td>
+<td>NO</td>
+<td>string</td>
+<td>as provided during registration</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-endpoint-39">Structure of &#39;endpoint&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>country</td>
+<td>YES</td>
+<td>string</td>
+<td>ISO country code</td>
+</tr>
+<tr>
+<td>email</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>productcode</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>instancetype</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>network</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>location</td>
+<td>YES</td>
+<td>pair of float</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv4</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>hostid</td>
+<td>YES</td>
+<td>string</td>
+<td></td>
+</tr>
+</tbody></table>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"d"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"apikey"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0b75.................d057593b"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"servers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"gb_cambridge_damselfly"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"default"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"environment"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"enrolEndpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">11112</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">11182</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"useEndpoints"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tcp"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">11110</span><span class="w">
+          </span><span class="p">},</span><span class="w">
+          </span><span class="p">{</span><span class="w">
+            </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https"</span><span class="p">,</span><span class="w">
+            </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="mi">11180</span><span class="w">
+          </span><span class="p">}</span><span class="w">
+        </span><span class="p">],</span><span class="w">
+        </span><span class="nt">"fqdn"</span><span class="p">:</span><span class="w"> </span><span class="s2">"site2.enigmabridge.com"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"operations"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operationname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basic_aes128_encrypt"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operationname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basic_rsa1024_decrypt"</span><span class="w">
+      </span><span class="p">},</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operation"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"operationname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"basic_rsa2048_decrypt"</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">],</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>A response example is on the right. The new items are:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>apikey used to authenticate requests</td>
+</tr>
+<tr>
+<td><strong>servers</strong></td>
+<td>NO</td>
+<td>array</td>
+<td>connection details for Enigma Bridge servers</td>
+</tr>
+<tr>
+<td>operations</td>
+<td>NO</td>
+<td>array</td>
+<td>list of operations available for the API key</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-servers-39-each-item">Structure of &#39;servers&rsquo; each item</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>NO</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>domain</td>
+<td>NO</td>
+<td>string</td>
+<td>name of Enigma Bridge security domain</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>NO</td>
+<td>string</td>
+<td>&ldquo;dev&rdquo; or &ldquo;test&rdquo; or &ldquo;prod&rdquo;</td>
+</tr>
+<tr>
+<td>enrolendpoints</td>
+<td>NO</td>
+<td>array</td>
+<td>array of {protocol,port}</td>
+</tr>
+<tr>
+<td>useendpoints</td>
+<td>NO</td>
+<td>array</td>
+<td>array of {protocol,port}</td>
+</tr>
+</tbody></table>
+
+<h2 id="view-api-for-client-client">View API for Client (client)</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"showapi"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="s2">"password"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1067....................1e0f53"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+
+<p>Clients can repeatedly request information about their API keys.</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nonce</td>
+<td>NO</td>
+<td>string</td>
+<td></td>
+</tr>
+<tr>
+<td>version</td>
+<td>NO</td>
+<td>integer</td>
+<td>must be 1</td>
+</tr>
+<tr>
+<td>function</td>
+<td>NO</td>
+<td>must be &ldquo;showapi&rdquo;</td>
+<td></td>
+</tr>
+<tr>
+<td>environment</td>
+<td>NO</td>
+<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td></td>
+</tr>
+<tr>
+<td>client</td>
+<td>NO</td>
+<td>sequence</td>
+<td></td>
+</tr>
+<tr>
+<td>apidata</td>
+<td>NO</td>
+<td>string</td>
+<td>sequence of just &ldquo;apikey&rdquo; - string</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>authentication</td>
+<td>NO</td>
+<td>string</td>
+<td>at the moment must be &ldquo;password&rdquo;</td>
+</tr>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as provided during registration</td>
+</tr>
+<tr>
+<td>password</td>
+<td>NO</td>
+<td>string</td>
+<td>as provided during registration</td>
+</tr>
+</tbody></table>
+
+<p>Responses have the same format as for &ldquo;addapi&rdquo; requests.</p>
+
+<h2 id="enrol-for-dns-domain-api">Enrol for DNS Domain (api)</h2>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enroldomain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"certificate"</span><span class="p">:</span><span class="s2">"base64 encoded X.509 certificate"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>client username as provided during registration</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>apikey as provided during registration</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"pki.enigmabridge.net"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"controllers"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+            </span><span class="p">{</span><span class="w">
+                </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ns.enigmabridge.net"</span><span class="w">
+            </span><span class="p">}</span><span class="w">
+        </span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-challenge-api">Get Challenge (api)</h2>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getdomainchallenge"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"challenge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a random string for authenticated requests"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signature"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The response to these requests provides a <strong>challenge</strong> that has to be used to authenticate requests like <strong>Update Domain</strong>.</p>
+
+<h2 id="update-domain-api">Update Domain (api)</h2>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updatedomain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"authorization"</span><span class="p">:</span><span class="s2">"signature"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"domainame"</span><span class="p">:</span><span class="w"> </span><span class="s2">"assigned domain name"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+          <h1 id="user-manager-enrolment-private-api">User Manager - Enrolment (Private API)</h1>
+
+<h2 id="api-endpoint">API Endpoint</h2>
+
+<h3 id="disable-enrolment-object">Disable Enrolment Object</h3>
+
+<h3 id="enable-enrolment-object">Enable Enrolment Object</h3>
+
+<h3 id="remove-enrolment-object">Remove Enrolment Object</h3>
+
+<h2 id="client-endpoint">Client Endpoint</h2>
+
+<h3 id="disable-api-key">Disable API Key</h3>
+
+<h3 id="enable-api-key">Enable API Key</h3>
+
+<h3 id="remove-api-key">Remove API Key</h3>
+
       </div>
       <div class="dark-box">
           <div class="lang-selector">
