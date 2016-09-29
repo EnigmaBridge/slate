@@ -411,9 +411,10 @@ see the RESTful column
         "domain": "pki.enigmabridge.net",
         "controllers": [
             {
-                "domain": "ns.enigmabridge.net"
+                "name": "ns.enigmabridge.net"
             }
-        ]
+        ],
+        "status":"enabled"
     }
 }
 ```
