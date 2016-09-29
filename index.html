@@ -1485,7 +1485,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
     </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"challenge"</span><span class="p">:</span><span class="w"> </span><span class="s2">"a random string for authenticated requests"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"authorization"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signature"</span><span class="w">
+        </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="s2">"signature"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -1513,14 +1513,74 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"authorization"</span><span class="p">:</span><span class="s2">"signature"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
+        </span><span class="nt">"authentication"</span><span class="p">:</span><span class="s2">"signature"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"response"</span><span class="p">:</span><span class="s2">"value derived from previously requested challenge"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"signature"</span><span class="p">:</span><span class="s2">"source-base64 (dot) string-base64-signature"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <p>The request uses the following URL:</p>
 
 <p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apidata</td>
+<td>YES</td>
+<td>string</td>
+<td>not needed if signature is present</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>YES</td>
+<td>string</td>
+<td>only if method is &ldquo;signature&rdquo;;</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+<tr>
+<td>authentication</td>
+<td>NO</td>
+<td>string</td>
+<td>as requested with a challenge</td>
+</tr>
+<tr>
+<td>response</td>
+<td>NO</td>
+<td>string</td>
+<td>either the challenge itself or a derived value (e.g., OCRA)</td>
+</tr>
+</tbody></table>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
