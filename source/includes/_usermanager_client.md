@@ -476,7 +476,7 @@ see the RESTful column
     "timestamp": 1475078668177,
     "response": {
         "challenge": "a random string for authenticated requests",
-        "authorization": "signature"
+        "authentication": "signature"
     }
 }
 ```
@@ -510,14 +510,31 @@ see the RESTful column
     "apidata":{
         "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
         "apikey":"0b75f...............d057593b",
-        "authorization":"signature"
-    }
+        "authentication":"signature",
+        "response":"value derived from previously requested challenge"
+    },
+    "signature":"source-base64 (dot) string-base64-signature"
 }
 ```
 
 The request uses the following URL:
 
 `https://hut:8445/api/v1/apikey`
+
+name | optional |type| note
+---- |--------- |----|----
+apidata|YES|string|not needed if signature is present
+signature|YES|string|only if method is "signature"; 
+
+
+### Structure of 'apidata'
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|as assigned
+apikey|NO|string|as assigned
+authentication|NO|string|as requested with a challenge
+response|NO|string|either the challenge itself or a derived value (e.g., OCRA)
 
 
 ```java
