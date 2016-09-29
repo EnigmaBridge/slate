@@ -369,6 +369,8 @@ see the RESTful column
     "apidata":{
         "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
         "apikey":"0b75f...............d057593b",
+        "ipv4":"IPv4 provided by the client",
+        "ipv6":"IPv6 provided by the client",
         "certificate":"base64 encoded X.509 certificate"
     }
 }
@@ -385,6 +387,9 @@ name | optional |type| note
 ---- |--------- |----|----
 username|NO|string|client username as provided during registration
 apikey|NO|string|apikey as provided during registration
+certificate|NO|string|base64 encoded certificate - vehicle to provide public key
+ipv4|YES|string|ipv4 that will be tested
+ipv6|YES|string|ipv6 that will be tested
 
 ### Response 
 
@@ -557,7 +562,7 @@ see the RESTful column
     "nonce": "my nonce",
     "timestamp": 1475078668177,
     "response": {
-        "domainame": "assigned domain name"
+        "domains": ["assigned domain name"]
     }
 }
 ```
