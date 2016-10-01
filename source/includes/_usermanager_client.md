@@ -521,7 +521,10 @@ see the RESTful column
         "authentication":"signature",
         "response":"value derived from previously requested challenge"
     },
-    "signature":"source-base64 (dot) string-base64-signature"
+    "signature":{
+        "payload":"apidata-base64",
+        "value":"string-base64-signature"
+    }
 }
 ```
 
