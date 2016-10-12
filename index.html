@@ -123,30 +123,33 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
-<p>Welcome to Enigma Bridge API documentation! Enigma Bridge provides managed hardware encryption. The hardware security ensures that your secrets can&rsquo;t be extracted using any physical attacks. This protection is validated according to the FIPS 140-2 standard on <strong>Level 3</strong>. The <strong>Level 3</strong> means that the hardware device will erase secrets it stores when it detects an attack. </p>
+<p>Welcome to Enigma Bridge API documentation and congratulations on taking steps to properly secure your systems from cyberattacks.</p>
+
+<p>Enigma Bridge provides managed hardware encryption for a variety of applications and our proprietary hardware security platform ensures that your secrets can’t be extracted using any logical nor physical attacks. This protection is validated according to the FIPS 140-2 standard on <strong>Level 3</strong>. The <strong>Level 3</strong> means that the hardware device will erase secrets it stores when it detects an attack.</p>
 
 <p>Side-channel, and logical attacks are also significantly limited. Assurance of this protection is provided by Common Criteria certifications on EAL5 (<a href="https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL5:_Semiformally_Designed_and_Tested">EAL5 explained on Wikipedia</a>).</p>
 
 <p>You can use our API to access Enigma Bridge encryption service directly or transparently via production integrations. The set of operations available via the API includes:</p>
 
 <ul>
-<li><strong>authentication</strong> - create user context, verify passwords and one-time passwords, reset passwords;</li>
-<li><strong>payment systems</strong> - re-encryption between transport and database keys, tokenization;</li>
+<li><strong>encryption</strong> - just encrypt, MAC, sign, &hellip;;</li>
+<li><strong>re-encryption</strong> - atomic re-encryption from transport (data in transit) to storage (data at rest) keys;</li>
 <li><strong>key management</strong> - generate, unwrap, manage keys; </li>
-<li><strong>random data generation</strong> - using FIPS140-2 certified generators;</li>
-<li><strong>encryption</strong> - just encrypt, MAC, sign, &hellip;; or</li>
-<li><strong>re-encryption</strong> - atomic re-encryption from asymetric to symetric algorithms.</li>
+<li><strong>payment systems</strong> - re-encryption between transport and database keys, tokenization;</li>
+<li><strong>cloud migration</strong> - use any subset of supported operations or one of our services built on top of the Enigma Bridge platform;</li>
+<li><strong>user authentication</strong> - create user context, verify passwords and one-time passwords, reset passwords; or</li>
+<li><strong>random data generation</strong> - using FIPS140-2 certified generators.</li>
 </ul>
 
 <p>The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.</p>
 
 <h1 id="basics">Basics</h1>
 
-<p>Use of Enigma Bridge consists of four phases:</p>
+<p>Use of Enigma Bridge consists of four phases, irrespective of operations you want to use:</p>
 
 <ol>
 <li><strong>user enrolment</strong> - creating user account;</li>
-<li><strong>API key creation</strong> - obtaining API key with authorizations and also networkconnection details to a suitable Enigma Bridge instance;</li>
+<li><strong>API key creation</strong> - obtaining API key with authorizations and also network connection details to a suitable Enigma Bridge instance;</li>
 <li><strong>operation enrolment</strong> - introduction of a new use request into Enigma Bridge; and</li>
 <li><strong>data processing</strong> - operational use.</li>
 </ol>
@@ -196,7 +199,7 @@
              "token":"initial type authentication token"
          }
     }'</span><span class="se">\</span>
-  https://hut3.enigmabridge.com/api/v1/client
+  https://hut3.enigmabridge.com:8445/api/v1/client
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">cfg</span> <span class="o">=</span> <span class="nx">Configuration</span><span class="p">()</span>
 <span class="nx">cfg</span><span class="p">.</span><span class="nx">endpoint_register</span> <span class="o">=</span> <span class="nx">Endpoint</span><span class="p">.</span><span class="nx">url</span><span class="p">(</span><span class="s1">'https://hut3.enigmabridge.com:8445'</span><span class="p">)</span>
@@ -266,7 +269,7 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
          },
          "operations":["name","name2","nameX"]
     }'</span><span class="se">\</span>
-  https://hut3.enigmabridge.com/api/v1/client
+  https://hut3.enigmabridge.com:8445/api/v1/client
 </code></pre>
 <pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
 
@@ -1635,7 +1638,99 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
     </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-        </span><span class="nt">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"assigned domain name"</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"assigned domain name"</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"registered IP addresses "</span><span class="p">]</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="disable-domain-api">Disable Domain (api)</h2>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unlockdomain"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<p>This function will &ldquo;unlock&rdquo; the domain record for the given API key so it can be
+assigned to a new IP address.</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apidata</td>
+<td>NO</td>
+<td>string</td>
+<td>authentication of the client</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+</tbody></table>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status of the domain in EB backend"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
