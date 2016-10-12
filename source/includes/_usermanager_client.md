@@ -568,7 +568,85 @@ see the RESTful column
     "nonce": "my nonce",
     "timestamp": 1475078668177,
     "response": {
-        "domains": ["assigned domain name"]
+        "domains": ["assigned domain name"],
+        "addresses": ["registered IP addresses "]
+    }
+}
+```
+
+
+## Disable Domain (api)
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "unlockdomain",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b"
+    }
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+This function will "unlock" the domain record for the given API key so it can be
+assigned to a new IP address.
+
+name | optional |type| note
+---- |--------- |----|----
+apidata|NO|string|authentication of the client
+
+
+### Structure of 'apidata'
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|as assigned
+apikey|NO|string|as assigned
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version": 1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce": "my nonce",
+    "timestamp": 1475078668177,
+    "response": {
+        "status": "status of the domain in EB backend"
     }
 }
 ```

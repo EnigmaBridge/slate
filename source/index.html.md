@@ -22,34 +22,37 @@ search: true
 
 # Introduction
 
-Welcome to Enigma Bridge API documentation! Enigma Bridge provides managed hardware encryption. The hardware security ensures that your secrets can't be extracted using any physical attacks. This protection is validated according to the FIPS 140-2 standard on **Level 3**. The **Level 3** means that the hardware device will erase secrets it stores when it detects an attack. 
+Welcome to Enigma Bridge API documentation and congratulations on taking steps to properly secure your systems from cyberattacks.
+
+Enigma Bridge provides managed hardware encryption for a variety of applications and our proprietary hardware security platform ensures that your secrets can’t be extracted using any logical nor physical attacks. This protection is validated according to the FIPS 140-2 standard on **Level 3**. The **Level 3** means that the hardware device will erase secrets it stores when it detects an attack.
 
 Side-channel, and logical attacks are also significantly limited. Assurance of this protection is provided by Common Criteria certifications on EAL5 ([EAL5 explained on Wikipedia](https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL5:_Semiformally_Designed_and_Tested)).
 
 You can use our API to access Enigma Bridge encryption service directly or transparently via production integrations. The set of operations available via the API includes:
 
-* **authentication** - create user context, verify passwords and one-time passwords, reset passwords;
-* **payment systems** - re-encryption between transport and database keys, tokenization;
+* **encryption** - just encrypt, MAC, sign, ...;
+* **re-encryption** - atomic re-encryption from transport (data in transit) to storage (data at rest) keys;
 * **key management** - generate, unwrap, manage keys; 
-* **random data generation** - using FIPS140-2 certified generators;
-* **encryption** - just encrypt, MAC, sign, ...; or
-* **re-encryption** - atomic re-encryption from asymetric to symetric algorithms.
+* **payment systems** - re-encryption between transport and database keys, tokenization;
+* **cloud migration** - use any subset of supported operations or one of our services built on top of the Enigma Bridge platform;
+* **user authentication** - create user context, verify passwords and one-time passwords, reset passwords; or
+* **random data generation** - using FIPS140-2 certified generators.
 
 The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
 
 # Basics
 
-Use of Enigma Bridge consists of four phases:
+Use of Enigma Bridge consists of four phases, irrespective of operations you want to use:
 
 1. **user enrolment** - creating user account;
-2. **API key creation** - obtaining API key with authorizations and also networkconnection details to a suitable Enigma Bridge instance;
+2. **API key creation** - obtaining API key with authorizations and also network connection details to a suitable Enigma Bridge instance;
 3. **operation enrolment** - introduction of a new use request into Enigma Bridge; and
 4. **data processing** - operational use.
 
 Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.
 
-
 Each of the steps can be represented by a single API command regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.
+
 
 
 # Getting Started
@@ -110,7 +113,7 @@ curl -i \
              "token":"initial type authentication token"
          }
     }'\
-  https://hut3.enigmabridge.com/api/v1/client
+  https://hut3.enigmabridge.com:8445/api/v1/client
 ```
 
 ```javascript
@@ -182,7 +185,7 @@ curl -i \
          },
          "operations":["name","name2","nameX"]
     }'\
-  https://hut3.enigmabridge.com/api/v1/client
+  https://hut3.enigmabridge.com:8445/api/v1/client
 ```
 
 ```javascript
