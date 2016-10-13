@@ -574,8 +574,74 @@ see the RESTful column
 }
 ```
 
+## (Install) Status (api)
 
-## Disable Domain (api)
+This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "installstatus",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b"
+    },
+    "statusdata":{
+        "password":"very secret password",
+        "status":36864,
+        "error":"success (ok)",
+        "duration":1800,
+        "key":"base64encoded key blob",
+        "email":"important@top.world"
+    }
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+This function will update status of the APIkey consumer/host. This information can be used for further communication with clients or contact clients. 
+
+The structure and particular meaning of items in "statusdata" depends on the client type.
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|as assigned
+apikey|NO|string|as assigned
+
+
+### Structure of 'statusdata'
+
+name | optional |type| note
+---- |--------- |----|----
+password|YES|string|generated on the apikey host
+status|NO|integer| status code
+error|NO|string|provided by the apikey
+duration|YES|integer|duration of an operation in seconds
+key|YES|string|any key that we need to pass on
+email|YES|email| contact details of whoever will be contacted
+
+## Unlock Domain (api)
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
