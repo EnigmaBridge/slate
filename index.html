@@ -1644,7 +1644,120 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="disable-domain-api">Disable Domain (api)</h2>
+<h2 id="install-status-api">(Install) Status (api)</h2>
+
+<p>This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.</p>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"installstatus"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"statusdata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"password"</span><span class="p">:</span><span class="s2">"very secret password"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">36864</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"error"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"duration"</span><span class="p">:</span><span class="mi">1800</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"key"</span><span class="p">:</span><span class="s2">"base64encoded key blob"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"important@top.world"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<p>This function will update status of the APIkey consumer/host. This information can be used for further communication with clients or contact clients. </p>
+
+<p>The structure and particular meaning of items in &ldquo;statusdata&rdquo; depends on the client type.</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-statusdata-39">Structure of &#39;statusdata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>password</td>
+<td>YES</td>
+<td>string</td>
+<td>generated on the apikey host</td>
+</tr>
+<tr>
+<td>status</td>
+<td>NO</td>
+<td>integer</td>
+<td>status code</td>
+</tr>
+<tr>
+<td>error</td>
+<td>NO</td>
+<td>string</td>
+<td>provided by the apikey</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>YES</td>
+<td>integer</td>
+<td>duration of an operation in seconds</td>
+</tr>
+<tr>
+<td>key</td>
+<td>YES</td>
+<td>string</td>
+<td>any key that we need to pass on</td>
+</tr>
+<tr>
+<td>email</td>
+<td>YES</td>
+<td>email</td>
+<td>contact details of whoever will be contacted</td>
+</tr>
+</tbody></table>
+
+<h2 id="unlock-domain-api">Unlock Domain (api)</h2>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
