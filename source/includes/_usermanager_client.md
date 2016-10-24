@@ -447,6 +447,7 @@ see the RESTful column
     "apidata":{
         "ipv4":"IPv4 provided by the client",
         "ipv6":"IPv6 provided by the client",
+        "private": true,
         "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
         "apikey":"0b75f...............d057593b"
     }
@@ -462,6 +463,9 @@ name | optional |type| note
 username|NO|string|client username as provided during registration
 ipv4|YES|string|ipv4 that will be tested
 ipv6|YES|string|ipv6 that will be tested
+private|NO|boolean|if true, the supplied IP addresses are private and will not be used for any verification
+
+If IP addresses are marked as private, we will check whether they are from the expected range. I.e., fc00::/7 for IPv6 and 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 for IPv4.
 
 ```java
 see the RESTful column
@@ -574,7 +578,7 @@ see the RESTful column
 }
 ```
 
-## (Install) Status (api)
+## Install Status (api)
 
 This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.
 
