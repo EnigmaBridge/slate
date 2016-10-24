@@ -1561,6 +1561,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"dnsdata"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
+                        </span><span class="nt">"type:"</span><span class="err">txt</span><span class="nt">", 
+                        "</span><span class="err">name</span><span class="nt">":"</span><span class="err">_acme-challenge</span><span class="nt">", 
+                        "</span><span class="err">value</span><span class="nt">":string"</span><span class="err">}</span><span class="w">
+                   </span><span class="p">],</span><span class="w">
         </span><span class="nt">"authentication"</span><span class="p">:</span><span class="s2">"signature"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"response"</span><span class="p">:</span><span class="s2">"value derived from previously requested challenge"</span><span class="w">
     </span><span class="p">},</span><span class="w">
@@ -1618,6 +1623,12 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>NO</td>
 <td>string</td>
 <td>as assigned</td>
+</tr>
+<tr>
+<td>dnsdata</td>
+<td>YES</td>
+<td>array</td>
+<td>an array of new DNS records that will be added to the domain, each record is defined by name, type, and value</td>
 </tr>
 <tr>
 <td>authentication</td>
