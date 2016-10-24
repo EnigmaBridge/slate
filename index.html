@@ -1471,6 +1471,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
         </span><span class="nt">"ipv4"</span><span class="p">:</span><span class="s2">"IPv4 provided by the client"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"ipv6"</span><span class="p">:</span><span class="s2">"IPv6 provided by the client"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"private"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
         </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1507,7 +1508,15 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>string</td>
 <td>ipv6 that will be tested</td>
 </tr>
+<tr>
+<td>private</td>
+<td>NO</td>
+<td>boolean</td>
+<td>if true, the supplied IP addresses are private and will not be used for any verification</td>
+</tr>
 </tbody></table>
+
+<p>If IP addresses are marked as private, we will check whether they are from the expected range. I.e., fc00::/7 for IPv6 and 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 for IPv4.</p>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1644,7 +1653,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="install-status-api">(Install) Status (api)</h2>
+<h2 id="install-status-api">Install Status (api)</h2>
 
 <p>This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.</p>
 
