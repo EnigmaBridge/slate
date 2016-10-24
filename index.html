@@ -1512,7 +1512,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>private</td>
 <td>NO</td>
 <td>boolean</td>
-<td>if true, the supplied IP addresses are private and will not be used for any verification</td>
+<td>default value is &ldquo;false&rdquo;; if true, the supplied IP addresses are private and will not be used for any verification</td>
 </tr>
 </tbody></table>
 
@@ -1562,7 +1562,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
         </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"dnsdata"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span><span class="w">
-                        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"txt"</span><span class="p">,</span><span class="w"> 
+                        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"txt"</span><span class="p">,</span><span class="w">
+                        </span><span class="nt">"domain"</span><span class="p">:</span><span class="s2">"domain record to be updated"</span><span class="p">,</span><span class="w"> 
                         </span><span class="nt">"name"</span><span class="p">:</span><span class="s2">"_acme-challenge"</span><span class="p">,</span><span class="w"> 
                         </span><span class="nt">"value"</span><span class="p">:</span><span class="s2">"random string"</span><span class="p">}</span><span class="w">
                    </span><span class="p">],</span><span class="w">
@@ -1641,6 +1642,42 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>NO</td>
 <td>string</td>
 <td>either the challenge itself or a derived value (e.g., OCRA)</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-dnsdata-39">Structure of &#39;dnsdata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>NO</td>
+<td>string</td>
+<td>type of DNS record to create, currently on &ldquo;TXT&rdquo; supported</td>
+</tr>
+<tr>
+<td>name</td>
+<td>NO</td>
+<td>string</td>
+<td>name of the new record</td>
+</tr>
+<tr>
+<td>value</td>
+<td>NO</td>
+<td>string</td>
+<td>value of the new record</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>YES</td>
+<td>string</td>
+<td>a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -&gt; error</td>
 </tr>
 </tbody></table>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
