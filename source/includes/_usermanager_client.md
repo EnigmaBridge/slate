@@ -522,6 +522,11 @@ see the RESTful column
     "apidata":{
         "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
         "apikey":"0b75f...............d057593b",
+        "dnsdata": [{
+                        "type:"txt", 
+                        "name":"_acme-challenge", 
+                        "value":string"}
+                   ],
         "authentication":"signature",
         "response":"value derived from previously requested challenge"
     },
@@ -548,6 +553,7 @@ name | optional |type| note
 ---- |--------- |----|----
 username|NO|string|as assigned
 apikey|NO|string|as assigned
+dnsdata|YES|array| an array of new DNS records that will be added to the domain, each record is defined by name, type, and value
 authentication|NO|string|as requested with a challenge
 response|NO|string|either the challenge itself or a derived value (e.g., OCRA)
 
