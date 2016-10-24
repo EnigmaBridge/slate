@@ -525,7 +525,7 @@ see the RESTful column
         "dnsdata": [{
                         "type":"txt", 
                         "name":"_acme-challenge", 
-                        "value":string"}
+                        "value":"random string"}
                    ],
         "authentication":"signature",
         "response":"value derived from previously requested challenge"
