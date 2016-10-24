@@ -523,7 +523,7 @@ see the RESTful column
         "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
         "apikey":"0b75f...............d057593b",
         "dnsdata": [{
-                        "type:"txt", 
+                        "type":"txt", 
                         "name":"_acme-challenge", 
                         "value":string"}
                    ],
