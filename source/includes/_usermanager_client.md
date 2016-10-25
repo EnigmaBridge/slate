@@ -409,10 +409,10 @@ see the RESTful column
     "nonce": "my nonce",
     "timestamp": 1475078668177,
     "response": {
-        "domain": "pki.enigmabridge.net",
+        "domain": "pki.enigmabridge.com",
         "controllers": [
             {
-                "name": "ns.enigmabridge.net"
+                "name": "ns.enigmabridge.com"
             }
         ],
         "status":"enabled"
@@ -524,7 +524,7 @@ see the RESTful column
         "apikey":"0b75f...............d057593b",
         "dnsdata": [{
                         "type":"txt",
-                        "domain":"domain record to be updated", 
+                        "domain":"walsall1.pki.enigmabridge.com", 
                         "name":"_acme-challenge", 
                         "value":"random string"}
                    ],
