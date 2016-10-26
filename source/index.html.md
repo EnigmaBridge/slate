@@ -2,10 +2,10 @@
 title: Enigma Bridge API Reference
 
 language_tabs:
+  - json: RESTful
   - java: Java
   - javascript: Javascript
   - python: Python
-  - json: RESTful
   - shell: cURL
 
 toc_footers:
