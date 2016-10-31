@@ -298,11 +298,11 @@ in order to get the response clear text. Status 0x9000 stands for OK - result co
 ```
 
 ## Create User Object
-The first step before working with EnigmaBridge is creation of User Object.
-User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.
-Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.
-Symmetric encryption key - e.g. AES encryption key has also one operation thus you need 
-two user objects, with the same AES key inside, to perform both encryption and decryption.
+
+* The first step before working with EnigmaBridge is creation of User Object.
+* User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.
+* Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.
+* Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.
 
 ```python
 # Coming soon
