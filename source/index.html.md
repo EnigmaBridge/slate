@@ -254,6 +254,7 @@ uo_aes = UO(uo_id=0xee01,
  
 pd = ProcessData(uo=self.uo_aes, config=self.cfg)
 result = pd.call(from_hex('6bc1bee22e409f96e93d7e117393172a'))
+print(from_hex('95c6bb9b6a1c3835f98cc56087a03e82') == result)
 ```
 
 ```shell
