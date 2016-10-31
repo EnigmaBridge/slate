@@ -364,6 +364,8 @@ You must replace <code>default key</code> with your personal API key.
 
 <p><code class="prettyprint">ProcessData</code> is the basic call for using the UserObject - performing an operation
 on the input data with the registered object (e.g., RSA decryption, AES decryption). </p>
+
+<p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://expert.enigmabridge.com/test/demo.html">ProcessData-demo</a>.</p>
 <pre class="highlight json"><code><span class="s2">" Process data uses a communication encryption preprocessing. "</span><span class="w">
 </span><span class="s2">" For more details please refer to the Communication encryption documentation. "</span><span class="w"> 
 </span></code></pre>
@@ -414,18 +416,34 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
-<pre class="highlight java"><code><span class="s">"coming soon"</span>
+<pre class="highlight java"><code><span class="c1">// Coming soon </span>
 </code></pre>
 
 <blockquote>
 <p>Typical <code class="prettyprint">ProcessData</code> response is a JSON object like the following one.
 The communication encryption is in place - decryption has to be performed 
-in order to get the response clear text. </p>
-
-<p>Status 0x9000 stands for OK - result completed successfully.</p>
+in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.</p>
 </blockquote>
 <pre class="highlight json"><code><span class="p">{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="nt">"result"</span><span class="p">:</span><span class="s2">"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_"</span><span class="p">,</span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"c5a26f4ec30bf78b"</span><span class="p">,</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"9000"</span><span class="p">,</span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<h2 id="create-user-object">Create User Object</h2>
+
+<p>The first step before working with EnigmaBridge is creation of User Object.
+User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.
+Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.
+Symmetric encryption key - e.g. AES encryption key has also one operation thus you need 
+two user objects, with the same AES key inside, to perform both encryption and decryption.</p>
+<pre class="highlight python"><code><span class="c"># Coming soon</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
+</code></pre>
+<pre class="highlight java"><code><span class="c1">// Coming soon</span>
+</code></pre>
+
+<h2 id="test">Test</h2>
+
+<p>Skip.</p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
