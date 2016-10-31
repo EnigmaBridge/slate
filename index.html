@@ -359,21 +359,72 @@ You must replace <code>default key</code> with your personal API key.
 </aside>
 
 <h1 id="use">Use</h1>
-<pre class="highlight json"><code><span class="s2">"coming soon"</span><span class="w">
+
+<h2 id="processdata">ProcessData</h2>
+
+<p><code class="prettyprint">ProcessData</code> is the basic call for using the UserObject - performing an operation
+on the input data with the registered object (e.g., RSA decryption, AES decryption). </p>
+<pre class="highlight json"><code><span class="err">//</span><span class="w"> </span><span class="err">Process</span><span class="w"> </span><span class="err">data</span><span class="w"> </span><span class="err">uses</span><span class="w"> </span><span class="err">a</span><span class="w"> </span><span class="err">communication</span><span class="w"> </span><span class="err">encryption</span><span class="w"> </span><span class="err">preprocessing.</span><span class="w">
+</span><span class="err">//</span><span class="w"> </span><span class="err">For</span><span class="w"> </span><span class="err">more</span><span class="w"> </span><span class="err">details</span><span class="w"> </span><span class="err">please</span><span class="w"> </span><span class="err">refer</span><span class="w"> </span><span class="err">to</span><span class="w"> </span><span class="err">the</span><span class="w"> </span><span class="err">Communication</span><span class="w"> </span><span class="err">encryption</span><span class="w"> </span><span class="err">documentation.</span><span class="w"> 
 </span></code></pre>
-<pre class="highlight python"><code><span class="s">"coming soon"</span>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+<span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
+<span class="kn">from</span> <span class="nn">ebclient.crypto_util</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_process</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11180'</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s">'API_TEST'</span>
+
+<span class="n">uo_aes</span> <span class="o">=</span> <span class="n">UO</span><span class="p">(</span><span class="n">uo_id</span><span class="o">=</span><span class="mh">0xee01</span><span class="p">,</span>
+                 <span class="n">uo_type</span><span class="o">=</span><span class="mh">0x4</span><span class="p">,</span>
+                 <span class="n">enc_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
+                 <span class="n">mac_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e224262820223456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
+                 <span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">)</span>
+
+<span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uo_aes</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">))</span>
 </code></pre>
-<pre class="highlight shell"><code><span class="s2">"coming soon
-</span></code></pre>
-<pre class="highlight javascript"><code><span class="s2">"coming soon"</span>
+<pre class="highlight shell"><code><span class="c"># Process data uses a communication encryption preprocessing.</span>
+<span class="c"># For more details please refer to the Communication encryption documentation. </span>
+<span class="c"># Pure shell client is not yet planned.</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"../lib/enigma"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">host</span><span class="p">:</span> <span class="s2">"https://site2.enigmabridge.com:11180"</span><span class="p">,</span>
+    <span class="na">enrollHost</span><span class="p">:</span> <span class="s2">"https://site2.enigmabridge.com:11182"</span><span class="p">,</span>
+    <span class="na">requestMethod</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
+    <span class="na">requestTimeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"TEST_API"</span><span class="p">,</span>
+     <span class="na">uoId</span><span class="p">:</span> <span class="s1">'EE01'</span><span class="p">,</span>
+    <span class="na">uoType</span><span class="p">:</span> <span class="s1">'4'</span><span class="p">,</span>
+    <span class="na">aesKey</span><span class="p">:</span> <span class="s1">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">,</span>
+    <span class="na">macKey</span><span class="p">:</span> <span class="s1">'e224262820223456789012345678901234567890123456789012345678901234'</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="s1">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">cl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">processData</span><span class="p">(</span><span class="nx">settings</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">cl</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
+
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="s1">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <pre class="highlight java"><code><span class="s">"coming soon"</span>
 </code></pre>
 
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Typical <code class="prettyprint">ProcessData</code> response is a JSON object like the following one.
+The communication encryption is in place - decryption has to be performed 
+in order to get the response clear text. </p>
 </blockquote>
-<pre class="highlight json"><code><span class="s2">"coming soon"</span><span class="w">
+
+<p>Status 0x9000 stands for OK - result completed successfully.</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="nt">"result"</span><span class="p">:</span><span class="s2">"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_"</span><span class="p">,</span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"c5a26f4ec30bf78b"</span><span class="p">,</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"9000"</span><span class="p">,</span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 
 <h3 id="query-parameters">Query Parameters</h3>
