@@ -369,7 +369,7 @@ keys = {
 }
 
 
-# Create AES-128 key
+# Create AES-128 key for decryption - UOTypes.PLAINAESDECRYPT
 uo = CreateUO(configuration=self.cfg, tpl=tpl, \
               obj_type=UOTypes.PLAINAESDECRYPT, \
               keys=keys)
