@@ -364,6 +364,55 @@ promise.then(function(data){
 # Not supported in shell. Please, take a look at clients
 ```
 
+## Create User Object - RSA
+
+RSA user object is a bit more specific as it returns the public part.
+
+```python
+from ebclient.process_data import ProcessData
+from ebclient.create_uo import TemplateFields, KeyTypes, Environment, Gen
+from ebclient.eb_create_uo import *
+from ebclient.uo import Configuration, Endpoint, SimpleRetry, UO
+from ebclient.crypto_util import *
+
+cfg = Configuration()
+cfg.endpoint_process = Endpoint.url('https://site2.enigmabridge.com:11180')
+cfg.endpoint_enroll = Endpoint.url('https://site2.enigmabridge.com:11182')
+cfg.api_key = 'API_TEST'
+
+cou = CreateUO(configuration=self.cfg,
+               tpl={
+                   TemplateFields.environment: Environment.DEV
+               })
+
+# Create RSA-2048 private key
+rsa_key = cou.create_rsa(2048)
+
+# Process data - prepare object to use the new RSA-2048 key for decryption
+pd = ProcessData(uo=rsa_key.uo, config=self.cfg)
+
+# Prepare data - 000..1. RAW operation is performed - padding has to be done
+# localy on the client side. You can use PKCS1.5 padding implemented in the package.
+input = ("\x00"*255) + "\x01"
+result = pd.call(input)
+```
+
+```javascript
+// Coming soon
+```
+
+```java
+// Coming soon
+```
+
+```json
+" Not supported with RAW JSON. Please, take a look at clients"
+```
+
+```shell
+# Not supported in shell. Please, take a look at clients
+```
+
 ## Test
 
 Skip.
