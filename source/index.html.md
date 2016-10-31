@@ -89,7 +89,7 @@ Our goal is to make any library installation as simple as possible, and using st
 The first step for using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
 
 ```java
-"coming soon"
+// coming soon
 ```
 
 ```json
