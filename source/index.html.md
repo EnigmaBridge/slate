@@ -38,7 +38,7 @@ You can use our API to access Enigma Bridge encryption service directly or trans
 * **user authentication** - create user context, verify passwords and one-time passwords, reset passwords; or
 * **random data generation** - using FIPS140-2 certified generators.
 
-The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
+The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides a description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.
 
 # Basics
 
@@ -51,7 +51,7 @@ Use of Enigma Bridge consists of four phases, irrespective of operations you wan
 
 Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.
 
-Each of the steps can be represented by a single API command regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.
+Each of the steps can be represented by a single API command, regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.
 
 
 
@@ -86,9 +86,9 @@ Our goal is to make any library installation as simple as possible, and using st
 
 # Register as Enigma Client
 
-The first step for using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
+The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
 
-> In some cases, it is possible to automate enrolment to the Enigma Bridge service. A more controlled process, which involves manual approval, may be required if the client gets access to higher transaction rates or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
+> This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at [https://enigmabridge.freshdesk.com]|(https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
 
 ```java
 // coming soon
