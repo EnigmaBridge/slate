@@ -88,7 +88,7 @@ Our goal is to make any library installation as simple as possible, and using st
 
 The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
 
-> This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at [https://enigmabridge.freshdesk.com]|(https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
+> This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
 
 ```java
 // coming soon
