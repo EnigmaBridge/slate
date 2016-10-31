@@ -424,12 +424,12 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="n">cfg</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s">'API_TEST'</span>
 
 <span class="n">uo_aes</span> <span class="o">=</span> <span class="n">UO</span><span class="p">(</span><span class="n">uo_id</span><span class="o">=</span><span class="mh">0xee01</span><span class="p">,</span>
-                 <span class="n">uo_type</span><span class="o">=</span><span class="mh">0x4</span><span class="p">,</span>
-                 <span class="n">enc_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
-                 <span class="n">mac_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e224262820223456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
-                 <span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">)</span>
+            <span class="n">uo_type</span><span class="o">=</span><span class="mh">0x4</span><span class="p">,</span>
+            <span class="n">enc_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
+            <span class="n">mac_key</span><span class="o">=</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'e224262820223456789012345678901234567890123456789012345678901234'</span><span class="p">),</span>
+            <span class="n">configuration</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
 
-<span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uo_aes</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uo_aes</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="p">)</span>
 </code></pre>
