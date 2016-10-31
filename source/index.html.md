@@ -256,7 +256,7 @@ result = pd.call(from_hex('6bc1bee22e409f96e93d7e117393172a'))
 
 ```javascript
 "use strict";
-var eb = require("../lib/enigma");
+var eb = require("ebclient.js");
 var sjcl = eb.misc.sjcl;
 
 var settings = {
@@ -265,7 +265,7 @@ var settings = {
     requestMethod: "POST",
     requestTimeout: 30000,
     apiKey: "TEST_API",
-     uoId: 'EE01',
+    uoId: 'EE01',
     uoType: '4',
     aesKey: 'e134567890123456789012345678901234567890123456789012345678901234',
     macKey: 'e224262820223456789012345678901234567890123456789012345678901234'
