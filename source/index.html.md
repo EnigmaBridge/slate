@@ -291,7 +291,7 @@ promise.then(function(data){
 The communication encryption is in place - decryption has to be performed 
 in order to get the response clear text. 
 
-Status 0x9000 stands for OK - result completed successfully.
+> Status 0x9000 stands for OK - result completed successfully.
 
 ```json
 {"function":"ProcessData","result":"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_","nonce":"c5a26f4ec30bf78b","status":"9000","statusdetail":"success (ok)","version":"1.0"}
