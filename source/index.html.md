@@ -313,7 +313,6 @@ var sjcl = eb.misc.sjcl;
 var settings = {
     host: "https://site2.enigmabridge.com:11180",
     enrollHost: "https://site2.enigmabridge.com:11182",
-    requestMethod: "POST",
     requestTimeout: 30000,
     apiKey: "TEST_API",
     uoId: 'EE01',
