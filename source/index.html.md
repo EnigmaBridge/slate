@@ -225,8 +225,8 @@ You must replace <code>default key</code> with your personal API key.
 on the input data with the registered object (e.g., RSA decryption, AES decryption). 
 
 ```json
-// Process data uses a communication encryption preprocessing.
-// For more details please refer to the Communication encryption documentation. 
+" Process data uses a communication encryption preprocessing. "
+" For more details please refer to the Communication encryption documentation. " 
 ```
 
 ```python
