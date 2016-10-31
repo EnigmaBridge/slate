@@ -88,6 +88,8 @@ Our goal is to make any library installation as simple as possible, and using st
 
 The first step for using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
 
+> In some cases, it is possible to automate enrolment to the Enigma Bridge service. A more controlled process, which involves manual approval, may be required if the client gets access to higher transaction rates or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
+
 ```java
 // coming soon
 ```
@@ -164,7 +166,7 @@ In some cases, it is possible to use a default "TEST" user and "TEST_API" key - 
 
 #  API Key Enrolment 
 
-> To authorize, you first have to get client authentication data.
+> Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.
 
 
 ```shell
