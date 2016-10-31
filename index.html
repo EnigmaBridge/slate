@@ -368,6 +368,12 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://expert.enigmabridge.com/test/demo.html">ProcessData-demo</a>.</p>
 <pre class="highlight json"><code><span class="s2">" Process data uses a communication encryption preprocessing. "</span><span class="w">
 </span><span class="s2">" For more details please refer to the Communication encryption documentation. "</span><span class="w"> 
+</span><span class="p">{</span><span class="nt">"data"</span><span class="p">:</span><span class="s2">"Packet0_PLAINAES_00000396233a255a52b0ac083fc6a983730e8b6b9c8e74dcdc85f1343bf9f86543acd3f5bf024dc9a5364f17638250867403"</span><span class="p">}</span><span class="w">
+
+</span><span class="s2">" Typical `ProcessData` response is a JSON object like the following one."</span><span class="w">
+</span><span class="s2">" The communication encryption is in place - decryption has to be performed"</span><span class="w"> 
+</span><span class="s2">"  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully."</span><span class="w">
+</span><span class="p">{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="nt">"result"</span><span class="p">:</span><span class="s2">"0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad_Packet0_PLAINAES_"</span><span class="p">,</span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"89c14e8802c42151"</span><span class="p">,</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"9000"</span><span class="p">,</span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
@@ -419,21 +425,14 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <pre class="highlight java"><code><span class="c1">// Coming soon </span>
 </code></pre>
 
-<blockquote>
-<p>Typical <code class="prettyprint">ProcessData</code> response is a JSON object like the following one.
-The communication encryption is in place - decryption has to be performed 
-in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.</p>
-</blockquote>
-<pre class="highlight json"><code><span class="p">{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="nt">"result"</span><span class="p">:</span><span class="s2">"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_"</span><span class="p">,</span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"c5a26f4ec30bf78b"</span><span class="p">,</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"9000"</span><span class="p">,</span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">}</span><span class="w">
-</span></code></pre>
-
 <h2 id="create-user-object">Create User Object</h2>
 
-<p>The first step before working with EnigmaBridge is creation of User Object.
-User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.
-Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.
-Symmetric encryption key - e.g. AES encryption key has also one operation thus you need 
-two user objects, with the same AES key inside, to perform both encryption and decryption.</p>
+<ul>
+<li>The first step before working with EnigmaBridge is creation of User Object.</li>
+<li>User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.</li>
+<li>Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.</li>
+<li>Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.</li>
+</ul>
 <pre class="highlight python"><code><span class="c"># Coming soon</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
