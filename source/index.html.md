@@ -219,21 +219,67 @@ You must replace <code>default key</code> with your personal API key.
 
 # Use
 
+## ProcessData
+
+`ProcessData` is the basic call for using the UserObject - performing an operation
+on the input data with the registered object (e.g., RSA decryption, AES decryption). 
 
 ```json
-"coming soon"
+// Process data uses a communication encryption preprocessing.
+// For more details please refer to the Communication encryption documentation. 
 ```
 
 ```python
-"coming soon"
+from ebclient.process_data import ProcessData
+from ebclient.uo import Configuration, Endpoint, SimpleRetry, UO
+from ebclient.crypto_util import *
+
+cfg = Configuration()
+cfg.endpoint_process = Endpoint.url('https://site2.enigmabridge.com:11180')
+cfg.api_key = 'API_TEST'
+
+uo_aes = UO(uo_id=0xee01,
+                 uo_type=0x4,
+                 enc_key=from_hex('e134567890123456789012345678901234567890123456789012345678901234'),
+                 mac_key=from_hex('e224262820223456789012345678901234567890123456789012345678901234'),
+                 configuration=self.cfg)
+ 
+pd = ProcessData(uo=self.uo_aes, config=self.cfg)
+result = pd.call(from_hex('6bc1bee22e409f96e93d7e117393172a'))
 ```
 
 ```shell
-"coming soon
+# Process data uses a communication encryption preprocessing.
+# For more details please refer to the Communication encryption documentation. 
+# Pure shell client is not yet planned.
 ```
 
 ```javascript
-"coming soon"
+"use strict";
+var eb = require("../lib/enigma");
+var sjcl = eb.misc.sjcl;
+
+var settings = {
+    host: "https://site2.enigmabridge.com:11180",
+    enrollHost: "https://site2.enigmabridge.com:11182",
+    requestMethod: "POST",
+    requestTimeout: 30000,
+    apiKey: "TEST_API",
+     uoId: 'EE01',
+    uoType: '4',
+    aesKey: 'e134567890123456789012345678901234567890123456789012345678901234',
+    macKey: 'e224262820223456789012345678901234567890123456789012345678901234'
+};
+
+var input = '6bc1bee22e409f96e93d7e117393172a';
+var cl = new eb.client.processData(settings);
+var promise = cl.call(input);
+
+promise.then(function(data){
+    console.log(data.data == '95c6bb9b6a1c3835f98cc56087a03e82');
+}).catch(function(data){
+    console.log(data);
+});
 ```
 
 ```java
@@ -241,10 +287,14 @@ You must replace <code>default key</code> with your personal API key.
 ```
 
 
-> The above command returns JSON structured like this:
+> Typical `ProcessData` response is a JSON object like the following one.
+The communication encryption is in place - decryption has to be performed 
+in order to get the response clear text. 
+
+Status 0x9000 stands for OK - result completed successfully.
 
 ```json
-"coming soon"
+{"function":"ProcessData","result":"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_","nonce":"c5a26f4ec30bf78b","status":"9000","statusdetail":"success (ok)","version":"1.0"}
 ```
 
 ### Query Parameters
