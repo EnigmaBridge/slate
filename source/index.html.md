@@ -285,19 +285,40 @@ promise.then(function(data){
 ```
 
 ```java
-"coming soon"
+// Coming soon 
 ```
 
 
 > Typical `ProcessData` response is a JSON object like the following one.
 The communication encryption is in place - decryption has to be performed 
-in order to get the response clear text. 
-
-> Status 0x9000 stands for OK - result completed successfully.
+in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.
 
 ```json
 {"function":"ProcessData","result":"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_","nonce":"c5a26f4ec30bf78b","status":"9000","statusdetail":"success (ok)","version":"1.0"}
 ```
+
+## Create User Object
+The first step before working with EnigmaBridge is creation of User Object.
+User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.
+Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.
+Symmetric encryption key - e.g. AES encryption key has also one operation thus you need 
+two user objects, with the same AES key inside, to perform both encryption and decryption.
+
+```python
+# Coming soon
+```
+
+```javascript
+// Coming soon
+```
+
+```java
+// Coming soon
+```
+
+## Test
+
+Skip.
 
 ### Query Parameters
 
