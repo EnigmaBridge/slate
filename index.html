@@ -179,6 +179,10 @@
 <h1 id="register-as-enigma-client">Register as Enigma Client</h1>
 
 <p>The first step for using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.</p>
+
+<blockquote>
+<p>In some cases, it is possible to automate enrolment to the Enigma Bridge service. A more controlled process, which involves manual approval, may be required if the client gets access to higher transaction rates or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
+</blockquote>
 <pre class="highlight java"><code><span class="c1">// coming soon</span>
 </code></pre>
 <pre class="highlight json"><code><span class="s2">"coming soon"</span><span class="w">
@@ -250,7 +254,7 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
 <h1 id="api-key-enrolment">API Key Enrolment</h1>
 
 <blockquote>
-<p>To authorize, you first have to get client authentication data.</p>
+<p>Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.</p>
 </blockquote>
 <pre class="highlight shell"><code>curl -i <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
