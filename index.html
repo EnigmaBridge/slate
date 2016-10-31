@@ -389,7 +389,7 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="c"># Pure shell client is not yet planned.</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
-<span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"../lib/enigma"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
@@ -398,7 +398,7 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
     <span class="na">requestMethod</span><span class="p">:</span> <span class="s2">"POST"</span><span class="p">,</span>
     <span class="na">requestTimeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
     <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"TEST_API"</span><span class="p">,</span>
-     <span class="na">uoId</span><span class="p">:</span> <span class="s1">'EE01'</span><span class="p">,</span>
+    <span class="na">uoId</span><span class="p">:</span> <span class="s1">'EE01'</span><span class="p">,</span>
     <span class="na">uoType</span><span class="p">:</span> <span class="s1">'4'</span><span class="p">,</span>
     <span class="na">aesKey</span><span class="p">:</span> <span class="s1">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">,</span>
     <span class="na">macKey</span><span class="p">:</span> <span class="s1">'e224262820223456789012345678901234567890123456789012345678901234'</span>
