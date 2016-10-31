@@ -289,12 +289,12 @@ cfg.endpoint_process = Endpoint.url('https://site2.enigmabridge.com:11180')
 cfg.api_key = 'API_TEST'
 
 uo_aes = UO(uo_id=0xee01,
-                 uo_type=0x4,
-                 enc_key=from_hex('e134567890123456789012345678901234567890123456789012345678901234'),
-                 mac_key=from_hex('e224262820223456789012345678901234567890123456789012345678901234'),
-                 configuration=self.cfg)
+            uo_type=0x4,
+            enc_key=from_hex('e134567890123456789012345678901234567890123456789012345678901234'),
+            mac_key=from_hex('e224262820223456789012345678901234567890123456789012345678901234'),
+            configuration=cfg)
  
-pd = ProcessData(uo=self.uo_aes, config=self.cfg)
+pd = ProcessData(uo=self.uo_aes, config=cfg)
 result = pd.call(from_hex('6bc1bee22e409f96e93d7e117393172a'))
 print(from_hex('95c6bb9b6a1c3835f98cc56087a03e82') == result)
 ```
