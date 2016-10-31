@@ -413,10 +413,12 @@ cfg.endpoint_process = Endpoint.url('https://site2.enigmabridge.com:11180')
 cfg.endpoint_enroll = Endpoint.url('https://site2.enigmabridge.com:11182')
 cfg.api_key = 'API_TEST'
 
-cou = CreateUO(configuration=self.cfg,
-               tpl={
-                   TemplateFields.environment: Environment.DEV
-               })
+# Prepare key template - settings
+tpl = {
+    TemplateFields.environment: Environment.DEV
+}
+
+cou = CreateUO(configuration=self.cfg, tpl=tpl)
 
 # Create RSA-2048 private key
 # Communication keys are not specified here -> will be generated now, returned in the response.
