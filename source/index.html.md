@@ -224,6 +224,8 @@ You must replace <code>default key</code> with your personal API key.
 `ProcessData` is the basic call for using the UserObject - performing an operation
 on the input data with the registered object (e.g., RSA decryption, AES decryption). 
 
+`ProcessData` call can be tested also online in [ProcessData-demo].
+
 ```json
 " Process data uses a communication encryption preprocessing. "
 " For more details please refer to the Communication encryption documentation. " 
@@ -308,3 +310,5 @@ available | true | If set to false, the result will include kittens that have al
 Remember — a happy kitten is an authenticated kitten!
 </aside>
 
+
+[ProcessData-demo]: https://expert.enigmabridge.com/test/demo.html
