@@ -117,23 +117,33 @@ curl -i \
 ```
 
 ```javascript
+// JS coming soon
+```
+
+```python
+from ebclient.eb_configuration import *
+from ebclient.eb_registration import *
+from ebclient.registration import *
+
 cfg = Configuration()
 cfg.endpoint_register = Endpoint.url('https://hut3.enigmabridge.com:8445')
-cfg.retry = SimpleRetry()
 
 client_data_reg = {
     'name': 'name of the client - it should be unique',
     'authentication': 'type',
     'type': 'pre-defined type of clients',
     'token': 'initial type authentication token'
+    'email': self.email
 }
+
 regreq = RegistrationRequest(client_data=client_data_reg, env=ENVIRONMENT_DEVELOPMENT, config=cfg)
 regresponse = regreq.call()
-print(regresponse)
-```
 
-```python
-"coming soon"
+# results
+username = regresponse['username']
+password = regresponse['password']
+
+print(regresponse)
 ```
 We have created three end-points for client registration. We named them in memory of wartime sections of the Government Code and Cypher School (GC&CS) at [Bletchley Park](https://en.wikipedia.org/wiki/Bletchley_Park)
 
@@ -192,6 +202,36 @@ curl -i \
 const kittn = require('kittn');
 
 let api = kittn.authorize('meowmeowmeow');
+```
+
+```python
+from ebclient.eb_configuration import *
+from ebclient.eb_registration import *
+from ebclient.registration import *
+
+cfg = Configuration()
+cfg.endpoint_register = Endpoint.url('https://hut3.enigmabridge.com:8445')
+
+client_api_req = {
+    'authentication': 'password',
+    'username': username,
+    'password': password
+}
+
+endpoint = {
+    "ipv4": "123.23.23.23",
+    "ipv6": "fe80::2e0:4cff:fe68:bcc2/64",
+    "country": "gb",
+    "network": "plusnet",
+    "location": [0.34,10]
+}
+
+apireq = ApiKeyRequest(client_data=client_api_req, endpoint=endpoint, env=ENVIRONMENT_DEVELOPMENT, config=self.eb_config)
+apiresponse = apireq.call()
+
+# Results
+apikey = apiresponse['apikey']
+servers = apiresponse['servers']
 ```
 
 > Make sure to replace default values with proper ones.
