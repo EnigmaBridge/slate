@@ -345,7 +345,40 @@ promise.then(function(data){
 * Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.
 
 ```python
-# Coming soon
+from ebclient.process_data import ProcessData
+from ebclient.create_uo import TemplateFields, KeyTypes, Environment, Gen
+from ebclient.eb_create_uo import *
+from ebclient.uo import Configuration, Endpoint, SimpleRetry, UO
+from ebclient.crypto_util import *
+from ebclient.eb_consts import UOTypes
+
+cfg = Configuration()
+cfg.endpoint_process = Endpoint.url('https://site2.enigmabridge.com:11180')
+cfg.endpoint_enroll = Endpoint.url('https://site2.enigmabridge.com:11182')
+cfg.api_key = 'API_TEST'
+
+# Prepare key template - settings
+tpl = {
+    TemplateFields.environment: Environment.DEV
+}
+
+# AES key - provided by the client
+# It is also possible to let EB generate the key.
+keys = {
+    KeyTypes.APP_KEY: from_hex('0123456789123456789012345678901234567890123456789012345678901234')
+}
+
+
+# Create AES-128 key
+uo = CreateUO(configuration=self.cfg, tpl=tpl, \
+              obj_type=UOTypes.PLAINAESDECRYPT, \
+              keys=keys)
+
+# Process data - prepare object to use the new AES key
+pd = ProcessData(uo=uo, config=cfg)
+
+# Call the operation
+result = pd.call(from_hex('95c6bb9b6a1c3835f98cc56087a03e82'))
 ```
 
 ```javascript
@@ -386,10 +419,11 @@ cou = CreateUO(configuration=self.cfg,
                })
 
 # Create RSA-2048 private key
+# Communication keys are not specified here -> will be generated now, returned in the response.
 rsa_key = cou.create_rsa(2048)
 
 # Process data - prepare object to use the new RSA-2048 key for decryption
-pd = ProcessData(uo=rsa_key.uo, config=self.cfg)
+pd = ProcessData(uo=rsa_key.uo, config=cfg)
 
 # Prepare data - 000..1. RAW operation is performed - padding has to be done
 # localy on the client side. You can use PKCS1.5 padding implemented in the package.
