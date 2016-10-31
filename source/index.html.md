@@ -136,7 +136,8 @@ client_data_reg = {
     'email': self.email
 }
 
-regreq = RegistrationRequest(client_data=client_data_reg, env=ENVIRONMENT_DEVELOPMENT, config=cfg)
+regreq = RegistrationRequest(client_data=client_data_reg, \
+                             env=ENVIRONMENT_DEVELOPMENT, config=cfg)
 regresponse = regreq.call()
 
 # results
@@ -226,7 +227,8 @@ endpoint = {
     "location": [0.34,10]
 }
 
-apireq = ApiKeyRequest(client_data=client_api_req, endpoint=endpoint, env=ENVIRONMENT_DEVELOPMENT, config=self.eb_config)
+apireq = ApiKeyRequest(client_data=client_api_req, endpoint=endpoint, \
+                       env=ENVIRONMENT_DEVELOPMENT, config=cfg)
 apiresponse = apireq.call()
 
 # Results
