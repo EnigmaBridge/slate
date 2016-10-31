@@ -531,10 +531,12 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_enroll</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11182'</span><span class="p">)</span>
 <span class="n">cfg</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s">'API_TEST'</span>
 
-<span class="n">cou</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span>
-               <span class="n">tpl</span><span class="o">=</span><span class="p">{</span>
-                   <span class="n">TemplateFields</span><span class="o">.</span><span class="n">environment</span><span class="p">:</span> <span class="n">Environment</span><span class="o">.</span><span class="n">DEV</span>
-               <span class="p">})</span>
+<span class="c"># Prepare key template - settings</span>
+<span class="n">tpl</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">TemplateFields</span><span class="o">.</span><span class="n">environment</span><span class="p">:</span> <span class="n">Environment</span><span class="o">.</span><span class="n">DEV</span>
+<span class="p">}</span>
+
+<span class="n">cou</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">)</span>
 
 <span class="c"># Create RSA-2048 private key</span>
 <span class="c"># Communication keys are not specified here -&gt; will be generated now, returned in the response.</span>
