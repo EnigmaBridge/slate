@@ -229,6 +229,12 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 ```json
 " Process data uses a communication encryption preprocessing. "
 " For more details please refer to the Communication encryption documentation. " 
+{"data":"Packet0_PLAINAES_00000396233a255a52b0ac083fc6a983730e8b6b9c8e74dcdc85f1343bf9f86543acd3f5bf024dc9a5364f17638250867403"}
+
+" Typical `ProcessData` response is a JSON object like the following one."
+" The communication encryption is in place - decryption has to be performed" 
+"  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully."
+{"function":"ProcessData","result":"0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad_Packet0_PLAINAES_","nonce":"89c14e8802c42151","status":"9000","statusdetail":"success (ok)","version":"1.0"}
 ```
 
 ```python
@@ -288,14 +294,6 @@ promise.then(function(data){
 // Coming soon 
 ```
 
-
-> Typical `ProcessData` response is a JSON object like the following one.
-The communication encryption is in place - decryption has to be performed 
-in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.
-
-```json
-{"function":"ProcessData","result":"0000ae1348d2bcc0b07ffafa8fdbf9c30ee728140193e64b73eb3daeb70a4bc3ccde627dff61da0b175d1243037a0c959897_Packet0_PLAINAES_","nonce":"c5a26f4ec30bf78b","status":"9000","statusdetail":"success (ok)","version":"1.0"}
-```
 
 ## Create User Object
 
