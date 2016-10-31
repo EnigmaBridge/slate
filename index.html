@@ -167,7 +167,7 @@
 <span class="nx">or</span>
 <span class="s2">"git clone https://github.com/EnigmaBridge/client.js"</span>
 </code></pre>
-<pre class="highlight shell"><code><span class="s2">"nothing required"</span>
+<pre class="highlight shell"><code><span class="c"># nothing required</span>
 </code></pre>
 <pre class="highlight java"><code><span class="s">"git clone https://github.com/EnigmaBridge/client.java"</span>
 </code></pre>
@@ -473,13 +473,86 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <li>Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.</li>
 <li>Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.</li>
 </ul>
-<pre class="highlight python"><code><span class="c"># Coming soon</span>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+<span class="kn">from</span> <span class="nn">ebclient.create_uo</span> <span class="kn">import</span> <span class="n">TemplateFields</span><span class="p">,</span> <span class="n">KeyTypes</span><span class="p">,</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Gen</span>
+<span class="kn">from</span> <span class="nn">ebclient.eb_create_uo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
+<span class="kn">from</span> <span class="nn">ebclient.crypto_util</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ebclient.eb_consts</span> <span class="kn">import</span> <span class="n">UOTypes</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_process</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11180'</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_enroll</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11182'</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s">'API_TEST'</span>
+
+<span class="c"># Prepare key template - settings</span>
+<span class="n">tpl</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">TemplateFields</span><span class="o">.</span><span class="n">environment</span><span class="p">:</span> <span class="n">Environment</span><span class="o">.</span><span class="n">DEV</span>
+<span class="p">}</span>
+
+<span class="c"># AES key - provided by the client</span>
+<span class="c"># It is also possible to let EB generate the key.</span>
+<span class="n">keys</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="n">KeyTypes</span><span class="o">.</span><span class="n">APP_KEY</span><span class="p">:</span> <span class="n">from_hex</span><span class="p">(</span><span class="s">'0123456789123456789012345678901234567890123456789012345678901234'</span><span class="p">)</span>
+<span class="p">}</span>
+
+
+<span class="c"># Create AES-128 key</span>
+<span class="n">uo</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">,</span> \
+              <span class="n">obj_type</span><span class="o">=</span><span class="n">UOTypes</span><span class="o">.</span><span class="n">PLAINAESDECRYPT</span><span class="p">,</span> \
+              <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">)</span>
+
+<span class="c"># Process data - prepare object to use the new AES key</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="n">uo</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+
+<span class="c"># Call the operation</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">))</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon</span>
 </code></pre>
 <pre class="highlight json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w"> 
+</span></code></pre>
+<pre class="highlight shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
+</code></pre>
+
+<h2 id="create-user-object-rsa">Create User Object - RSA</h2>
+
+<p>RSA user object is a bit more specific as it returns the public part.</p>
+<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+<span class="kn">from</span> <span class="nn">ebclient.create_uo</span> <span class="kn">import</span> <span class="n">TemplateFields</span><span class="p">,</span> <span class="n">KeyTypes</span><span class="p">,</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Gen</span>
+<span class="kn">from</span> <span class="nn">ebclient.eb_create_uo</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
+<span class="kn">from</span> <span class="nn">ebclient.crypto_util</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">cfg</span> <span class="o">=</span> <span class="n">Configuration</span><span class="p">()</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_process</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11180'</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">endpoint_enroll</span> <span class="o">=</span> <span class="n">Endpoint</span><span class="o">.</span><span class="n">url</span><span class="p">(</span><span class="s">'https://site2.enigmabridge.com:11182'</span><span class="p">)</span>
+<span class="n">cfg</span><span class="o">.</span><span class="n">api_key</span> <span class="o">=</span> <span class="s">'API_TEST'</span>
+
+<span class="n">cou</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span>
+               <span class="n">tpl</span><span class="o">=</span><span class="p">{</span>
+                   <span class="n">TemplateFields</span><span class="o">.</span><span class="n">environment</span><span class="p">:</span> <span class="n">Environment</span><span class="o">.</span><span class="n">DEV</span>
+               <span class="p">})</span>
+
+<span class="c"># Create RSA-2048 private key</span>
+<span class="c"># Communication keys are not specified here -&gt; will be generated now, returned in the response.</span>
+<span class="n">rsa_key</span> <span class="o">=</span> <span class="n">cou</span><span class="o">.</span><span class="n">create_rsa</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+
+<span class="c"># Process data - prepare object to use the new RSA-2048 key for decryption</span>
+<span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="n">rsa_key</span><span class="o">.</span><span class="n">uo</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+
+<span class="c"># Prepare data - 000..1. RAW operation is performed - padding has to be done</span>
+<span class="c"># localy on the client side. You can use PKCS1.5 padding implemented in the package.</span>
+<span class="nb">input</span> <span class="o">=</span> <span class="p">(</span><span class="s">"</span><span class="se">\x00</span><span class="s">"</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="s">"</span><span class="se">\x01</span><span class="s">"</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
+</code></pre>
+<pre class="highlight java"><code><span class="c1">// Coming soon</span>
+</code></pre>
+<pre class="highlight json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w">
 </span></code></pre>
 <pre class="highlight shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
 </code></pre>
