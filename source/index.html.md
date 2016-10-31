@@ -314,6 +314,14 @@ promise.then(function(data){
 // Coming soon
 ```
 
+```json
+" Not supported with RAW JSON. Please, take a look at clients" 
+```
+
+```shell
+# Not supported in shell. Please, take a look at clients
+```
+
 ## Test
 
 Skip.
