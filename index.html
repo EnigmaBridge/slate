@@ -218,7 +218,8 @@
     <span class="s">'email'</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">email</span>
 <span class="p">}</span>
 
-<span class="n">regreq</span> <span class="o">=</span> <span class="n">RegistrationRequest</span><span class="p">(</span><span class="n">client_data</span><span class="o">=</span><span class="n">client_data_reg</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">ENVIRONMENT_DEVELOPMENT</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
+<span class="n">regreq</span> <span class="o">=</span> <span class="n">RegistrationRequest</span><span class="p">(</span><span class="n">client_data</span><span class="o">=</span><span class="n">client_data_reg</span><span class="p">,</span> \
+                             <span class="n">env</span><span class="o">=</span><span class="n">ENVIRONMENT_DEVELOPMENT</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">regresponse</span> <span class="o">=</span> <span class="n">regreq</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
 
 <span class="c"># results</span>
@@ -306,7 +307,8 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
     <span class="s">"location"</span><span class="p">:</span> <span class="p">[</span><span class="mf">0.34</span><span class="p">,</span><span class="mi">10</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="n">apireq</span> <span class="o">=</span> <span class="n">ApiKeyRequest</span><span class="p">(</span><span class="n">client_data</span><span class="o">=</span><span class="n">client_api_req</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> <span class="n">env</span><span class="o">=</span><span class="n">ENVIRONMENT_DEVELOPMENT</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">eb_config</span><span class="p">)</span>
+<span class="n">apireq</span> <span class="o">=</span> <span class="n">ApiKeyRequest</span><span class="p">(</span><span class="n">client_data</span><span class="o">=</span><span class="n">client_api_req</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> \
+                       <span class="n">env</span><span class="o">=</span><span class="n">ENVIRONMENT_DEVELOPMENT</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">apiresponse</span> <span class="o">=</span> <span class="n">apireq</span><span class="o">.</span><span class="n">call</span><span class="p">()</span>
 
 <span class="c"># Results</span>
