@@ -372,9 +372,10 @@ keys = {
 
 
 # Create AES-128 key for decryption - UOTypes.PLAINAESDECRYPT
-uo = CreateUO(configuration=self.cfg, tpl=tpl, \
+cuo = CreateUO(configuration=self.cfg, tpl=tpl, \
               obj_type=UOTypes.PLAINAESDECRYPT, \
               keys=keys)
+uo = cuo.create_uo()
 
 # Process data - prepare object to use the new AES key
 pd = ProcessData(uo=uo, config=cfg)
@@ -420,11 +421,11 @@ tpl = {
     TemplateFields.environment: Environment.DEV
 }
 
-cou = CreateUO(configuration=self.cfg, tpl=tpl)
+cuo = CreateUO(configuration=self.cfg, tpl=tpl)
 
 # Create RSA-2048 private key
 # Communication keys are not specified here -> will be generated now, returned in the response.
-rsa_key = cou.create_rsa(2048)
+rsa_key = cuo.create_rsa(2048)
 
 # Process data - prepare object to use the new RSA-2048 key for decryption
 pd = ProcessData(uo=rsa_key.uo, config=cfg)
