@@ -181,7 +181,7 @@
 <p>The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.</p>
 
 <blockquote>
-<p>This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at [https://enigmabridge.freshdesk.com]|(https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
+<p>This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
 </blockquote>
 <pre class="highlight java"><code><span class="c1">// coming soon</span>
 </code></pre>
@@ -502,9 +502,10 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 
 
 <span class="c"># Create AES-128 key for decryption - UOTypes.PLAINAESDECRYPT</span>
-<span class="n">uo</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">,</span> \
+<span class="n">cuo</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">,</span> \
               <span class="n">obj_type</span><span class="o">=</span><span class="n">UOTypes</span><span class="o">.</span><span class="n">PLAINAESDECRYPT</span><span class="p">,</span> \
               <span class="n">keys</span><span class="o">=</span><span class="n">keys</span><span class="p">)</span>
+<span class="n">uo</span> <span class="o">=</span> <span class="n">cuo</span><span class="o">.</span><span class="n">create_uo</span><span class="p">()</span>
 
 <span class="c"># Process data - prepare object to use the new AES key</span>
 <span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="n">uo</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
@@ -512,7 +513,58 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="c"># Call the operation</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">))</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
+<pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">expect</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"chai"</span><span class="p">).</span><span class="nx">expect</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">cfg</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">settings</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">tpl</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"type"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">uoType</span><span class="p">.</span><span class="nx">PLAINAES</span><span class="p">,</span>        <span class="c1">//&lt;32bit integer&gt;,</span>
+        <span class="s2">"environment"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">DEV</span><span class="p">,</span> <span class="c1">// shows whether the UO should be for production (live), test (pre-production testing), or dev (development)</span>
+        <span class="s2">"maxtps"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">maxtps</span><span class="p">.</span><span class="nx">_1</span><span class="p">,</span> <span class="c1">// maximum guaranteed TPS</span>
+        <span class="s2">"core"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">core</span><span class="p">.</span><span class="nx">EMPTY</span><span class="p">,</span> <span class="c1">// how many cards have UO loaded permanently</span>
+        <span class="s2">"persistence"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">persistence</span><span class="p">.</span><span class="nx">_1min</span><span class="p">,</span> <span class="c1">// once loaded onto card, how long will the UO stay there without use (this excludes the "core")</span>
+        <span class="s2">"priority"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">priority</span><span class="p">.</span><span class="nx">DEFAULT</span><span class="p">,</span> <span class="c1">// this defines a) priority when the server capacity is fully utilised and it also defines how quickly new copies of UO are installed (pre-empting icreasing demand)</span>
+        <span class="s2">"separation"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">separation</span><span class="p">.</span><span class="nx">TIME</span><span class="p">,</span> <span class="c1">// "complete" = only one UO can be loaded on a smartcard at one one time</span>
+        <span class="s2">"bcr"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">YES</span><span class="p">,</span>      <span class="c1">// "yes" will ensure the UO is replicated to provide high availability for any possible service disruption</span>
+        <span class="s2">"unlimited"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">YES</span><span class="p">,</span>
+        <span class="s2">"clientiv"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">YES</span><span class="p">,</span> <span class="c1">//  if "yes", we expect the data starts with an IV to initialize decryption of data - this is for communication security</span>
+        <span class="s2">"clientdiv"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">NO</span><span class="p">,</span> <span class="c1">// if "yes", we expect the data starting with a diversification 16B for communication keys</span>
+        <span class="s2">"resource"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">resource</span><span class="p">.</span><span class="nx">GLOBAL</span><span class="p">,</span>
+        <span class="s2">"credit"</span><span class="p">:</span> <span class="mi">32766</span><span class="p">,</span> <span class="c1">// &lt;1-32767&gt;, a limit a seed card can provide to the EB service</span>
+        <span class="s2">"generation"</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">"commkey"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">genKey</span><span class="p">.</span><span class="nx">CLIENT</span><span class="p">,</span>
+            <span class="s2">"billingkey"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">genKey</span><span class="p">.</span><span class="nx">LEGACY_RANDOM</span><span class="p">,</span>
+            <span class="s2">"appkey"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">genKey</span><span class="p">.</span><span class="nx">CLIENT</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">keys</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">comenc</span><span class="p">:{</span>
+            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">8</span><span class="p">)},</span>
+        <span class="na">commac</span><span class="p">:{</span>
+            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">8</span><span class="p">)},</span>
+        <span class="na">comnextenc</span><span class="p">:{</span>
+            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">8</span><span class="p">)},</span>
+        <span class="na">conextmac</span><span class="p">:{</span>
+            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">8</span><span class="p">)},</span>
+        <span class="na">app</span><span class="p">:{</span>
+            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">4</span><span class="p">)}</span>
+    <span class="p">},</span>
+    <span class="na">host</span><span class="p">:</span> <span class="nx">settings</span><span class="p">.</span><span class="nx">enrollHost</span><span class="p">,</span>
+    <span class="na">uoId</span><span class="p">:</span> <span class="mi">4</span>
+    <span class="c1">//logger: console.log,</span>
+    <span class="c1">//debuggingLog: true</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">cl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">createUO</span><span class="p">(</span><span class="nx">cfg</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">cl</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
+
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">handle</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon</span>
 </code></pre>
@@ -540,11 +592,11 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
     <span class="n">TemplateFields</span><span class="o">.</span><span class="n">environment</span><span class="p">:</span> <span class="n">Environment</span><span class="o">.</span><span class="n">DEV</span>
 <span class="p">}</span>
 
-<span class="n">cou</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">)</span>
+<span class="n">cuo</span> <span class="o">=</span> <span class="n">CreateUO</span><span class="p">(</span><span class="n">configuration</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cfg</span><span class="p">,</span> <span class="n">tpl</span><span class="o">=</span><span class="n">tpl</span><span class="p">)</span>
 
 <span class="c"># Create RSA-2048 private key</span>
 <span class="c"># Communication keys are not specified here -&gt; will be generated now, returned in the response.</span>
-<span class="n">rsa_key</span> <span class="o">=</span> <span class="n">cou</span><span class="o">.</span><span class="n">create_rsa</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
+<span class="n">rsa_key</span> <span class="o">=</span> <span class="n">cuo</span><span class="o">.</span><span class="n">create_rsa</span><span class="p">(</span><span class="mi">2048</span><span class="p">)</span>
 
 <span class="c"># Process data - prepare object to use the new RSA-2048 key for decryption</span>
 <span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="n">rsa_key</span><span class="o">.</span><span class="n">uo</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
