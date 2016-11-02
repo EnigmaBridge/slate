@@ -385,7 +385,34 @@ result = pd.call(from_hex('95c6bb9b6a1c3835f98cc56087a03e82'))
 ```
 
 ```javascript
-// Coming soon
+"use strict";
+var eb = require("ebclient.js");
+var sjcl = eb.misc.sjcl;
+
+var cfg = {
+    host: "https://site2.enigmabridge.com:11182",
+    apiKey: "TEST_API",
+
+    tpl: {
+        "environment": eb.comm.createUO.consts.environment.DEV,
+    },
+    
+    keys: {
+        app:{
+            key:sjcl.random.randomWords(4)}
+    },
+
+    objType: eb.comm.createUO.consts.uoType.PLAINAESDECRYPT
+});
+
+var cl = new eb.client.createUO(cfg);
+var promise = cl.call();
+
+promise.then(function(data){
+    console.log(data.result.handle);
+}).catch(function(error){
+    alert(error);
+});
 ```
 
 ```java
