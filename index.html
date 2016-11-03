@@ -125,7 +125,7 @@
 
 <p>Welcome to Enigma Bridge API documentation and congratulations on taking steps to properly secure your systems from cyberattacks.</p>
 
-<p>Enigma Bridge provides managed hardware encryption for a variety of applications and our proprietary hardware security platform ensures that your secrets can’t be extracted using any logical nor physical attacks. This protection is validated according to the FIPS 140-2 standard on <strong>Level 3</strong>. The <strong>Level 3</strong> means that the hardware device will erase secrets it stores when it detects an attack.</p>
+<p>Enigma Bridge provides managed hardware encryption for a variety of applications. Our service is built on top of our game-changing encryption system fir secure hardware processors. This design ensures that your secrets can’t be extracted using any logical nor physical attacks. This protection of your data is provided by processors validated according to the FIPS 140-2 standard on <strong>Level 3</strong>. The <strong>Level 3</strong> means that the hardware device will erase secrets it stores when it detects an attack.</p>
 
 <p>Side-channel, and logical attacks are also significantly limited. Assurance of this protection is provided by Common Criteria certifications on EAL5 (<a href="https://en.wikipedia.org/wiki/Evaluation_Assurance_Level#EAL5:_Semiformally_Designed_and_Tested">EAL5 explained on Wikipedia</a>).</p>
 
@@ -407,7 +407,7 @@ You must replace <code>default key</code> with your personal API key.
 <h2 id="processdata">ProcessData</h2>
 
 <p><code class="prettyprint">ProcessData</code> is the basic call for using the UserObject - performing an operation
-on the input data with the registered object (e.g., RSA decryption, AES decryption). </p>
+on the input data with the registered object stored in the EnigmaBridge secure hardware (e.g., RSA decryption, AES decryption).</p>
 
 <p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://expert.enigmabridge.com/test/demo.html">ProcessData-demo</a>.</p>
 <pre class="highlight json"><code><span class="s2">" Process data uses a communication encryption preprocessing. "</span><span class="w">
@@ -445,25 +445,36 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
+<span class="c1">// Define basic EB configuration - shared among many requests</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">Configuration</span><span class="p">({</span>
+    <span class="na">endpointProcess</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11180'</span><span class="p">,</span>
+    <span class="na">endpointEnroll</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11182'</span><span class="p">,</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="s1">'TEST_API'</span><span class="p">,</span>
+
+    <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+    <span class="na">retry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">maxAttempts</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Define UserObject to operate with, for particular operation.</span>
 <span class="kd">var</span> <span class="nx">settings</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">host</span><span class="p">:</span> <span class="s2">"https://site2.enigmabridge.com:11180"</span><span class="p">,</span>
-    <span class="na">enrollHost</span><span class="p">:</span> <span class="s2">"https://site2.enigmabridge.com:11182"</span><span class="p">,</span>
-    <span class="na">requestTimeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
-    <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"TEST_API"</span><span class="p">,</span>
+    <span class="na">config</span><span class="p">:</span> <span class="nx">config</span><span class="p">,</span>
     <span class="na">uoId</span><span class="p">:</span> <span class="s1">'EE01'</span><span class="p">,</span>
     <span class="na">uoType</span><span class="p">:</span> <span class="s1">'4'</span><span class="p">,</span>
     <span class="na">aesKey</span><span class="p">:</span> <span class="s1">'e134567890123456789012345678901234567890123456789012345678901234'</span><span class="p">,</span>
     <span class="na">macKey</span><span class="p">:</span> <span class="s1">'e224262820223456789012345678901234567890123456789012345678901234'</span>
 <span class="p">};</span>
 
+<span class="c1">// Input can be either hex-coded string or SJCL bitArray (array of 32bit words / integers).</span>
 <span class="kd">var</span> <span class="nx">input</span> <span class="o">=</span> <span class="s1">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">cl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">processData</span><span class="p">(</span><span class="nx">settings</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">cl</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">input</span><span class="p">);</span>
 
 <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span> <span class="o">==</span> <span class="s1">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">);</span>
-<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">inputToHex</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">)</span> <span class="o">==</span> <span class="s1">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">);</span>
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon </span>
@@ -473,9 +484,12 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 
 <ul>
 <li>The first step before working with EnigmaBridge is creation of User Object.</li>
-<li>User object can represent e.g., RSA-2048 private key or AES encryption/decryption key.</li>
+<li>User object can hold e.g., RSA-2048 private key or AES encryption/decryption key.</li>
 <li>Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.</li>
 <li>Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.</li>
+<li>You can either import a key into the User Object if you have it (e.g., AES key known to you, RSA key) or you can let EnigmaBridge generate a
+new key in the secure hardware so you benefit from the secure RNG and the fact you don&rsquo;t really know the secret value
+thus nobody can steal it from you - it never leaves the secure hardware.</li>
 </ul>
 <pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.create_uo</span> <span class="kn">import</span> <span class="n">TemplateFields</span><span class="p">,</span> <span class="n">KeyTypes</span><span class="p">,</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Gen</span>
@@ -517,29 +531,58 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
-<span class="kd">var</span> <span class="nx">cfg</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="na">host</span><span class="p">:</span> <span class="s2">"https://site2.enigmabridge.com:11182"</span><span class="p">,</span>
-    <span class="na">apiKey</span><span class="p">:</span> <span class="s2">"TEST_API"</span><span class="p">,</span>
+<span class="c1">// Define basic EB configuration - shared among many requests</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">Configuration</span><span class="p">({</span>
+    <span class="na">endpointProcess</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11180'</span><span class="p">,</span>
+    <span class="na">endpointEnroll</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11182'</span><span class="p">,</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="s1">'TEST_API'</span><span class="p">,</span>
 
-    <span class="na">tpl</span><span class="p">:</span> <span class="p">{</span>
-        <span class="s2">"environment"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">DEV</span><span class="p">,</span>
-    <span class="p">},</span>
-
-    <span class="na">keys</span><span class="p">:</span> <span class="p">{</span>
-        <span class="na">app</span><span class="p">:{</span>
-            <span class="na">key</span><span class="p">:</span><span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">4</span><span class="p">)}</span>
-    <span class="p">},</span>
-
-    <span class="na">objType</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">uoType</span><span class="p">.</span><span class="nx">PLAINAESDECRYPT</span>
+    <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+    <span class="na">retry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">maxAttempts</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
 <span class="p">});</span>
+
+<span class="c1">// Create randomly generated AES-128 key, with DECRYPT operation associated</span>
+<span class="c1">// with it, in development environment.</span>
+<span class="kd">var</span> <span class="nx">cfg</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">config</span><span class="p">:</span> <span class="nx">config</span><span class="p">,</span>
+    <span class="na">tpl</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"environment"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">DEV</span>
+    <span class="p">},</span>
+    <span class="na">keys</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">app</span><span class="p">:</span> <span class="p">{</span>
+            <span class="na">key</span><span class="p">:</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">random</span><span class="p">.</span><span class="nx">randomWords</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="na">objType</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">uoType</span><span class="p">.</span><span class="nx">PLAINAESDECRYPT</span>
+<span class="p">};</span>
 
 <span class="kd">var</span> <span class="nx">cl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">createUO</span><span class="p">(</span><span class="nx">cfg</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">cl</span><span class="p">.</span><span class="nx">call</span><span class="p">();</span>
 
 <span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">result</span><span class="p">.</span><span class="nx">handle</span><span class="p">);</span>
+    <span class="c1">// Call ProcessData on the input data - here we verify</span>
+    <span class="c1">// it works as we expect.</span>
+    <span class="kd">var</span> <span class="nx">aes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">sjcl</span><span class="p">.</span><span class="nx">cipher</span><span class="p">.</span><span class="nx">aes</span><span class="p">(</span><span class="nx">cfg</span><span class="p">.</span><span class="nx">keys</span><span class="p">.</span><span class="nx">app</span><span class="p">.</span><span class="nx">key</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">input2</span> <span class="o">=</span> <span class="s1">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">;</span>
+
+    <span class="c1">// Pass data to the process data function - contains UserObject</span>
+    <span class="c1">// which ProcessData parses and uses.</span>
+    <span class="kd">var</span> <span class="nx">cfg2</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">cl2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">processData</span><span class="p">(</span><span class="nx">cfg2</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">cl2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">input2</span><span class="p">);</span>
+
+    <span class="nx">promise2</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="kd">var</span> <span class="nx">desiredOutput</span> <span class="o">=</span> <span class="nx">aes</span><span class="p">.</span><span class="nx">decrypt</span><span class="p">(</span><span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">inputToBits</span><span class="p">(</span><span class="nx">input2</span><span class="p">));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">inputToHex</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">inputToHex</span><span class="p">(</span><span class="nx">desiredOutput</span><span class="p">));</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon</span>
@@ -582,7 +625,55 @@ on the input data with the registered object (e.g., RSA decryption, AES decrypti
 <span class="nb">input</span> <span class="o">=</span> <span class="p">(</span><span class="s">"</span><span class="se">\x00</span><span class="s">"</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="s">"</span><span class="se">\x01</span><span class="s">"</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
 </code></pre>
-<pre class="highlight javascript"><code><span class="c1">// Coming soon</span>
+<pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
+
+<span class="c1">// Define basic EB configuration - shared among many requests</span>
+<span class="kd">var</span> <span class="nx">config</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">Configuration</span><span class="p">({</span>
+    <span class="na">endpointProcess</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11180'</span><span class="p">,</span>
+    <span class="na">endpointEnroll</span><span class="p">:</span> <span class="s1">'https://site2.enigmabridge.com:11182'</span><span class="p">,</span>
+    <span class="na">apiKey</span><span class="p">:</span> <span class="s1">'TEST_API'</span><span class="p">,</span>
+
+    <span class="na">timeout</span><span class="p">:</span> <span class="mi">30000</span><span class="p">,</span>
+    <span class="na">retry</span><span class="p">:</span> <span class="p">{</span>
+        <span class="na">maxAttempts</span><span class="p">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// Specification: Create a new RSA-1024 key in the hardware, devel environment.</span>
+<span class="kd">var</span> <span class="nx">cfg</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="na">config</span><span class="p">:</span> <span class="nx">config</span><span class="p">,</span>
+    <span class="na">tpl</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"environment"</span><span class="p">:</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">comm</span><span class="p">.</span><span class="nx">createUO</span><span class="p">.</span><span class="nx">consts</span><span class="p">.</span><span class="nx">environment</span><span class="p">.</span><span class="nx">DEV</span>
+    <span class="p">},</span>
+    <span class="na">bits</span><span class="p">:</span> <span class="mi">1024</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">cl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">createUO</span><span class="p">(</span><span class="nx">cfg</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">promise</span> <span class="o">=</span> <span class="nx">cl</span><span class="p">.</span><span class="nx">createRSA</span><span class="p">();</span>
+
+<span class="nx">promise</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+    <span class="c1">// ProcessData demo: RSA decryption of the 00000..1</span>
+    <span class="c1">// For RSA it holds: 1 ^ e mod N = 1</span>
+    <span class="kd">var</span> <span class="nx">input2</span> <span class="o">=</span> <span class="s1">'0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001'</span><span class="p">;</span>
+    <span class="kd">var</span> <span class="nx">cfg2</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">extend</span><span class="p">(</span><span class="kc">true</span><span class="p">,</span> <span class="p">{},</span> <span class="nx">data</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">cl2</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">client</span><span class="p">.</span><span class="nx">processData</span><span class="p">(</span><span class="nx">cfg2</span><span class="p">);</span>
+
+    <span class="c1">// rsaPrivateKey object contains also the public part of</span>
+    <span class="c1">// the key: modulus and public exponent</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">rsaPrivateKey</span><span class="p">);</span>
+
+    <span class="kd">var</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">cl2</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">input2</span><span class="p">);</span>
+    <span class="nx">promise2</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">inputToHex</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">data</span><span class="p">));</span>
+    <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+    <span class="p">});</span>
+
+<span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
+<span class="p">});</span>
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon</span>
 </code></pre>
