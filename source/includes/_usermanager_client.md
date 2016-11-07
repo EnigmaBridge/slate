@@ -16,12 +16,165 @@ User Manager domain names to replace **hut** in the text below are:
 
 The usual data-flow and sequence of actions is as follows:
 
- 1. New client process (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically for virtual machines configured by Enigma Bridge.
- 1. This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own APIkeys and will be authorized to use the Enigma Bridge service.
-     1. The client process will use its EB type to request a new client account.
+ 1. New client (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically, e.g., for virtual machines configured by Enigma Bridge, or when you use a provided enrolment tool (script, application).
+ 1. This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own API keys and will be authorized to use the Enigma Bridge service.
+     1. The client process will use its EB type to request a new client account: this always involves a register client API call; optionally also `Get Client Auth Type` and `Get Client Auth`.
      1. The customer will request a new client account via our support system at: [https://enigmabridge.freshdesk.com](https://enigmabridge.freshdesk.com).
  1. Once the client ID and authentication details are available, the client process can request a new API key.
  1. The API key allows create of new user objects according to the client type definition.
+
+## Get Client Authentication (client)
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"nonce",
+    "version":1,
+    "function":"getauth",
+    "environment":"dev",
+    "client":{
+        "type":"test"
+    }
+}
+```
+
+This is a simple API call that returns the type of authentication required for a particular client type.
+
+The request uses the following URL: 
+
+`https://hut:8445/api/v1/client`
+
+###Parameters
+
+name | optional |type| note
+---- |--------- |----|----
+nonce| NO| string|random string that will be returned back
+version|NO| integer| must be 1
+function|NO|string| must be "create"
+environment|NO|string| must be "dev", "test", or "prod"
+<strong>client</strong>|NO|sequence|must contain "type" of the new client that will be registered
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "my nonce",
+  "timestamp": 1475077216548,
+  "response": {
+    "type": "test",
+    "authentication": [
+      {
+        "method": "authentication type1",
+        "required": [ "data required in initialization" ]
+      }, 
+      {
+        "method": "authentication type2",
+        "required": [ "data required in initialization" ]
+      }
+    ]
+  }
+}
+```
+
+The response will return an array of possible authentication types. It has to contain at least one element. Possible values are listed in the following table. Please note, that the requestor always has to know its type. 
+
+name | description
+---- |--------- 
+type | client has to know its type and a token, which is fixed for all new requestors of the given type 
+name | authentication is done via a correct name; the requestor has to know the client type it wants to be
+token | the `type`, `name`, and a `token` are required; the `token` is unique to a particular requestor and it remains constant during repeated registrations
+password | authentication requires a correct `type`, `name`, and `password`
+challenge | authentication requires a correct one-time challenge, which is provided to the requestor via a separate channel
+hotp | using an HOTP value, according to IETF RFC 4226
+totp | using an TOTP value, according to IETF RFC 6238
+ocra | using an OCRA value, according to IETF RFC 6287
+signature | authentication with a digital signature 
+
+
+## Init Client Authentication (client)
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"nonce",
+    "version":1,
+    "function":"initauth",
+    "environment":"dev",
+    "client":{
+        "type":"test",
+        "req data 1":"value1",
+        "req data n":"value N"
+    }
+}
+```
+
+If registration of a new client requires the server to provide or initialize an authentication process, this API call will provide the server with all the necessary information.
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "my nonce",
+  "timestamp": 1475077234509,
+  "response": {
+    "auth-data": "if appropriate, otherwise an empty sequence"
+  }
+}
+```
+
+Response can be two-fold:
+
+  - input for creating authentication data, if any;
+  - requesting the server to use an alternative communication channel to provide the requestor with data out-of-band 
 
 ## Register Client (client)
 
