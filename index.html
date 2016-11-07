@@ -1032,16 +1032,209 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <p>The usual data-flow and sequence of actions is as follows:</p>
 
 <ol>
-<li>New client process (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically for virtual machines configured by Enigma Bridge.</li>
-<li>This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own APIkeys and will be authorized to use the Enigma Bridge service.
+<li>New client (computer, server, software package) will get an Enigma Bridge client type - this can be done automatically, e.g., for virtual machines configured by Enigma Bridge, or when you use a provided enrolment tool (script, application).</li>
+<li>This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own API keys and will be authorized to use the Enigma Bridge service.
 
 <ol>
-<li>The client process will use its EB type to request a new client account.</li>
+<li>The client process will use its EB type to request a new client account: this always involves a register client API call; optionally also <code class="prettyprint">Get Client Auth Type</code> and <code class="prettyprint">Get Client Auth</code>.</li>
 <li>The customer will request a new client account via our support system at: <a href="https://enigmabridge.freshdesk.com">https://enigmabridge.freshdesk.com</a>.</li>
 </ol></li>
 <li>Once the client ID and authentication details are available, the client process can request a new API key.</li>
 <li>The API key allows create of new user objects according to the client type definition.</li>
 </ol>
+
+<h2 id="get-client-authentication-client">Get Client Authentication (client)</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"getauth"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"test"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This is a simple API call that returns the type of authentication required for a particular client type.</p>
+
+<p>The request uses the following URL: </p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+
+<h3 id="parameters">Parameters</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>nonce</td>
+<td>NO</td>
+<td>string</td>
+<td>random string that will be returned back</td>
+</tr>
+<tr>
+<td>version</td>
+<td>NO</td>
+<td>integer</td>
+<td>must be 1</td>
+</tr>
+<tr>
+<td>function</td>
+<td>NO</td>
+<td>string</td>
+<td>must be &ldquo;create&rdquo;</td>
+</tr>
+<tr>
+<td>environment</td>
+<td>NO</td>
+<td>string</td>
+<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+</tr>
+<tr>
+<td><strong>client</strong></td>
+<td>NO</td>
+<td>sequence</td>
+<td>must contain &ldquo;type&rdquo; of the new client that will be registered</td>
+</tr>
+</tbody></table>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475077216548</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authentication type1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
+      </span><span class="p">},</span><span class="w"> 
+      </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authentication type2"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
+      </span><span class="p">}</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The response will return an array of possible authentication types. It has to contain at least one element. Possible values are listed in the following table. Please note, that the requestor always has to know its type. </p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>client has to know its type and a token, which is fixed for all new requestors of the given type</td>
+</tr>
+<tr>
+<td>name</td>
+<td>authentication is done via a correct name; the requestor has to know the client type it wants to be</td>
+</tr>
+<tr>
+<td>token</td>
+<td>the <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, and a <code class="prettyprint">token</code> are required; the <code class="prettyprint">token</code> is unique to a particular requestor and it remains constant during repeated registrations</td>
+</tr>
+<tr>
+<td>password</td>
+<td>authentication requires a correct <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, and <code class="prettyprint">password</code></td>
+</tr>
+<tr>
+<td>challenge</td>
+<td>authentication requires a correct one-time challenge, which is provided to the requestor via a separate channel</td>
+</tr>
+<tr>
+<td>hotp</td>
+<td>using an HOTP value, according to IETF RFC 4226</td>
+</tr>
+<tr>
+<td>totp</td>
+<td>using an TOTP value, according to IETF RFC 6238</td>
+</tr>
+<tr>
+<td>ocra</td>
+<td>using an OCRA value, according to IETF RFC 6287</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>authentication with a digital signature</td>
+</tr>
+</tbody></table>
+
+<h2 id="init-client-authentication-client">Init Client Authentication (client)</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"initauth"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"client"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"type"</span><span class="p">:</span><span class="s2">"test"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"req data 1"</span><span class="p">:</span><span class="s2">"value1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"req data n"</span><span class="p">:</span><span class="s2">"value N"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>If registration of a new client requires the server to provide or initialize an authentication process, this API call will provide the server with all the necessary information.</p>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475077234509</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"auth-data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if appropriate, otherwise an empty sequence"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>Response can be two-fold:</p>
+
+<ul>
+<li>input for creating authentication data, if any;</li>
+<li>requesting the server to use an alternative communication channel to provide the requestor with data out-of-band </li>
+</ul>
 
 <h2 id="register-client-client">Register Client (client)</h2>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
