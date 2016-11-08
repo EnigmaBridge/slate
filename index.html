@@ -123,6 +123,8 @@
       <div class="content">
         <h1 id="introduction">Introduction</h1>
 
+<p><strong>Last update: 8 November</strong></p>
+
 <blockquote>
 <p>This column shows examples of API functions, or details that are language specific. Use the tab names above to switch to the language / syntax you are interested in.</p>
 </blockquote>
@@ -1168,16 +1170,46 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"authentication"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authentication type1"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
+        </span><span class="nt">"init"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"initdata"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
       </span><span class="p">},</span><span class="w"> 
       </span><span class="p">{</span><span class="w">
         </span><span class="nt">"method"</span><span class="p">:</span><span class="w"> </span><span class="s2">"authentication type2"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"required"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
+        </span><span class="nt">"init"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"initdata"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"> </span><span class="s2">"data required in initialization"</span><span class="w"> </span><span class="p">]</span><span class="w">
       </span><span class="p">}</span><span class="w">
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>method</td>
+<td>NO</td>
+<td>string</td>
+<td>one of the values from the table below</td>
+</tr>
+<tr>
+<td>init</td>
+<td>NO</td>
+<td>boolean</td>
+<td>true if Init Client Authentication is required</td>
+</tr>
+<tr>
+<td>required</td>
+<td>NO</td>
+<td>array of strings</td>
+<td>values can be from the set of &ldquo;email&rdquo;, &ldquo;mobile&rdquo;, and &ldquo;rsa&rdquo;</td>
+</tr>
+</tbody></table>
 
 <p>The response will return an array of possible authentication types. It has to contain at least one element. Possible values are listed in the following table. Please note, that the requestor always has to know its type. </p>
 
@@ -1263,7 +1295,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
   </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475077234509</span><span class="p">,</span><span class="w">
   </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"auth-data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if appropriate, otherwise an empty sequence"</span><span class="w">
+    </span><span class="nt">"authdata"</span><span class="p">:</span><span class="w"> </span><span class="s2">"if appropriate, otherwise an empty sequence"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
@@ -2240,10 +2272,48 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
     </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
         </span><span class="nt">"domains"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"assigned domain name"</span><span class="p">],</span><span class="w">
-        </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"registered IP addresses "</span><span class="p">]</span><span class="w">
+        </span><span class="nt">"addresses"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"registered IP addresses "</span><span class="p">],</span><span class="w">
+        </span><span class="nt">"privateIP"</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
+
+<h3 id="structure-of-39-response-39">Structure of &#39;response&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>domains</td>
+<td>NO</td>
+<td>array of DNS names</td>
+<td>a list of domain names registered for the API key</td>
+</tr>
+<tr>
+<td>addresses</td>
+<td>NO</td>
+<td>array of IP addresses</td>
+<td>a list of IPv6 and IPv4 IP addresses associated with the API key</td>
+</tr>
+<tr>
+<td>privateIP</td>
+<td>NO</td>
+<td>boolean</td>
+<td>returns true if the API key host is inside a private network</td>
+</tr>
+<tr>
+<td>status</td>
+<td>NO</td>
+<td>string</td>
+<td>a status of the DNS registration (disabled, enabled, removed, created, unlocked, not_assigned</td>
+</tr>
+</tbody></table>
 
 <h2 id="install-status">Install Status</h2>
 
