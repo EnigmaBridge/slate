@@ -1,9 +1,7 @@
 
-# --- internal use ---
+# Authorizations - RESTful API
 
 Following sections are for internal use by Enigma Bridge. The APIs are not currently available to clients.
-
-# Authorizations - RESTful API
 
 Coming soon
 
