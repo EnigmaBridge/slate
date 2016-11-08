@@ -1,4 +1,4 @@
-## Enrolment Overview
+# Enrolment Overview
 
 <aside class="notice">
 
@@ -11,7 +11,7 @@ User Manager domain names to replace **hut** in the text below are:
  1. hut6.enigmabridge.com
  1. hut8.enigmabridge.com
 
-### Data Flow
+## Data Flow
 
 The usual data-flow and sequence of actions is as follows:
 
@@ -22,9 +22,9 @@ The usual data-flow and sequence of actions is as follows:
  1. Once the client ID and authentication details are available, the client process can request a new API key.
  1. The API key allows create of new user objects according to the client type definition.
 
-## Client Endpoint - RESTful API
+# Client Endpoint - RESTful API
 
-### Get Client Authentication
+## Get Client Authentication
 
 ```java
 see the RESTful column
@@ -56,7 +56,7 @@ The request uses the following URL:
 
 `https://hut:8445/api/v1/client`
 
-#### Parameters
+### Parameters
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -116,7 +116,7 @@ ocra | using an OCRA value, according to IETF RFC 6287
 signature | authentication with a digital signature 
 
 
-### Init Client Authentication 
+## Init Client Authentication 
 
 ```java
 see the RESTful column
@@ -177,7 +177,7 @@ Response can be two-fold:
   - input for creating authentication data, if any;
   - requesting the server to use an alternative communication channel to provide the requestor with data out-of-band 
 
-### Register Client
+## Register Client
 
 ```java
 see the RESTful column
@@ -211,7 +211,7 @@ The request uses the following URL:
 
 `https://hut:8445/api/v1/client`
 
-#### Parameters
+### Parameters
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -221,7 +221,7 @@ function|NO|string| must be "create"
 environment|NO|string| must be "dev", "test", or "prod"
 <strong>client</strong>|NO|sequence|contains information about the new client
 
-#### Structure of 'client'
+### Structure of 'client'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -269,7 +269,7 @@ error|NO|string|text explaining the error code
 timestamp|NO|long|timestamp of the response
 <strong>response</strong>|NO|sequence|data returned to the request
 
-#### Structure of 'response'
+### Structure of 'response'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -281,7 +281,7 @@ status|NO|string|enabled, disabled, or removed
 maxobjects|NO|integer|max number of objects this client can create
 
 
-### Add API for Client
+## Add API for Client
 
 ```java
 see the RESTful column
@@ -327,7 +327,7 @@ client|NO|sequence|
 endpoint|NO|sequence| properties of the client server to identify best Enigma Bridge servers
 
 
-#### Structure of 'client'
+### Structure of 'client'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -335,7 +335,7 @@ authentication|NO|string|at the moment must be "password"
 username|NO|string|as provided during registration
 password|NO|string|as provided during registration
 
-#### Structure of 'endpoint'
+### Structure of 'endpoint'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -429,7 +429,7 @@ apikey|NO|string|apikey used to authenticate requests
 <strong>servers</strong>|NO|array|connection details for Enigma Bridge servers
 operations|NO|array|list of operations available for the API key
 
-#### Structure of 'servers' each item
+### Structure of 'servers' each item
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -439,7 +439,7 @@ environment|NO|string|"dev" or "test" or "prod"
 enrolendpoints|NO|array|array of {protocol,port}
 useendpoints|NO|array|array of {protocol,port}
 
-### View API for Client
+## View API for Client
 
 ```java
 see the RESTful column
@@ -485,7 +485,7 @@ environment|NO|must be "dev", "test", or "prod"
 client|NO|sequence|
 apidata|NO|string|sequence of just "apikey" - string
 
-#### Structure of 'client'
+### Structure of 'client'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -496,9 +496,9 @@ password|NO|string|as provided during registration
 
 Responses have the same format as for "addapi" requests.
 
-## APIkey Endpoint - RESTful API
+# APIkey Endpoint - RESTful API
 
-### Enrol for DNS Domain 
+## Enrol for DNS Domain 
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -535,7 +535,7 @@ The request uses the following URL:
 `https://hut:8445/api/v1/apikey`
 
 
-#### Structure of 'apidata'
+### Structure of 'apidata'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -543,7 +543,7 @@ username|NO|string|client username as provided during registration
 apikey|NO|string|apikey as provided during registration
 certificate|NO|string|base64 encoded certificate - vehicle to provide public key
 
-#### Response 
+### Response 
 
 ```java
 see the RESTful column
@@ -576,7 +576,7 @@ see the RESTful column
 }
 ```
 
-### Get Challenge
+## Get Challenge
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -651,7 +651,7 @@ see the RESTful column
 
 The response to these requests provides a **challenge** that has to be used to authenticate requests like **Update Domain**.
 
-### Update Domain
+## Update Domain
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -704,7 +704,7 @@ apidata|YES|string|not needed if signature is present
 signature|YES|string|only if method is "signature"; 
 
 
-#### Structure of 'apidata'
+### Structure of 'apidata'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -714,7 +714,7 @@ dnsdata|YES|array| an array of new DNS records that will be added to the domain,
 authentication|NO|string|as requested with a challenge
 response|NO|string|either the challenge itself or a derived value (e.g., OCRA)
 
-#### Structure of 'dnsdata'
+### Structure of 'dnsdata'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -751,7 +751,7 @@ see the RESTful column
 }
 ```
 
-### Install Status
+## Install Status
 
 This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.
 
@@ -807,7 +807,7 @@ username|NO|string|as assigned
 apikey|NO|string|as assigned
 
 
-#### Structure of 'statusdata'
+### Structure of 'statusdata'
 
 name | optional |type| note
 ---- |--------- |----|----
@@ -818,7 +818,7 @@ duration|YES|integer|duration of an operation in seconds
 key|YES|string|any key that we need to pass on
 email|YES|email| contact details of whoever will be contacted
 
-### Unlock Domain
+## Unlock Domain
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -861,7 +861,7 @@ name | optional |type| note
 apidata|NO|string|authentication of the client
 
 
-#### Structure of 'apidata'
+### Structure of 'apidata'
 
 name | optional |type| note
 ---- |--------- |----|----
