@@ -159,8 +159,6 @@
 <p>Each of the steps can be represented by a single API command, regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.</p>
 
 <h1 id="getting-started">Getting Started</h1>
-
-<p>We provide several language bindings. </p>
 <pre class="highlight python"><code><span class="s">"sudo pip install ebclient.py"</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="s2">"npm install -g ebclient.js"</span>
@@ -173,6 +171,20 @@
 </code></pre>
 <pre class="highlight json"><code><span class="s2">"nothing required"</span><span class="w">
 </span></code></pre>
+
+<p>We provide several language bindings. </p>
+
+<ul>
+<li>Java - <a href="https://github.com/EnigmaBridge/client.java">client.java at GitHub</a></li>
+<li>Javascript - <a href="https://github.com/EnigmaBridge/client.js">client.js at GitHub</a></li>
+<li>Python - <a href="https://github.com/EnigmaBridge/client.py">client.py at GitHub</a></li>
+</ul>
+
+<p>We have also implemented a PKCS#11 wrapper that uses Enigma Bridge for hardware security:</p>
+
+<ul>
+<li>SoftHSM - <a href="https://github.com/EnigmaBridge/SoftHSMv1">SoftHSMv1 at GitHub</a></li>
+</ul>
 
 <p>Our goal is to make any library installation as simple as possible, and using standard deployment mechanisms wherever possible. </p>
 
@@ -405,19 +417,32 @@ You must replace <code>default key</code> with your personal API key.
 <h1 id="use">Use</h1>
 
 <h2 id="processdata">ProcessData</h2>
+<pre class="highlight json"><code><span class="s2">" POST request:"</span><span class="w">
+</span><span class="s2">"    https://hut:11180/1.0/TEST_API0000001dcb0000300006/ProcessData/f2044d875bdef29d"</span><span class="w">
+</span><span class="s2">"    parameters are an Enigma Bridge handle, command (ProcessData), and a nonce"</span><span class="w">
+</span><span class="s2">"    Data has to be encrypted, see the text to the left for details."</span><span class="w">
+</span><span class="s2">" POST data:"</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000BCFAADB2FC41A300961AE8741463B676954515B07456681E1E180A9B5FCE7BC93F5A49328DD79CCD96F995F345E3E60674DCA06FE4B1B39E164E08E713C0DB58CBF3EDBF73BADB78BA116418704E52EEB75F575F032BD082AF2585A5F5D3119AF8ACB5C2BAB9C982A7068BD7CB6EA4B9EE84126E1B0E5FE58D6567F1595CCDB6D1B43338DF87E582C50C6A0A0479E40DD63A4E36BD7A1066E8E4293076BF513DD2AE450307A571B5D11D965910074511CCE9FEDBFDF646EFF69B42BAF6A0A8A995A46EEC223D3E595AF40BA4DB1CC0E3D29E06E05DC835A7EF4166BFC4D281F249607D6B913A46B5F69C44BFCA35D5F53AEB6A048E38C064B837C99E571A5A928B2C8C83BB467FDB76BC76F3BECB944F24EEF9B376D6A7D9977AAF59770287F2"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1.0"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"06AEAEADE624C651"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"objectid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"TEST_API0000001dcb0000300006"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 
-<p><code class="prettyprint">ProcessData</code> is the basic call for using the UserObject - performing an operation
-on the input data with the registered object stored in the EnigmaBridge secure hardware (e.g., RSA decryption, AES decryption).</p>
 
-<p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://expert.enigmabridge.com/test/demo.html">ProcessData-demo</a>.</p>
-<pre class="highlight json"><code><span class="s2">" Process data uses a communication encryption preprocessing. "</span><span class="w">
-</span><span class="s2">" For more details please refer to the Communication encryption documentation. "</span><span class="w"> 
-</span><span class="p">{</span><span class="nt">"data"</span><span class="p">:</span><span class="s2">"Packet0_PLAINAES_00000396233a255a52b0ac083fc6a983730e8b6b9c8e74dcdc85f1343bf9f86543acd3f5bf024dc9a5364f17638250867403"</span><span class="p">}</span><span class="w">
-
+</span><span class="s2">"RESPONSE"</span><span class="w">
 </span><span class="s2">" Typical `ProcessData` response is a JSON object like the following one."</span><span class="w">
 </span><span class="s2">" The communication encryption is in place - decryption has to be performed"</span><span class="w"> 
 </span><span class="s2">"  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully."</span><span class="w">
-</span><span class="p">{</span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="nt">"result"</span><span class="p">:</span><span class="s2">"0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad_Packet0_PLAINAES_"</span><span class="p">,</span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"89c14e8802c42151"</span><span class="p">,</span><span class="nt">"status"</span><span class="p">:</span><span class="s2">"9000"</span><span class="p">,</span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="p">}</span><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ProcessData"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="s2">"0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"89c14e8802c42151"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"9000"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"statusdetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="w">
+</span><span class="p">}</span><span class="w">
 </span></code></pre>
 <pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
@@ -479,6 +504,23 @@ on the input data with the registered object stored in the EnigmaBridge secure h
 </code></pre>
 <pre class="highlight java"><code><span class="c1">// Coming soon </span>
 </code></pre>
+
+<p><code class="prettyprint">ProcessData</code> is the <em>operational call</em> of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., <code class="prettyprint">TEST_API000000ee010000000004</code>. The only other parameter it takes is data for processing.</p>
+
+<p>As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by the handle.</p>
+
+<p>For more details of the communication encryption, please refer to the <em>Communication encryption documentation - Link coming soon</em>, or use one of the client implementations at <a href="https://github.com/EnigmaBridge">Enigma Bridge GitHub</a>. </p>
+
+<p>&ldquo; Typical <code class="prettyprint">ProcessData</code> response is a JSON object like the following one.&rdquo;
+&ldquo; The communication encryption is in place - decryption has to be performed&rdquo; 
+&ldquo;  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.&rdquo;</p>
+
+<p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://enigmabridge.com/test">ProcessData-demo</a>.</p>
+
+<aside class="notice">Data sent to Enigma Bridge for processing has to be formatted. It is usually taken care of by one of our clients.</aside>
+
+<p>See links to implementations in <a href="#getting-started">Javascript, Python, and Java above</a>.
+<aside class="notice">Each response form the Enigma Bridge service will contain a numerical code, as well as a short text with explanation of the error.</aside></p>
 
 <h2 id="create-user-object">Create User Object</h2>
 
