@@ -23,6 +23,8 @@ search: true
 
 # Introduction
 
+> This column shows examples of API functions, or details that are language specific. Use the tab names above to switch to the language / syntax you are interested in.
+
 Welcome to Enigma Bridge API documentation and congratulations on taking steps to properly secure your systems from cyberattacks.
 
 Enigma Bridge provides managed hardware encryption for a variety of applications. Our service is built on top of our game-changing encryption system fir secure hardware processors. This design ensures that your secrets can’t be extracted using any logical nor physical attacks. This protection of your data is provided by processors validated according to the FIPS 140-2 standard on **Level 3**. The **Level 3** means that the hardware device will erase secrets it stores when it detects an attack.
