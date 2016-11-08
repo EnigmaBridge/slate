@@ -146,15 +146,26 @@ see the RESTful column
     "function":"initauth",
     "environment":"dev",
     "client":{
-        "type":"test",
-        "req data 1":"value1",
-        "req data n":"value N"
+        "type": "test",
+        "email": "email@address",
+        "mobile": "mobile phone number with country code",
+        "rsa": "RSA public key"
     }
 }
 ```
 
 If registration of a new client requires the server to provide or initialize an authentication process, this API call will provide the server with all the necessary information.
 
+name|optional|type|note
+----|-------|----|-----
+type|NO|string|a client type
+email|YES|string - email|email address for authentication
+mobile|YES|string - number|mobile number with country code, only digits and whitespaces
+rsa|YES|string|base64 public key
+
+
+
+### Response
 
 ```java
 see the RESTful column
@@ -176,7 +187,8 @@ see the RESTful column
   "nonce": "my nonce",
   "timestamp": 1475077234509,
   "response": {
-    "authdata": "if appropriate, otherwise an empty sequence"
+    "authdata": {"if appropriate, otherwise an empty sequence"},
+    "clientid": "string, the client id is needed for the registration API call"
   }
 }
 ```
@@ -208,12 +220,15 @@ see the RESTful column
     "environment":"dev",
     "client":{
         "name":"my test name",
+        "clientid":"string from Init Client Authentication",
         "authentication":"type",
         "type":"test",
         "token":"token-assigned-to-client-type"
     }
 }
 ```
+
+
 
 
 The request uses the following URL: 
@@ -235,6 +250,7 @@ environment|NO|string| must be "dev", "test", or "prod"
 name | optional |type| note
 ---- |--------- |----|----
 name |NO|string|name provided by the user
+clientid|YES|string|string provided by Init Client Authentication, if called
 authentication|NO|string| must be "type"
 type|NO|string| Name of EB client type (pre-defined)
 token|YES|string|authentication token for the client type
