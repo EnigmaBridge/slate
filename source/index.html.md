@@ -14,8 +14,9 @@ toc_footers:
 
 includes:
   - errors
-  - usermanager_client
-  - usermanager_enrol
+  - background
+  - register_api
+  - authorizations_api
 
 search: true
 ---
@@ -94,9 +95,18 @@ Our goal is to make any library installation as simple as possible, and using st
 
 # Register as Enigma Client
 
+
 The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.
 
-> This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
+Unless you intend to use an automation tool that takes care of the enrolment process. Please raise a support ticket at:
+
+[Enigma Bridge Support System](https://enigmabridge.freshdesk.com/helpdesk/tickets/new)
+
+We always require manual approval (via [our support system](https://enigmabridge.freshdesk.com)) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).
+
+## Automation
+
+> This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. 
 
 ```java
 // coming soon
@@ -156,6 +166,8 @@ password = regresponse['password']
 
 print(regresponse)
 ```
+
+
 We have created three end-points for client registration. We named them in memory of wartime sections of the Government Code and Cypher School (GC&CS) at [Bletchley Park](https://en.wikipedia.org/wiki/Bletchley_Park)
 
  - **hut3.enigmabridge.com** - Hut 3 translated, interpretated and distributed German Army (Heer) and Air Force (Luftwaffe) messages deciphered by Hut 6.
@@ -172,10 +184,14 @@ In some cases, it is possible to use a default "TEST" user and "TEST_API" key - 
 </aside>
 
 
-#  API Key Enrolment 
+#  Get API Key 
 
-> Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.
+Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.
 
+> The automation code is only available if Enigma Bridge provides automation for particular use case or application. All operational requests need a valid ClientID, even though it is usually hidden in client-side libraries.
+
+
+## Automation
 
 ```shell
 curl -i \
@@ -210,9 +226,7 @@ curl -i \
 ```
 
 ```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
+"comming soon"
 ```
 
 ```python
@@ -247,6 +261,10 @@ servers = apiresponse['servers']
 ```
 
 > Make sure to replace default values with proper ones.
+
+Automation is enabled with the RESTful API of our user management server. It means that requests are still being sent to one of the huts.
+
+A successful response to a request for an API key will also return network connection details for operational requests. The user management server will automatically select the most suitable location of Enigma Bridge servers to provide required functionality and also to optimize network performance.
 
 ### Query Parameters
 
