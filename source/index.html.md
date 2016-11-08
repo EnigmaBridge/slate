@@ -57,8 +57,6 @@ Each of the steps can be represented by a single API command, regardless of the 
 
 # Getting Started
 
-We provide several language bindings. 
-
 ```python
 "sudo pip install ebclient.py"
 ```
@@ -80,6 +78,16 @@ or
 ```json
 "nothing required"
 ```
+
+We provide several language bindings. 
+
+ - Java - [client.java at GitHub](https://github.com/EnigmaBridge/client.java)
+ - Javascript - [client.js at GitHub](https://github.com/EnigmaBridge/client.js)
+ - Python - [client.py at GitHub](https://github.com/EnigmaBridge/client.py)
+
+We have also implemented a PKCS#11 wrapper that uses Enigma Bridge for hardware security:
+
+ - SoftHSM - [SoftHSMv1 at GitHub](https://github.com/EnigmaBridge/SoftHSMv1)
 
 
 Our goal is to make any library installation as simple as possible, and using standard deployment mechanisms wherever possible. 
@@ -265,20 +273,33 @@ You must replace <code>default key</code> with your personal API key.
 
 ## ProcessData
 
-`ProcessData` is the basic call for using the UserObject - performing an operation
-on the input data with the registered object stored in the EnigmaBridge secure hardware (e.g., RSA decryption, AES decryption).
-
-`ProcessData` call can be tested also online in [ProcessData-demo].
-
 ```json
-" Process data uses a communication encryption preprocessing. "
-" For more details please refer to the Communication encryption documentation. " 
-{"data":"Packet0_PLAINAES_00000396233a255a52b0ac083fc6a983730e8b6b9c8e74dcdc85f1343bf9f86543acd3f5bf024dc9a5364f17638250867403"}
+" POST request:"
+"    https://hut:11180/1.0/TEST_API0000001dcb0000300006/ProcessData/f2044d875bdef29d"
+"    parameters are an Enigma Bridge handle, command (ProcessData), and a nonce"
+"    Data has to be encrypted, see the text to the left for details."
+" POST data:"
+{
+  "data": "0000BCFAADB2FC41A300961AE8741463B676954515B07456681E1E180A9B5FCE7BC93F5A49328DD79CCD96F995F345E3E60674DCA06FE4B1B39E164E08E713C0DB58CBF3EDBF73BADB78BA116418704E52EEB75F575F032BD082AF2585A5F5D3119AF8ACB5C2BAB9C982A7068BD7CB6EA4B9EE84126E1B0E5FE58D6567F1595CCDB6D1B43338DF87E582C50C6A0A0479E40DD63A4E36BD7A1066E8E4293076BF513DD2AE450307A571B5D11D965910074511CCE9FEDBFDF646EFF69B42BAF6A0A8A995A46EEC223D3E595AF40BA4DB1CC0E3D29E06E05DC835A7EF4166BFC4D281F249607D6B913A46B5F69C44BFCA35D5F53AEB6A048E38C064B837C99E571A5A928B2C8C83BB467FDB76BC76F3BECB944F24EEF9B376D6A7D9977AAF59770287F2",
+  "function": "ProcessData",
+  "version": "1.0",
+  "nonce": "06AEAEADE624C651",
+  "objectid": "TEST_API0000001dcb0000300006"
+}
 
+
+"RESPONSE"
 " Typical `ProcessData` response is a JSON object like the following one."
 " The communication encryption is in place - decryption has to be performed" 
 "  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully."
-{"function":"ProcessData","result":"0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad_Packet0_PLAINAES_","nonce":"89c14e8802c42151","status":"9000","statusdetail":"success (ok)","version":"1.0"}
+{
+  "function": "ProcessData",
+  "result": "0000d81cadea2e6499fdd1095988be916e0a3b3d706fd3a5b42b2ad6cdb751ac6a831fa030fc1f2885248388355ee5977cad",
+  "nonce": "89c14e8802c42151",
+  "status": "9000",
+  "statusdetail": "success (ok)",
+  "version":"1.0"
+}
 ```
 
 ```python
@@ -348,6 +369,23 @@ promise.then(function(data){
 ```java
 // Coming soon 
 ```
+
+`ProcessData` is the *operational call* of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., `TEST_API000000ee010000000004`. The only other parameter it takes is data for processing.
+
+As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by the handle.
+
+For more details of the communication encryption, please refer to the *Communication encryption documentation - Link coming soon*, or use one of the client implementations at [Enigma Bridge GitHub](https://github.com/EnigmaBridge). 
+
+" Typical `ProcessData` response is a JSON object like the following one."
+" The communication encryption is in place - decryption has to be performed" 
+"  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully."
+
+
+`ProcessData` call can be tested also online in [ProcessData-demo](https://enigmabridge.com/test).
+
+<aside class="notice">Data sent to Enigma Bridge for processing has to be formatted. It is usually taken care of by one of our clients.</aside>
+See links to implementations in [Javascript, Python, and Java above](#getting-started).
+<aside class="notice">Each response form the Enigma Bridge service will contain a numerical code, as well as a short text with explanation of the error.</aside>
 
 
 ## Create User Object
