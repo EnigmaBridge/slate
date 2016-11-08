@@ -91,7 +91,7 @@ see the RESTful column
       {
         "method": "authentication type1",
         "init": false,
-        "initdata": [ "data required in initialization" ]
+        "initdata": []
       }, 
       {
         "method": "authentication type2",
@@ -107,7 +107,7 @@ name | optional|type   |description
 ---- |---------|-------|---------
 method|NO|string|one of the values from the table below
 init|NO|boolean|true if Init Client Authentication is required
-required|NO|array of strings|values can be from the set of "email", "mobile", and "rsa"
+initdata|NO|array of strings|values can be from the set of "email", "mobile", and "rsa"
 
 
 The response will return an array of possible authentication types. It has to contain at least one element. Possible values are listed in the following table. Please note, that the requestor always has to know its type. 
