@@ -192,8 +192,16 @@
 
 <p>The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.</p>
 
+<p>Unless you intend to use an automation tool that takes care of the enrolment process. Please raise a support ticket at:</p>
+
+<p><a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new">Enigma Bridge Support System</a></p>
+
+<p>We always require manual approval (via <a href="https://enigmabridge.freshdesk.com">our support system</a>) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
+
+<h2 id="automation">Automation</h2>
+
 <blockquote>
-<p>This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. We require manual approval (via our support system at https://enigmabridge.freshdesk.com) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
+<p>This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. </p>
 </blockquote>
 <pre class="highlight java"><code><span class="c1">// coming soon</span>
 </code></pre>
@@ -263,11 +271,15 @@ Availability of automated execution of client registration depends on the use ca
 In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldquo;TEST_API&rdquo; key - these credentials are only available for demonstration purposes.
 </aside>
 
-<h1 id="api-key-enrolment">API Key Enrolment</h1>
+<h1 id="get-api-key">Get API Key</h1>
+
+<p>Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.</p>
 
 <blockquote>
-<p>Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.</p>
+<p>The automation code is only available if Enigma Bridge provides automation for particular use case or application. All operational requests need a valid ClientID, even though it is usually hidden in client-side libraries.</p>
 </blockquote>
+
+<h2 id="automation">Automation</h2>
 <pre class="highlight shell"><code>curl -i <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"X-Auth-Token: public"</span> <span class="se">\</span>
@@ -298,9 +310,7 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
     }'</span><span class="se">\</span>
   https://hut3.enigmabridge.com:8445/api/v1/client
 </code></pre>
-<pre class="highlight javascript"><code><span class="kr">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'kittn'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">);</span>
+<pre class="highlight javascript"><code><span class="s2">"comming soon"</span>
 </code></pre>
 <pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.eb_configuration</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.eb_registration</span> <span class="kn">import</span> <span class="o">*</span>
@@ -335,6 +345,10 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
 <blockquote>
 <p>Make sure to replace default values with proper ones.</p>
 </blockquote>
+
+<p>Automation is enabled with the RESTful API of our user management server. It means that requests are still being sent to one of the huts.</p>
+
+<p>A successful response to a request for an API key will also return network connection details for operational requests. The user management server will automatically select the most suitable location of Enigma Bridge servers to provide required functionality and also to optimize network performance.</p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -1025,11 +1039,15 @@ The response code for successful processiong of a request is 36864 (0x9000).
 </tr>
 </tbody></table>
 
-          <h1 id="user-manager-client-role">User Manager - Client Role</h1>
+          <h1 id="additional-documentation">Additional Documentation</h1>
+
+<p>This part is not needed by clients as it is implemented by Enigma Bridge and their automation tools. A safe fallback is to use our <a href="https://enigmabridge.freshdesk.com">support system</a> to request enrolment to our encryption service.</p>
+
+          <h2 id="enrolment-overview">Enrolment Overview</h2>
 
 <aside class="notice">
 
-User Manager is available on the following domain names managed by Enigma Bridge. Whenever we use <strong>hut</strong>, it has to be replased with one of these three domain names.
+User Manager is available on the following domain names managed by Enigma Bridge. Whenever we use <strong>hut</strong>, it has to be replaced with one of these three domain names.
 </aside>
 
 <p>User Manager domain names to replace <strong>hut</strong> in the text below are:</p>
@@ -1040,7 +1058,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>hut8.enigmabridge.com</li>
 </ol>
 
-<h2 id="data-flow">Data Flow</h2>
+<h3 id="data-flow">Data Flow</h3>
 
 <p>The usual data-flow and sequence of actions is as follows:</p>
 
@@ -1056,7 +1074,9 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>The API key allows create of new user objects according to the client type definition.</li>
 </ol>
 
-<h2 id="get-client-authentication-client">Get Client Authentication (client)</h2>
+<h2 id="client-endpoint-restful-api">Client Endpoint - RESTful API</h2>
+
+<h3 id="get-client-authentication">Get Client Authentication</h3>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1082,7 +1102,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
 
-<h3 id="parameters">Parameters</h3>
+<h4 id="parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1199,7 +1219,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="init-client-authentication-client">Init Client Authentication (client)</h2>
+<h3 id="init-client-authentication">Init Client Authentication</h3>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1249,7 +1269,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>requesting the server to use an alternative communication channel to provide the requestor with data out-of-band </li>
 </ul>
 
-<h2 id="register-client-client">Register Client (client)</h2>
+<h3 id="register-client">Register Client</h3>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1276,7 +1296,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
 
-<h3 id="parameters">Parameters</h3>
+<h4 id="parameters">Parameters</h4>
 
 <table><thead>
 <tr>
@@ -1318,7 +1338,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-client-39">Structure of &lsquo;client&rsquo;</h3>
+<h4 id="structure-of-39-client-39">Structure of &lsquo;client&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1414,7 +1434,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-response-39">Structure of &#39;response&rsquo;</h3>
+<h4 id="structure-of-39-response-39">Structure of &#39;response&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1462,7 +1482,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="add-api-for-client-client">Add API for Client (client)</h2>
+<h3 id="add-api-for-client">Add API for Client</h3>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1537,7 +1557,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h3>
+<h4 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1567,7 +1587,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-endpoint-39">Structure of &#39;endpoint&rsquo;</h3>
+<h4 id="structure-of-39-endpoint-39">Structure of &#39;endpoint&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1728,7 +1748,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-servers-39-each-item">Structure of &#39;servers&rsquo; each item</h3>
+<h4 id="structure-of-39-servers-39-each-item">Structure of &#39;servers&rsquo; each item</h4>
 
 <table><thead>
 <tr>
@@ -1770,7 +1790,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="view-api-for-client-client">View API for Client (client)</h2>
+<h3 id="view-api-for-client">View API for Client</h3>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1847,7 +1867,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h3>
+<h4 id="structure-of-39-client-39">Structure of &#39;client&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1879,7 +1899,9 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p>Responses have the same format as for &ldquo;addapi&rdquo; requests.</p>
 
-<h2 id="enrol-for-dns-domain-api">Enrol for DNS Domain (api)</h2>
+<h2 id="apikey-endpoint-restful-api">APIkey Endpoint - RESTful API</h2>
+
+<h3 id="enrol-for-dns-domain">Enrol for DNS Domain</h3>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -1909,7 +1931,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
 
-<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+<h4 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -1939,7 +1961,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="response">Response</h3>
+<h4 id="response">Response</h4>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1966,7 +1988,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="get-challenge-api">Get Challenge (api)</h2>
+<h3 id="get-challenge">Get Challenge</h3>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -2056,7 +2078,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p>The response to these requests provides a <strong>challenge</strong> that has to be used to authenticate requests like <strong>Update Domain</strong>.</p>
 
-<h2 id="update-domain-api">Update Domain (api)</h2>
+<h3 id="update-domain">Update Domain</h3>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -2119,7 +2141,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+<h4 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -2161,7 +2183,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-dnsdata-39">Structure of &#39;dnsdata&rsquo;</h3>
+<h4 id="structure-of-39-dnsdata-39">Structure of &#39;dnsdata&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -2217,7 +2239,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-<h2 id="install-status-api">Install Status (api)</h2>
+<h3 id="install-status">Install Status</h3>
 
 <p>This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.</p>
 
@@ -2282,7 +2304,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-statusdata-39">Structure of &#39;statusdata&rsquo;</h3>
+<h4 id="structure-of-39-statusdata-39">Structure of &#39;statusdata&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -2330,7 +2352,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="unlock-domain-api">Unlock Domain (api)</h2>
+<h3 id="unlock-domain">Unlock Domain</h3>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
@@ -2378,7 +2400,7 @@ assigned to a new IP address.</p>
 </tr>
 </tbody></table>
 
-<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+<h4 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h4>
 
 <table><thead>
 <tr>
@@ -2421,23 +2443,29 @@ assigned to a new IP address.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
-          <h1 id="user-manager-enrolment-private-api">User Manager - Enrolment (Private API)</h1>
+          <h2 id="internal-use">&mdash; internal use &mdash;</h2>
 
-<h2 id="api-endpoint">API Endpoint</h2>
+<p>Following sections are for internal use by Enigma Bridge. The APIs are not currently available to clients.</p>
 
-<h3 id="disable-enrolment-object">Disable Enrolment Object</h3>
+<h2 id="authorizations-restful-api">Authorizations - RESTful API</h2>
 
-<h3 id="enable-enrolment-object">Enable Enrolment Object</h3>
+<p>Coming soon</p>
 
-<h3 id="remove-enrolment-object">Remove Enrolment Object</h3>
+<h3 id="api-endpoint">API Endpoint</h3>
 
-<h2 id="client-endpoint">Client Endpoint</h2>
+<h4 id="disable-enrolment-object">Disable Enrolment Object</h4>
 
-<h3 id="disable-api-key">Disable API Key</h3>
+<h4 id="enable-enrolment-object">Enable Enrolment Object</h4>
 
-<h3 id="enable-api-key">Enable API Key</h3>
+<h4 id="remove-enrolment-object">Remove Enrolment Object</h4>
 
-<h3 id="remove-api-key">Remove API Key</h3>
+<h3 id="client-endpoint">Client Endpoint</h3>
+
+<h4 id="disable-api-key">Disable API Key</h4>
+
+<h4 id="enable-api-key">Enable API Key</h4>
+
+<h4 id="remove-api-key">Remove API Key</h4>
 
       </div>
       <div class="dark-box">
