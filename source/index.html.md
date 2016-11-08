@@ -570,20 +570,5 @@ promise.then(function(data){
 # Not supported in shell. Please, take a look at clients
 ```
 
-## Test
-
-Skip.
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
 
 [ProcessData-demo]: https://expert.enigmabridge.com/test/demo.html
