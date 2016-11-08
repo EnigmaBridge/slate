@@ -23,6 +23,8 @@ search: true
 
 # Introduction
 
+**Last update: 8 November**
+
 > This column shows examples of API functions, or details that are language specific. Use the tab names above to switch to the language / syntax you are interested in.
 
 Welcome to Enigma Bridge API documentation and congratulations on taking steps to properly secure your systems from cyberattacks.

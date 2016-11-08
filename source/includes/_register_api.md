@@ -90,16 +90,25 @@ see the RESTful column
     "authentication": [
       {
         "method": "authentication type1",
-        "required": [ "data required in initialization" ]
+        "init": false,
+        "initdata": [ "data required in initialization" ]
       }, 
       {
         "method": "authentication type2",
-        "required": [ "data required in initialization" ]
+        "init": true,
+        "initdata": [ "data required in initialization" ]
       }
     ]
   }
 }
 ```
+
+name | optional|type   |description
+---- |---------|-------|---------
+method|NO|string|one of the values from the table below
+init|NO|boolean|true if Init Client Authentication is required
+required|NO|array of strings|values can be from the set of "email", "mobile", and "rsa"
+
 
 The response will return an array of possible authentication types. It has to contain at least one element. Possible values are listed in the following table. Please note, that the requestor always has to know its type. 
 
@@ -167,7 +176,7 @@ see the RESTful column
   "nonce": "my nonce",
   "timestamp": 1475077234509,
   "response": {
-    "auth-data": "if appropriate, otherwise an empty sequence"
+    "authdata": "if appropriate, otherwise an empty sequence"
   }
 }
 ```
@@ -746,10 +755,21 @@ see the RESTful column
     "timestamp": 1475078668177,
     "response": {
         "domains": ["assigned domain name"],
-        "addresses": ["registered IP addresses "]
+        "addresses": ["registered IP addresses "],
+        "privateIP": false,
+        "status": "enabled"
     }
 }
 ```
+
+### Structure of 'response'
+
+name | optional |type| note
+---- |--------- |----|----
+domains|NO|array of DNS names | a list of domain names registered for the API key
+addresses|NO|array of IP addresses | a list of IPv6 and IPv4 IP addresses associated with the API key
+privateIP|NO|boolean|returns true if the API key host is inside a private network
+status|NO|string|a status of the DNS registration (disabled, enabled, removed, created, unlocked, not_assigned
 
 ## Install Status
 
