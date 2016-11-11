@@ -188,7 +188,7 @@ see the RESTful column
   "timestamp": 1475077234509,
   "response": {
     "authdata": {"if appropriate, otherwise an empty sequence"},
-    "clientid": "string, the client id is needed for the registration API call"
+    "clientid": "fqwbev0cid5hxmgt90nk1it0osr98ama0ey1bc10"
   }
 }
 ```
@@ -220,7 +220,7 @@ see the RESTful column
     "environment":"dev",
     "client":{
         "name":"my test name",
-        "clientid":"string from Init Client Authentication",
+        "clientid":"fqwbev0cid5hxmgt90nk1it0osr98ama0ey1bc10 - from initauth API call",
         "authentication":"type",
         "type":"test",
         "token":"token-assigned-to-client-type"
@@ -522,6 +522,96 @@ password|NO|string|as provided during registration
 Responses have the same format as for "addapi" requests.
 
 # APIkey Endpoint - RESTful API
+
+## List Operations
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"nonce",
+    "version":1,
+    "function":"listops",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b"
+    }
+}
+```
+
+
+
+
+The request uses the following URL: 
+
+`https://hut:8445/api/v1/client`
+
+### Parameters
+
+name | optional |type| note
+---- |--------- |----|----
+username| NO| string|client username as provided during registration
+apikey|NO| string| apikey as provided during registration
+function|NO|string| must be "listops"
+environment|NO|string| must be "dev", "test", or "prod"
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "my nonce",
+  "timestamp": 1475077216548,
+  "response": {
+      "operations":[
+        "name": {
+            #sequence with the operation definition
+            #actual content is beyond the scope of
+            #this documentation at the moment
+        }
+      ]
+  }
+}
+```
+
+This is a typical response. The new items are:
+
+name | optional |type| note
+---- |--------- |----|----
+status|NO|integer|status code - see Error codes
+error|NO|string|text explaining the error code
+timestamp|NO|long|timestamp of the response
+response|NO|array|<strong>operations</strong>
+
+### Structure of 'operations'
+
+name | optional |type| note
+---- |--------- |----|----
+name|NO|sequence|definition for new operations
+
 
 ## Enrol for DNS Domain 
 
