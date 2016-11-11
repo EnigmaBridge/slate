@@ -586,13 +586,13 @@ see the RESTful column
   "nonce": "my nonce",
   "timestamp": 1475077216548,
   "response": {
-      "operations":[
+      "operations":{
         "name": {
             #sequence with the operation definition
             #actual content is beyond the scope of
             #this documentation at the moment
         }
-      ]
+      }
   }
 }
 ```
@@ -604,7 +604,7 @@ name | optional |type| note
 status|NO|integer|status code - see Error codes
 error|NO|string|text explaining the error code
 timestamp|NO|long|timestamp of the response
-response|NO|array|<strong>operations</strong>
+response|NO|sequence|<strong>operations</strong>
 
 ### Structure of 'operations'
 
