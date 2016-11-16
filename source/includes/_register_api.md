@@ -103,6 +103,10 @@ see the RESTful column
 }
 ```
 
+### Response
+
+Respone shows allowed authentication methods and lists data items required for each of the authentication methods for the "Init Client Authentication" method.
+
 name | optional|type   |description
 ---- |---------|-------|---------
 method|NO|string|one of the values from the table below
