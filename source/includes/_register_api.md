@@ -151,6 +151,7 @@ see the RESTful column
     "environment":"dev",
     "client":{
         "type": "test",
+        "method": "name of authentication method",
         "email": "email@address",
         "mobile": "mobile phone number with country code",
         "rsa": "RSA public key"
@@ -163,6 +164,7 @@ If registration of a new client requires the server to provide or initialize an 
 name|optional|type|note
 ----|-------|----|-----
 type|NO|string|a client type
+method"NO|string|one of the names returned by "Get Client Authentication"
 email|YES|string - email|email address for authentication
 mobile|YES|string - number|mobile number with country code, only digits and whitespaces
 rsa|YES|string|base64 public key
