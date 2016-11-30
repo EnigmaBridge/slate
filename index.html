@@ -2540,6 +2540,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
         </span><span class="nt">"status"</span><span class="p">:</span><span class="mi">36864</span><span class="p">,</span><span class="w">
         </span><span class="nt">"error"</span><span class="p">:</span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"duration"</span><span class="p">:</span><span class="mi">1800</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"detail"</span><span class="p">:</span><span class="s2">"logs, details as a JSON message"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"key"</span><span class="p">:</span><span class="s2">"base64encoded key blob"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"email"</span><span class="p">:</span><span class="s2">"important@top.world"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -2617,12 +2618,37 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>any key that we need to pass on</td>
 </tr>
 <tr>
+<td>detail</td>
+<td>YES</td>
+<td>string</td>
+<td>JSON message with details we need to store</td>
+</tr>
+<tr>
 <td>email</td>
 <td>YES</td>
 <td>email</td>
 <td>contact details of whoever will be contacted</td>
 </tr>
 </tbody></table>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The response to this query is just a result of the processing.</p>
 
 <h2 id="unlock-domain">Unlock Domain</h2>
 
