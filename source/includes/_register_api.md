@@ -919,6 +919,7 @@ see the RESTful column
         "status":36864,
         "error":"success (ok)",
         "duration":1800,
+        "detail":"logs, details as a JSON message",
         "key":"base64encoded key blob",
         "email":"important@top.world"
     }
@@ -948,7 +949,34 @@ status|NO|integer| status code
 error|NO|string|provided by the apikey
 duration|YES|integer|duration of an operation in seconds
 key|YES|string|any key that we need to pass on
+detail|YES|string|JSON message with details we need to store
 email|YES|email| contact details of whoever will be contacted
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version":1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce":"my nonce",
+    "timestamp": 1475078668177,
+    "response": null
+}
+```
+
+The response to this query is just a result of the processing.
+
 
 ## Unlock Domain
 
