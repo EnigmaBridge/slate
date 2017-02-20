@@ -2741,6 +2741,167 @@ assigned to a new IP address.</p>
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 
+<h2 id="send-log-data">Send Log Data</h2>
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sendlog"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"environment"</span><span class="p">:</span><span class="s2">"dev"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"apidata"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"username"</span><span class="p">:</span><span class="s2">"dc5c2081-2a13-4566-ac8d-592ee955dc48"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"apikey"</span><span class="p">:</span><span class="s2">"0b75f...............d057593b"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"effort"</span><span class="p">:{</span><span class="w">
+        </span><span class="nt">"preimage"</span><span class="p">:</span><span class="s2">"407696;1487584132;34.249.220.146;Trunk;854843"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"secondpreimage"</span><span class="p">:</span><span class="s2">"hex value"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"collision"</span><span class="p">:</span><span class="w"> </span><span class="mi">20</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="nt">"log"</span><span class="p">:</span><span class="w"> </span><span class="s2">"text data, with log events"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<p>This function will store log data from the endpoint. If the endpoint has its API key, it should be used as it may be used as a protection against DDoS attacks. However, its presence is optional.</p>
+
+<p>If the &ldquo;apidata&rdquo; is not present or invalid, the &ldquo;effort&rdquo; item must be present. Otherwise the request will be unsuccessful. The &ldquo;effort&rdquo; is not required if valid &ldquo;apidata&rdquo; is provided.</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apidata</td>
+<td>YES</td>
+<td>string</td>
+<td>authentication of the client</td>
+</tr>
+<tr>
+<td>effort</td>
+<td>YES</td>
+<td>sequence</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-apidata-39">Structure of &#39;apidata&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>username</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+<tr>
+<td>apikey</td>
+<td>NO</td>
+<td>string</td>
+<td>as assigned</td>
+</tr>
+</tbody></table>
+
+<h3 id="structure-of-39-effort-39">Structure of &#39;effort&rsquo;</h3>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>preimage</td>
+<td>NO</td>
+<td>string</td>
+<td>unique identifier of the request, the format is random-number &ldquo;;&rdquo; timestamp &ldquo;;&rdquo; IP_address &ldquo;;&rdquo; client_version &ldquo;;&rdquo; nonce</td>
+</tr>
+<tr>
+<td>secondpreimage</td>
+<td>NO</td>
+<td>string</td>
+<td>hex representation of a binary hash input</td>
+</tr>
+<tr>
+<td>collision</td>
+<td>NO</td>
+<td>int</td>
+<td>how many bits of collision have been computed</td>
+</tr>
+</tbody></table>
+
+<p>The server will compare the strength of the collision and if not satisfactory, the request will be declined.</p>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475078668177</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"collision"</span><span class="p">:</span><span class="w"> </span><span class="err">integer</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"reference"</span><span class="p">:</span><span class="w"> </span><span class="s2">"reference number of the log record"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>collision</td>
+<td>YES</td>
+<td>string</td>
+<td>the length of the collision required, only present if provided collision is not sufficient</td>
+</tr>
+<tr>
+<td>reference</td>
+<td>NO</td>
+<td>string</td>
+<td>it canbe empty string if errir</td>
+</tr>
+</tbody></table>
+
+<p>If the request is declined because of insufficent collision strength, the required length/strength is present in the result</p>
+
           <h1 id="authorizations-restful-api">Authorizations - RESTful API</h1>
 
 <p>Following sections are for internal use by Enigma Bridge. The APIs are not currently available to clients.</p>
