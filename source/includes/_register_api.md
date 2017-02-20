@@ -1055,3 +1055,116 @@ see the RESTful column
 ```
 
 
+
+
+
+## Send Log Data
+
+<aside class="notice">
+<strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
+</aside>
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"my nonce",
+    "version":1,
+    "function": "sendlog",
+    "environment":"dev",
+    "apidata":{
+        "username":"dc5c2081-2a13-4566-ac8d-592ee955dc48",
+        "apikey":"0b75f...............d057593b"
+    },
+    "effort":{
+        "preimage":"407696;1487584132;34.249.220.146;Trunk;854843",
+        "secondpreimage":"hex value",
+        "collision": 20
+    },
+    "log": "text data, with log events"
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+This function will store log data from the endpoint. If the endpoint has its API key, it should be used as it may be used as a protection against DDoS attacks. However, its presence is optional.
+
+If the "apidata" is not present or invalid, the "effort" item must be present. Otherwise the request will be unsuccessful. The "effort" is not required if valid "apidata" is provided.
+
+
+name | optional |type| note
+---- |--------- |----|----
+apidata|YES|string|authentication of the client
+effort|YES|sequence|
+
+
+### Structure of 'apidata'
+
+name | optional |type| note
+---- |--------- |----|----
+username|NO|string|as assigned
+apikey|NO|string|as assigned
+
+
+### Structure of 'effort'
+
+name | optional |type| note
+---- |--------- |----|----
+preimage|NO|string|unique identifier of the request, the format is random-number ";" timestamp ";" IP_address ";" client_version ";" nonce
+secondpreimage|NO|string|hex representation of a binary hash input
+collision|NO|int|how many bits of collision have been computed
+
+The server will compare the strength of the collision and if not satisfactory, the request will be declined.
+
+
+
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "version": 1,
+    "error": "success (ok)",
+    "status": 36864,
+    "nonce": "my nonce",
+    "timestamp": 1475078668177,
+    "response": {
+        "collision": integer,
+        "reference": "reference number of the log record"
+    }
+}
+```
+
+name | optional |type| note
+---- |--------- |----|----
+collision|YES|string|the length of the collision required, only present if provided collision is not sufficient
+reference|NO|string| it canbe empty string if errir
+
+
+
+If the request is declined because of insufficent collision strength, the required length/strength is present in the result
+
+
+
