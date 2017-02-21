@@ -1185,7 +1185,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <h3 id="response">Response</h3>
 
-<p>Respone shows allowed authentication methods and lists data items required for each of the authentication methods for the &ldquo;Init Client Authentication&rdquo; method.</p>
+<p>Response shows allowed authentication methods and lists data items required for each of the authentication methods for the &ldquo;Init Client Authentication&rdquo; method.</p>
 
 <table><thead>
 <tr>
@@ -1995,6 +1995,74 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <h1 id="apikey-endpoint-restful-api">APIkey Endpoint - RESTful API</h1>
 
+<h2 id="client-ip-address">Client IP Address</h2>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"function"</span><span class="p">:</span><span class="s2">"clientip"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>The request uses the following URL:</p>
+
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+
+<p>This function is generally available, it doesn&rsquo;t require any authentication of the client.</p>
+
+<h3 id="response">Response</h3>
+<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre>
+<pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre>
+<pre class="highlight shell"><code>see the RESTful column
+</code></pre>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nonce"</span><span class="p">:</span><span class="w"> </span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"timestamp"</span><span class="p">:</span><span class="w"> </span><span class="mi">1475077216548</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"response"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"ipv4"</span><span class="p">:</span><span class="s2">"11.11.11.11"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"ipv6"</span><span class="p">:</span><span class="s2">"fe80::bae8:56ff:fe2e:ce68"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<p>This is a typical response. The new items are:</p>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>ipv4</td>
+<td>NO</td>
+<td>string</td>
+<td>it can be NULL</td>
+</tr>
+<tr>
+<td>ipv6</td>
+<td>NO</td>
+<td>string</td>
+<td>it can be NULL</td>
+</tr>
+</tbody></table>
+
 <h2 id="list-operations">List Operations</h2>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
@@ -2018,7 +2086,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p>The request uses the following URL: </p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
 
 <h3 id="parameters">Parameters</h3>
 
@@ -2778,7 +2846,7 @@ assigned to a new IP address.</p>
 
 <p>This function will store log data from the endpoint. If the endpoint has its API key, it should be used as it may be used as a protection against DDoS attacks. However, its presence is optional.</p>
 
-<p>If the &ldquo;apidata&rdquo; is not present or invalid, the &ldquo;effort&rdquo; item must be present. Otherwise the request will be unsuccessful. The &ldquo;effort&rdquo; is not required if valid &ldquo;apidata&rdquo; is provided.</p>
+<p>If the &ldquo;apidata&rdquo; is not present or invalid, the &ldquo;effort&rdquo; item must be present. Otherwise the request will be unsuccessful. The &ldquo;effort&rdquo; is not required if valid &ldquo;apidata&rdquo; is provided. The effort&rsquo;s goal is to slow down DDoS attacks by requiring clients to comput SHA-1 function collisions.</p>
 
 <table><thead>
 <tr>
@@ -2796,7 +2864,7 @@ assigned to a new IP address.</p>
 </tr>
 <tr>
 <td>effort</td>
-<td>YES</td>
+<td>NO</td>
 <td>sequence</td>
 <td></td>
 </tr>
@@ -2840,17 +2908,11 @@ assigned to a new IP address.</p>
 <td>preimage</td>
 <td>NO</td>
 <td>string</td>
-<td>unique identifier of the request, the format is random-number &ldquo;;&rdquo; timestamp &ldquo;;&rdquo; IP_address &ldquo;;&rdquo; client_version &ldquo;;&rdquo; nonce</td>
-</tr>
-<tr>
-<td>secondpreimage</td>
-<td>NO</td>
-<td>string</td>
-<td>hex representation of a binary hash input</td>
+<td>unique identifier of the request, the format is random-number &ldquo;;&rdquo; timestamp &ldquo;;&rdquo; IP_address &ldquo;;&rdquo; client_version &ldquo;;&rdquo; nonce. All numbers are in decadic form.</td>
 </tr>
 <tr>
 <td>collision</td>
-<td>NO</td>
+<td>YES</td>
 <td>int</td>
 <td>how many bits of collision have been computed</td>
 </tr>
