@@ -23,7 +23,7 @@ search: true
 
 # Introduction
 
-**Last update: 11 November**
+**Last update: 21 February**
 
 > This column shows examples of API functions, or details that are language specific. Use the tab names above to switch to the language / syntax you are interested in.
 
