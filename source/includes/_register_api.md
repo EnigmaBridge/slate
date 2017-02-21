@@ -105,7 +105,7 @@ see the RESTful column
 
 ### Response
 
-Respone shows allowed authentication methods and lists data items required for each of the authentication methods for the "Init Client Authentication" method.
+Response shows allowed authentication methods and lists data items required for each of the authentication methods for the "Init Client Authentication" method.
 
 name | optional|type   |description
 ---- |---------|-------|---------
@@ -529,6 +529,72 @@ Responses have the same format as for "addapi" requests.
 
 # APIkey Endpoint - RESTful API
 
+
+## Client IP Address
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+    "nonce":"nonce",
+    "version":1,
+    "function":"clientip"
+}
+```
+
+The request uses the following URL:
+
+`https://hut:8445/api/v1/apikey`
+
+This function is generally available, it doesn't require any authentication of the client.
+
+
+### Response
+
+```java
+see the RESTful column
+```
+```javascript
+see the RESTful column
+```
+```python
+see the RESTful column
+```
+```shell
+see the RESTful column
+```
+```json
+{
+  "version": 1,
+  "error": "success (ok)",
+  "status": 36864,
+  "nonce": "my nonce",
+  "timestamp": 1475077216548,
+  "response": {
+      "ipv4":"11.11.11.11",
+      "ipv6":"fe80::bae8:56ff:fe2e:ce68"
+  }
+}
+```
+
+This is a typical response. The new items are:
+
+name | optional |type| note
+---- |--------- |----|----
+ipv4|NO|string|it can be NULL
+ipv6|NO|string|it can be NULL
+
+
 ## List Operations
 
 ```java
@@ -556,12 +622,9 @@ see the RESTful column
 }
 ```
 
-
-
-
 The request uses the following URL: 
 
-`https://hut:8445/api/v1/client`
+`https://hut:8445/api/v1/apikey`
 
 ### Parameters
 
@@ -1101,13 +1164,13 @@ The request uses the following URL:
 
 This function will store log data from the endpoint. If the endpoint has its API key, it should be used as it may be used as a protection against DDoS attacks. However, its presence is optional.
 
-If the "apidata" is not present or invalid, the "effort" item must be present. Otherwise the request will be unsuccessful. The "effort" is not required if valid "apidata" is provided.
+If the "apidata" is not present or invalid, the "effort" item must be present. Otherwise the request will be unsuccessful. The "effort" is not required if valid "apidata" is provided. The effort's goal is to slow down DDoS attacks by requiring clients to comput SHA-1 function collisions.
 
 
 name | optional |type| note
 ---- |--------- |----|----
 apidata|YES|string|authentication of the client
-effort|YES|sequence|
+effort|NO|sequence|
 
 
 ### Structure of 'apidata'
@@ -1122,9 +1185,9 @@ apikey|NO|string|as assigned
 
 name | optional |type| note
 ---- |--------- |----|----
-preimage|NO|string|unique identifier of the request, the format is random-number ";" timestamp ";" IP_address ";" client_version ";" nonce
-secondpreimage|NO|string|hex representation of a binary hash input
-collision|NO|int|how many bits of collision have been computed
+preimage|NO|string|unique identifier of the request, the format is random-number ";" timestamp ";" IP_address ";" client_version ";" nonce. All numbers are in decadic form.
+collision|YES|int|how many bits of collision have been computed
+
 
 The server will compare the strength of the collision and if not satisfactory, the request will be declined.
 
