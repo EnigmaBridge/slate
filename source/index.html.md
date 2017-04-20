@@ -394,7 +394,7 @@ promise.then(function(data){
 
 `ProcessData` is the *operational call* of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., `TEST_API000000ee010000000004`. The only other parameter it takes is data for processing.
 
-As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by the handle.
+As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by its handle, which is a text string.
 
 For more details of the communication encryption, please refer to the *Communication encryption documentation - Link coming soon*, or use one of the client implementations at [Enigma Bridge GitHub](https://github.com/EnigmaBridge). 
 

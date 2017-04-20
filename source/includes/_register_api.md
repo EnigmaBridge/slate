@@ -312,7 +312,7 @@ status|NO|string|enabled, disabled, or removed
 maxobjects|NO|integer|max number of objects this client can create
 
 
-## Add API for Client
+## Add API to Client
 
 ```java
 see the RESTful column
@@ -470,7 +470,7 @@ environment|NO|string|"dev" or "test" or "prod"
 enrolendpoints|NO|array|array of {protocol,port}
 useendpoints|NO|array|array of {protocol,port}
 
-## View API for Client
+## View API of Client
 
 ```java
 see the RESTful column
@@ -894,18 +894,26 @@ name | optional |type| note
 ---- |--------- |----|----
 username|NO|string|as assigned
 apikey|NO|string|as assigned
-dnsdata|YES|array| an array of new DNS records that will be added to the domain, each record is defined by name, type, and value
+dnsdata|YES|array| an array of new DNS records that will be added to the domain, each record is defined by a name, type, and value
 authentication|NO|string|as requested with a challenge
 response|NO|string|either the challenge itself or a derived value (e.g., OCRA)
 
 ### Structure of 'dnsdata'
 
+We currently support "TXT" and "CNAME" DNS records only.
+
 name | optional |type| note
 ---- |--------- |----|----
-type|NO|string|type of DNS record to create, currently on "TXT" supported
+type|NO|string|"TXT"
 name|NO|string|name of the new record
-value|NO|string|value of the new record
-domain|YES|string|a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -> error
+value|NO|string|value of the new record, 
+domain|YES|string| a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -> error
+
+name | optional |type| note
+---- |--------- |----|----
+type|NO|string|"CNAME"
+name|NO|string|name of the new subdomain
+domain|YES|string| a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -> error
 
 
 
