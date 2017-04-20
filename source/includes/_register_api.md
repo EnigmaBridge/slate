@@ -866,7 +866,11 @@ see the RESTful column
                         "type":"txt",
                         "domain":"walsall1.pki.enigmabridge.com", 
                         "name":"_acme-challenge", 
-                        "value":"random string"}
+                        "value":"random string"},
+                    {
+                        "type":"cname",
+                        "domain":walsall1.pki.enigmabridge.com",
+                        "name":"cloud"}
                    ],
         "authentication":"signature",
         "response":"value derived from previously requested challenge"
