@@ -527,7 +527,7 @@ You must replace <code>default key</code> with your personal API key.
 
 <p><code class="prettyprint">ProcessData</code> is the <em>operational call</em> of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., <code class="prettyprint">TEST_API000000ee010000000004</code>. The only other parameter it takes is data for processing.</p>
 
-<p>As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by the handle.</p>
+<p>As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by its handle, which is a text string.</p>
 
 <p>For more details of the communication encryption, please refer to the <em>Communication encryption documentation - Link coming soon</em>, or use one of the client implementations at <a href="https://github.com/EnigmaBridge">Enigma Bridge GitHub</a>. </p>
 
@@ -1576,7 +1576,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="add-api-for-client">Add API for Client</h2>
+<h2 id="add-api-to-client">Add API to Client</h2>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -1884,7 +1884,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<h2 id="view-api-for-client">View API for Client</h2>
+<h2 id="view-api-of-client">View API of Client</h2>
 <pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
@@ -2469,7 +2469,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>dnsdata</td>
 <td>YES</td>
 <td>array</td>
-<td>an array of new DNS records that will be added to the domain, each record is defined by name, type, and value</td>
+<td>an array of new DNS records that will be added to the domain, each record is defined by a name, type, and value</td>
 </tr>
 <tr>
 <td>authentication</td>
@@ -2487,6 +2487,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <h3 id="structure-of-39-dnsdata-39">Structure of &#39;dnsdata&rsquo;</h3>
 
+<p>We currently support &ldquo;TXT&rdquo; and &ldquo;CNAME&rdquo; DNS records only.</p>
+
 <table><thead>
 <tr>
 <th>name</th>
@@ -2499,7 +2501,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>type</td>
 <td>NO</td>
 <td>string</td>
-<td>type of DNS record to create, currently on &ldquo;TXT&rdquo; supported</td>
+<td>&ldquo;TXT&rdquo;</td>
 </tr>
 <tr>
 <td>name</td>
@@ -2511,7 +2513,35 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>value</td>
 <td>NO</td>
 <td>string</td>
-<td>value of the new record</td>
+<td>value of the new record,</td>
+</tr>
+<tr>
+<td>domain</td>
+<td>YES</td>
+<td>string</td>
+<td>a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -&gt; error</td>
+</tr>
+</tbody></table>
+
+<table><thead>
+<tr>
+<th>name</th>
+<th>optional</th>
+<th>type</th>
+<th>note</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>type</td>
+<td>NO</td>
+<td>string</td>
+<td>&ldquo;CNAME&rdquo;</td>
+</tr>
+<tr>
+<td>name</td>
+<td>NO</td>
+<td>string</td>
+<td>name of the new subdomain</td>
 </tr>
 <tr>
 <td>domain</td>
