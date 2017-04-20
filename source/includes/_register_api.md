@@ -869,7 +869,7 @@ see the RESTful column
                         "value":"random string"},
                     {
                         "type":"cname",
-                        "domain":walsall1.pki.enigmabridge.com",
+                        "domain":"walsall1.pki.enigmabridge.com",
                         "name":"cloud"}
                    ],
         "authentication":"signature",
