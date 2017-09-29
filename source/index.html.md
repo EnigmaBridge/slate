@@ -17,6 +17,7 @@ includes:
   - background
   - register_api
   - authorizations_api
+  - keychest_sep
   - keychest
 
 search: true

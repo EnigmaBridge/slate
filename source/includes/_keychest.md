@@ -1,14 +1,14 @@
-# KeyChest API Overview
+# KeyChest 
 
 <aside class="notice">
 We are working on the first version of the API documentation. It's coming ....
 </aside>
 
-# Unauthenticated Functions
+## Unauthenticated Functions
 
 ## Register
 
-# Authenticated Functions
+## Authenticated Functions
 
 ## Register
 
