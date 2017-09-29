@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
   <head>
@@ -9,81 +10,190 @@
     <style>
       .highlight table td { padding: 5px; }
 .highlight table pre { margin: 0; }
-.highlight, .highlight .w {
-  color: #f8f8f2;
-  background-color: #272822;
+.highlight .gh {
+  color: #999999;
 }
-.highlight .err {
-  color: #272822;
-  background-color: #f92672;
+.highlight .sr {
+  color: #f6aa11;
 }
-.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
   color: #75715e;
 }
 .highlight .cp {
-  color: #f4bf75;
+  color: #75715e;
 }
-.highlight .nt {
-  color: #f4bf75;
+.highlight .c1 {
+  color: #75715e;
 }
-.highlight .o, .highlight .ow {
-  color: #f8f8f2;
+.highlight .cs {
+  color: #75715e;
 }
-.highlight .p, .highlight .pi {
-  color: #f8f8f2;
+.highlight .c, .highlight .cd {
+  color: #75715e;
 }
-.highlight .gi {
-  color: #a6e22e;
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
 }
 .highlight .gd {
-  color: #f92672;
+  color: #49483e;
 }
-.highlight .gh {
-  color: #66d9ef;
-  background-color: #272822;
-  font-weight: bold;
+.highlight .gi {
+  color: #49483e;
 }
-.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
-  color: #ae81ff;
+.highlight .ge {
+  color: #49483e;
 }
 .highlight .kc {
-  color: #fd971f;
-}
-.highlight .kt {
-  color: #fd971f;
-}
-.highlight .kd {
-  color: #fd971f;
-}
-.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
-  color: #a6e22e;
-}
-.highlight .sr {
-  color: #a1efe4;
-}
-.highlight .si {
-  color: #cc6633;
-}
-.highlight .se {
-  color: #cc6633;
-}
-.highlight .nn {
-  color: #f4bf75;
-}
-.highlight .nc {
-  color: #f4bf75;
-}
-.highlight .no {
-  color: #f4bf75;
-}
-.highlight .na {
   color: #66d9ef;
 }
-.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
-  color: #a6e22e;
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
 }
 .highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s {
+  color: #e6db74;
+}
+.highlight .na {
   color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
 }
     </style>
     <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
@@ -98,8 +208,8 @@
         <img src="images/navbar.png" alt="Navbar" />
       </span>
     </a>
-    <div class="tocify-wrapper">
-      <img src="images/logo.png" alt="Logo" />
+    <div class="toc-wrapper">
+      <img src="images/logo.png" class="logo" alt="Logo" />
         <div class="lang-selector">
               <a href="#" data-language-name="json">RESTful</a>
               <a href="#" data-language-name="java">Java</a>
@@ -111,7 +221,142 @@
           <input type="text" class="search" id="input-search" placeholder="Search">
         </div>
         <ul class="search-results"></ul>
-      <div id="toc">
+      <div id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#basics" class="toc-h1 toc-link" data-title="Basics">Basics</a>
+          </li>
+          <li>
+            <a href="#getting-started" class="toc-h1 toc-link" data-title="Getting Started">Getting Started</a>
+          </li>
+          <li>
+            <a href="#register-as-enigma-client" class="toc-h1 toc-link" data-title="Register as Enigma Client">Register as Enigma Client</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#automation" class="toc-h2 toc-link" data-title="Register as Enigma Client">Automation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#get-api-key" class="toc-h1 toc-link" data-title="Get API Key">Get API Key</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#automation-2" class="toc-h2 toc-link" data-title="Get API Key">Automation</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#use" class="toc-h1 toc-link" data-title="Use">Use</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#processdata" class="toc-h2 toc-link" data-title="Use">ProcessData</a>
+                  </li>
+                  <li>
+                    <a href="#create-user-object" class="toc-h2 toc-link" data-title="Use">Create User Object</a>
+                  </li>
+                  <li>
+                    <a href="#create-user-object-rsa" class="toc-h2 toc-link" data-title="Use">Create User Object - RSA</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+          </li>
+          <li>
+            <a href="#nbsp" class="toc-h1 toc-link" data-title=" "> </a>
+          </li>
+          <li>
+            <a href="#nbsp-extended-apis-nbsp" class="toc-h1 toc-link" data-title="--- --- Extended APIs --- ---">--- --- Extended APIs --- ---</a>
+          </li>
+          <li>
+            <a href="#enrolment-overview" class="toc-h1 toc-link" data-title="Enrolment Overview">Enrolment Overview</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#data-flow" class="toc-h2 toc-link" data-title="Enrolment Overview">Data Flow</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#client-endpoint-restful-api" class="toc-h1 toc-link" data-title="Client Endpoint - RESTful API">Client Endpoint - RESTful API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#get-client-authentication" class="toc-h2 toc-link" data-title="Client Endpoint - RESTful API">Get Client Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#init-client-authentication" class="toc-h2 toc-link" data-title="Client Endpoint - RESTful API">Init Client Authentication</a>
+                  </li>
+                  <li>
+                    <a href="#register-client" class="toc-h2 toc-link" data-title="Client Endpoint - RESTful API">Register Client</a>
+                  </li>
+                  <li>
+                    <a href="#add-api-to-client" class="toc-h2 toc-link" data-title="Client Endpoint - RESTful API">Add API to Client</a>
+                  </li>
+                  <li>
+                    <a href="#view-api-of-client" class="toc-h2 toc-link" data-title="Client Endpoint - RESTful API">View API of Client</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#apikey-endpoint-restful-api" class="toc-h1 toc-link" data-title="APIkey Endpoint - RESTful API">APIkey Endpoint - RESTful API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#client-ip-address" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Client IP Address</a>
+                  </li>
+                  <li>
+                    <a href="#list-operations" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">List Operations</a>
+                  </li>
+                  <li>
+                    <a href="#enrol-for-dns-domain" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Enrol for DNS Domain</a>
+                  </li>
+                  <li>
+                    <a href="#get-challenge" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Get Challenge</a>
+                  </li>
+                  <li>
+                    <a href="#update-domain" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Update Domain</a>
+                  </li>
+                  <li>
+                    <a href="#install-status" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Install Status</a>
+                  </li>
+                  <li>
+                    <a href="#unlock-domain" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Unlock Domain</a>
+                  </li>
+                  <li>
+                    <a href="#send-log-data" class="toc-h2 toc-link" data-title="APIkey Endpoint - RESTful API">Send Log Data</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authorizations-restful-api" class="toc-h1 toc-link" data-title="Authorizations - RESTful API">Authorizations - RESTful API</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authorize-create" class="toc-h2 toc-link" data-title="Authorizations - RESTful API">Authorize Create</a>
+                  </li>
+                  <li>
+                    <a href="#submit-new-object" class="toc-h2 toc-link" data-title="Authorizations - RESTful API">Submit new Object</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#keychest-api-overview" class="toc-h1 toc-link" data-title="KeyChest API Overview">KeyChest API Overview</a>
+          </li>
+          <li>
+            <a href="#unauthenticated-functions" class="toc-h1 toc-link" data-title="Unauthenticated Functions">Unauthenticated Functions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register" class="toc-h2 toc-link" data-title="Unauthenticated Functions">Register</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#authenticated-functions" class="toc-h1 toc-link" data-title="Authenticated Functions">Authenticated Functions</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#register-2" class="toc-h2 toc-link" data-title="Authenticated Functions">Register</a>
+                  </li>
+              </ul>
+          </li>
       </div>
         <ul class="toc-footer">
             <li><a href='https://enigmabridge.freshdesk.com'>Ask a question, raise a support ticket</a></li>
@@ -121,9 +366,8 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id="introduction">Introduction</h1>
-
-<p><strong>Last update: 21 February</strong></p>
+        <h1 id='introduction'>Introduction</h1>
+<p><strong>Last update: 29 September</strong></p>
 
 <blockquote>
 <p>This column shows examples of API functions, or details that are language specific. Use the tab names above to switch to the language / syntax you are interested in.</p>
@@ -138,7 +382,7 @@
 <p>You can use our API to access Enigma Bridge encryption service directly or transparently via production integrations. The set of operations available via the API includes:</p>
 
 <ul>
-<li><strong>encryption</strong> - just encrypt, MAC, sign, &hellip;;</li>
+<li><strong>encryption</strong> - just encrypt, MAC, sign, ...;</li>
 <li><strong>re-encryption</strong> - atomic re-encryption from transport (data in transit) to storage (data at rest) keys;</li>
 <li><strong>key management</strong> - generate, unwrap, manage keys; </li>
 <li><strong>payment systems</strong> - re-encryption between transport and database keys, tokenization;</li>
@@ -148,9 +392,7 @@
 </ul>
 
 <p>The native API is REST web-service. We also provide language bindings for simple integration. We currently support Javascript (client and node.js), Python and Java. This site provides a description of API functions, including code examples in the dark area to the right. Tabs in the top right allow  switching between the programming language of the examples.</p>
-
-<h1 id="basics">Basics</h1>
-
+<h1 id='basics'>Basics</h1>
 <p>Use of Enigma Bridge consists of four phases, irrespective of operations you want to use:</p>
 
 <ol>
@@ -163,15 +405,13 @@
 <p>Depending on the use case and limits on usage, all steps can be completed fully automatically within seconds. If a particular use case requires more strict control, step 1 will require manual approval.</p>
 
 <p>Each of the steps can be represented by a single API command, regardless of the operation you request. The result of the enrolment is a configuration string that uniquely identifies a new user object.</p>
-
-<h1 id="getting-started">Getting Started</h1>
-<pre class="highlight python"><code><span class="s">"sudo pip install ebclient.py"</span>
-</code></pre><pre class="highlight javascript"><code><span class="s2">"npm install -g ebclient.js"</span>
+<h1 id='getting-started'>Getting Started</h1><pre class="highlight python tab-python"><code><span class="s">"sudo pip install ebclient.py"</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"npm install -g ebclient.js"</span>
 <span class="nx">or</span>
 <span class="s2">"git clone https://github.com/EnigmaBridge/client.js"</span>
-</code></pre><pre class="highlight shell"><code><span class="c"># nothing required</span>
-</code></pre><pre class="highlight java"><code><span class="s">"git clone https://github.com/EnigmaBridge/client.java"</span>
-</code></pre><pre class="highlight json"><code><span class="s2">"nothing required"</span><span class="w">
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># nothing required</span>
+</code></pre><pre class="highlight java tab-java"><code><span class="s">"git clone https://github.com/EnigmaBridge/client.java"</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="s2">"nothing required"</span><span class="w">
 </span></code></pre>
 <p>We provide several language bindings. </p>
 
@@ -188,9 +428,7 @@
 </ul>
 
 <p>Our goal is to make any library installation as simple as possible, and using standard deployment mechanisms wherever possible. </p>
-
-<h1 id="register-as-enigma-client">Register as Enigma Client</h1>
-
+<h1 id='register-as-enigma-client'>Register as Enigma Client</h1>
 <p>The first step in using the EB service is to create a client account. The client account forms the basis for your authorization towards Enigma Bridge. Once you obtain an account, you will learn your authentication details you can use to obtain API keys.</p>
 
 <p>Unless you intend to use an automation tool that takes care of the enrolment process. Please raise a support ticket at:</p>
@@ -198,15 +436,13 @@
 <p><a href="https://enigmabridge.freshdesk.com/helpdesk/tickets/new">Enigma Bridge Support System</a></p>
 
 <p>We always require manual approval (via <a href="https://enigmabridge.freshdesk.com">our support system</a>) when you request access to higher transactions rates, or when a formal audit requirements are in place (e.g., payment applications subject to PCI audits).</p>
-
-<h2 id="automation">Automation</h2>
-
+<h2 id='automation'>Automation</h2>
 <blockquote>
 <p>This section can only be used in certain cases, when it is possible to automate enrolment to the Enigma Bridge service. </p>
 </blockquote>
-<pre class="highlight java"><code><span class="c1">// coming soon</span>
-</code></pre><pre class="highlight json"><code><span class="s2">"coming soon"</span><span class="w">
-</span></code></pre><pre class="highlight shell"><code>curl -i <span class="se">\</span>
+<pre class="highlight java tab-java"><code><span class="c1">// coming soon</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="s2">"coming soon"</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code>curl -i <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"X-Auth-Token: public"</span> <span class="se">\</span>
   -X POST
@@ -223,8 +459,8 @@
          }
     }'</span><span class="se">\</span>
   https://hut3.enigmabridge.com:8445/api/v1/client
-</code></pre><pre class="highlight javascript"><code><span class="c1">// JS coming soon</span>
-</code></pre><pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.eb_configuration</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="c1">// JS coming soon</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">ebclient.eb_configuration</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.eb_registration</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.registration</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -253,7 +489,7 @@
 
 <ul>
 <li><strong>hut3.enigmabridge.com</strong> - Hut 3 translated, interpretated and distributed German Army (Heer) and Air Force (Luftwaffe) messages deciphered by Hut 6.</li>
-<li><strong>hut6.enigmabridge.com</strong> - Hut 6&rsquo;s task was to break German Army and Air Force <a href="https://en.wikipedia.org/wiki/Enigma_machine">Enigma machine</a> cyphers.</li>
+<li><strong>hut6.enigmabridge.com</strong> - Hut 6&#39;s task was to break German Army and Air Force <a href="https://en.wikipedia.org/wiki/Enigma_machine">Enigma machine</a> cyphers.</li>
 <li><strong>hut8.enigmabridge.com</strong> - Hut 8 was solving German naval (Kriegsmarine) Enigma messages. The section was led initially by Alan Turing.</li>
 </ul>
 
@@ -264,19 +500,15 @@ Availability of automated execution of client registration depends on the use ca
 </aside>
 
 <aside class="notice">
-In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldquo;TEST_API&rdquo; key - these credentials are only available for demonstration purposes.
+In some cases, it is possible to use a default "TEST" user and "TEST_API" key - these credentials are only available for demonstration purposes.
 </aside>
-
-<h1 id="get-api-key">Get API Key</h1>
-
+<h1 id='get-api-key'>Get API Key</h1>
 <p>Once you have a client ID and authentication data, you are ready to create your first API key (one client ID will typically have several API keys to separate software clients). All operational requests need a valid API key, even though it is usually hidden in client-side libraries.</p>
 
 <blockquote>
 <p>The automation code is only available if Enigma Bridge provides automation for particular use case or application. All operational requests need a valid ClientID, even though it is usually hidden in client-side libraries.</p>
 </blockquote>
-
-<h2 id="automation">Automation</h2>
-<pre class="highlight shell"><code>curl -i <span class="se">\</span>
+<h2 id='automation-2'>Automation</h2><pre class="highlight shell tab-shell"><code>curl -i <span class="se">\</span>
   -H <span class="s2">"Content-Type: application/json"</span> <span class="se">\</span>
   -H <span class="s2">"X-Auth-Token: public"</span> <span class="se">\</span>
   -X POST
@@ -305,8 +537,8 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
          "operations":["name","name2","nameX"]
     }'</span><span class="se">\</span>
   https://hut3.enigmabridge.com:8445/api/v1/client
-</code></pre><pre class="highlight javascript"><code><span class="s2">"comming soon"</span>
-</code></pre><pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.eb_configuration</span> <span class="kn">import</span> <span class="o">*</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"comming soon"</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">ebclient.eb_configuration</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.eb_registration</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.registration</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -342,9 +574,7 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
 <p>Automation is enabled with the RESTful API of our user management server. It means that requests are still being sent to one of the huts.</p>
 
 <p>A successful response to a request for an API key will also return network connection details for operational requests. The user management server will automatically select the most suitable location of Enigma Bridge servers to provide required functionality and also to optimize network performance.</p>
-
-<h3 id="query-parameters">Query Parameters</h3>
-
+<h3 id='query-parameters'>Query Parameters</h3>
 <table><thead>
 <tr>
 <th>Parameter</th>
@@ -420,11 +650,7 @@ In some cases, it is possible to use a default &ldquo;TEST&rdquo; user and &ldqu
 <aside class="notice">
 You must replace <code>default key</code> with your personal API key.
 </aside>
-
-<h1 id="use">Use</h1>
-
-<h2 id="processdata">ProcessData</h2>
-<pre class="highlight json"><code><span class="s2">" POST request:"</span><span class="w">
+<h1 id='use'>Use</h1><h2 id='processdata'>ProcessData</h2><pre class="highlight json tab-json"><code><span class="s2">" POST request:"</span><span class="w">
 </span><span class="s2">"    https://hut:11180/1.0/TEST_API0000001dcb0000300006/ProcessData/f2044d875bdef29d"</span><span class="w">
 </span><span class="s2">"    parameters are an Enigma Bridge handle, command (ProcessData), and a nonce"</span><span class="w">
 </span><span class="s2">"    Data has to be encrypted, see the text to the left for details."</span><span class="w">
@@ -450,7 +676,7 @@ You must replace <code>default key</code> with your personal API key.
   </span><span class="s2">"statusdetail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="s2">"1.0"</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre><pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+</span></code></pre><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
 <span class="kn">from</span> <span class="nn">ebclient.crypto_util</span> <span class="kn">import</span> <span class="o">*</span>
 
@@ -467,10 +693,10 @@ You must replace <code>default key</code> with your personal API key.
 <span class="n">pd</span> <span class="o">=</span> <span class="n">ProcessData</span><span class="p">(</span><span class="n">uo</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">uo_aes</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">cfg</span><span class="p">)</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'6bc1bee22e409f96e93d7e117393172a'</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">)</span> <span class="o">==</span> <span class="n">result</span><span class="p">)</span>
-</code></pre><pre class="highlight shell"><code><span class="c"># Process data uses a communication encryption preprocessing.</span>
+</code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Process data uses a communication encryption preprocessing.</span>
 <span class="c"># For more details please refer to the Communication encryption documentation. </span>
 <span class="c"># Pure shell client is not yet planned.</span>
-</code></pre><pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
@@ -505,37 +731,35 @@ You must replace <code>default key</code> with your personal API key.
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight java"><code><span class="c1">// Coming soon </span>
+</code></pre><pre class="highlight java tab-java"><code><span class="c1">// Coming soon </span>
 </code></pre>
-<p><code class="prettyprint">ProcessData</code> is the <em>operational call</em> of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., <code class="prettyprint">TEST_API000000ee010000000004</code>. The only other parameter it takes is data for processing.</p>
+<p><code>ProcessData</code> is the <em>operational call</em> of the Enigma Bridge service. It performs an operation that is identified by a handle, e.g., <code>TEST_API000000ee010000000004</code>. The only other parameter it takes is data for processing.</p>
 
 <p>As the data should be typically protected between the client application and EB servers, it has to be encrypted with communication keys. The actual protocol is again defined by its handle, which is a text string.</p>
 
 <p>For more details of the communication encryption, please refer to the <em>Communication encryption documentation - Link coming soon</em>, or use one of the client implementations at <a href="https://github.com/EnigmaBridge">Enigma Bridge GitHub</a>. </p>
 
-<p>&ldquo; Typical <code class="prettyprint">ProcessData</code> response is a JSON object like the following one.&rdquo;
-&ldquo; The communication encryption is in place - decryption has to be performed&rdquo; 
-&ldquo;  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.&rdquo;</p>
+<p>&quot; Typical <code>ProcessData</code> response is a JSON object like the following one.&quot;
+&quot; The communication encryption is in place - decryption has to be performed&quot; 
+&quot;  in order to get the response clear text. Status 0x9000 stands for OK - result completed successfully.&quot;</p>
 
-<p><code class="prettyprint">ProcessData</code> call can be tested also online in <a href="https://enigmabridge.com/test">ProcessData-demo</a>.</p>
+<p><code>ProcessData</code> call can be tested also online in <a href="https://enigmabridge.com/test">ProcessData-demo</a>.</p>
 
 <aside class="notice">Data sent to Enigma Bridge for processing has to be formatted. It is usually taken care of by one of our clients.</aside>
 
 <p>See links to implementations in <a href="#getting-started">Javascript, Python, and Java above</a>.
 <aside class="notice">Each response form the Enigma Bridge service will contain a numerical code, as well as a short text with explanation of the error.</aside></p>
-
-<h2 id="create-user-object">Create User Object</h2>
-
+<h2 id='create-user-object'>Create User Object</h2>
 <ul>
 <li>The first step before working with EnigmaBridge is creation of User Object.</li>
 <li>User object can hold e.g., RSA-2048 private key or AES encryption/decryption key.</li>
 <li>Each UserObject has one operation associated with it. For RSA-2048 key it is typically a decryption.</li>
 <li>Symmetric encryption key - e.g. AES encryption key has also one operation thus you need two user objects, with the same AES key inside, to perform both encryption and decryption.</li>
 <li>You can either import a key into the User Object if you have it (e.g., AES key known to you, RSA key) or you can let EnigmaBridge generate a
-new key in the secure hardware so you benefit from the secure RNG and the fact you don&rsquo;t really know the secret value
+new key in the secure hardware so you benefit from the secure RNG and the fact you don&#39;t really know the secret value
 thus nobody can steal it from you - it never leaves the secure hardware.</li>
 </ul>
-<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+<pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.create_uo</span> <span class="kn">import</span> <span class="n">TemplateFields</span><span class="p">,</span> <span class="n">KeyTypes</span><span class="p">,</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Gen</span>
 <span class="kn">from</span> <span class="nn">ebclient.eb_create_uo</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
@@ -570,7 +794,7 @@ thus nobody can steal it from you - it never leaves the secure hardware.</li>
 
 <span class="c"># Call the operation</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="n">from_hex</span><span class="p">(</span><span class="s">'95c6bb9b6a1c3835f98cc56087a03e82'</span><span class="p">))</span>
-</code></pre><pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
@@ -627,14 +851,12 @@ thus nobody can steal it from you - it never leaves the secure hardware.</li>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight java"><code><span class="c1">// Coming soon</span>
-</code></pre><pre class="highlight json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w"> 
-</span></code></pre><pre class="highlight shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
-</code></pre>
-<h2 id="create-user-object-rsa">Create User Object - RSA</h2>
-
+</code></pre><pre class="highlight java tab-java"><code><span class="c1">// Coming soon</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w"> 
+</span></code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
+</code></pre><h2 id='create-user-object-rsa'>Create User Object - RSA</h2>
 <p>RSA user object is a bit more specific as it returns the public part.</p>
-<pre class="highlight python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
+<pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">ebclient.process_data</span> <span class="kn">import</span> <span class="n">ProcessData</span>
 <span class="kn">from</span> <span class="nn">ebclient.create_uo</span> <span class="kn">import</span> <span class="n">TemplateFields</span><span class="p">,</span> <span class="n">KeyTypes</span><span class="p">,</span> <span class="n">Environment</span><span class="p">,</span> <span class="n">Gen</span>
 <span class="kn">from</span> <span class="nn">ebclient.eb_create_uo</span> <span class="kn">import</span> <span class="o">*</span>
 <span class="kn">from</span> <span class="nn">ebclient.uo</span> <span class="kn">import</span> <span class="n">Configuration</span><span class="p">,</span> <span class="n">Endpoint</span><span class="p">,</span> <span class="n">SimpleRetry</span><span class="p">,</span> <span class="n">UO</span>
@@ -663,7 +885,7 @@ thus nobody can steal it from you - it never leaves the secure hardware.</li>
 <span class="c"># localy on the client side. You can use PKCS1.5 padding implemented in the package.</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="p">(</span><span class="s">"</span><span class="se">\x00</span><span class="s">"</span><span class="o">*</span><span class="mi">255</span><span class="p">)</span> <span class="o">+</span> <span class="s">"</span><span class="se">\x01</span><span class="s">"</span>
 <span class="n">result</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">call</span><span class="p">(</span><span class="nb">input</span><span class="p">)</span>
-</code></pre><pre class="highlight javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="s2">"use strict"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">eb</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"ebclient.js"</span><span class="p">);</span>
 <span class="kd">var</span> <span class="nx">sjcl</span> <span class="o">=</span> <span class="nx">eb</span><span class="p">.</span><span class="nx">misc</span><span class="p">.</span><span class="nx">sjcl</span><span class="p">;</span>
 
@@ -712,12 +934,10 @@ thus nobody can steal it from you - it never leaves the secure hardware.</li>
 <span class="p">}).</span><span class="k">catch</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">error</span><span class="p">){</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">error</span><span class="p">);</span>
 <span class="p">});</span>
-</code></pre><pre class="highlight java"><code><span class="c1">// Coming soon</span>
-</code></pre><pre class="highlight json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w">
-</span></code></pre><pre class="highlight shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
-</code></pre>
-          <h1 id="errors">Errors</h1>
-
+</code></pre><pre class="highlight java tab-java"><code><span class="c1">// Coming soon</span>
+</code></pre><pre class="highlight json tab-json"><code><span class="s2">" Not supported with RAW JSON. Please, take a look at clients"</span><span class="w">
+</span></code></pre><pre class="highlight shell tab-shell"><code><span class="c"># Not supported in shell. Please, take a look at clients</span>
+</code></pre><h1 id='errors'>Errors</h1>
 <aside class="notice">Each response form the Enigma Bridge service will contain a numerical code, as well as a short text with explanation of the error. 
 
 The response code for successful processiong of a request is 36864 (0x9000).
@@ -1016,15 +1236,9 @@ The response code for successful processiong of a request is 36864 (0x9000).
 <td>invalid object</td>
 </tr>
 </tbody></table>
-
-          <h1 id="part-65268814919">&nbsp;</h1>
-
-<h1 id="extended-apis">&mdash;&nbsp;&mdash; Extended APIs &mdash;&nbsp;&mdash;</h1>
-
+<h1 id='nbsp'>&nbsp;</h1><h1 id='nbsp-extended-apis-nbsp'>---&nbsp;--- Extended APIs ---&nbsp;---</h1>
 <p>This part is not needed by clients as it is implemented by Enigma Bridge and their automation tools. A safe fallback is to use our <a href="https://enigmabridge.freshdesk.com">support system</a> to request enrolment to our encryption service.</p>
-
-          <h1 id="enrolment-overview">Enrolment Overview</h1>
-
+<h1 id='enrolment-overview'>Enrolment Overview</h1>
 <aside class="notice">
 
 User Manager is available on the following domain names managed by Enigma Bridge. Whenever we use <strong>hut</strong>, it has to be replaced with one of these three domain names.
@@ -1037,9 +1251,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>hut6.enigmabridge.com</li>
 <li>hut8.enigmabridge.com</li>
 </ol>
-
-<h2 id="data-flow">Data Flow</h2>
-
+<h2 id='data-flow'>Data Flow</h2>
 <p>The usual data-flow and sequence of actions is as follows:</p>
 
 <ol>
@@ -1047,21 +1259,17 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>This step requests creation of an Enigma Bridge client - i.e., a legal entity that will own API keys and will be authorized to use the Enigma Bridge service.
 
 <ol>
-<li>The client process will use its EB type to request a new client account: this always involves a register client API call; optionally also <code class="prettyprint">Get Client Auth Type</code> and <code class="prettyprint">Get Client Auth</code>.</li>
+<li>The client process will use its EB type to request a new client account: this always involves a register client API call; optionally also <code>Get Client Auth Type</code> and <code>Get Client Auth</code>.</li>
 <li>The customer will request a new client account via our support system at: <a href="https://enigmabridge.freshdesk.com">https://enigmabridge.freshdesk.com</a>.</li>
 </ol></li>
 <li>Once the client ID and authentication details are available, the client process can request a new API key.</li>
 <li>The API key allows create of new user objects according to the client type definition.</li>
 </ol>
-
-<h1 id="client-endpoint-restful-api">Client Endpoint - RESTful API</h1>
-
-<h2 id="get-client-authentication">Get Client Authentication</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h1 id='client-endpoint-restful-api'>Client Endpoint - RESTful API</h1><h2 id='get-client-authentication'>Get Client Authentication</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"getauth"</span><span class="p">,</span><span class="w">
@@ -1075,10 +1283,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 
 <p>The request uses the following URL: </p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
-
-<h3 id="parameters">Parameters</h3>
-
+<p><code>https://hut:8445/api/v1/client</code></p>
+<h3 id='parameters'>Parameters</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1103,26 +1309,26 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>function</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;create&rdquo;</td>
+<td>must be &quot;create&quot;</td>
 </tr>
 <tr>
 <td>environment</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td>must be &quot;dev&quot;, &quot;test&quot;, or &quot;prod&quot;</td>
 </tr>
 <tr>
 <td><strong>client</strong></td>
 <td>NO</td>
 <td>sequence</td>
-<td>must contain &ldquo;type&rdquo; of the new client that will be registered</td>
+<td>must contain &quot;type&quot; of the new client that will be registered</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -1144,10 +1350,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
     </span><span class="p">]</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="response">Response</h3>
-
-<p>Response shows allowed authentication methods and lists data items required for each of the authentication methods for the &ldquo;Init Client Authentication&rdquo; method.</p>
+</span></code></pre><h3 id='response'>Response</h3>
+<p>Response shows allowed authentication methods and lists data items required for each of the authentication methods for the &quot;Init Client Authentication&quot; method.</p>
 
 <table><thead>
 <tr>
@@ -1173,7 +1377,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>initdata</td>
 <td>NO</td>
 <td>array of strings</td>
-<td>values can be from the set of &ldquo;email&rdquo;, &ldquo;mobile&rdquo;, and &ldquo;rsa&rdquo;</td>
+<td>values can be from the set of &quot;email&quot;, &quot;mobile&quot;, and &quot;rsa&quot;</td>
 </tr>
 </tbody></table>
 
@@ -1195,11 +1399,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 <tr>
 <td>token</td>
-<td>the <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, and a <code class="prettyprint">token</code> are required; the <code class="prettyprint">token</code> is unique to a particular requestor and it remains constant during repeated registrations</td>
+<td>the <code>type</code>, <code>name</code>, and a <code>token</code> are required; the <code>token</code> is unique to a particular requestor and it remains constant during repeated registrations</td>
 </tr>
 <tr>
 <td>password</td>
-<td>authentication requires a correct <code class="prettyprint">type</code>, <code class="prettyprint">name</code>, and <code class="prettyprint">password</code></td>
+<td>authentication requires a correct <code>type</code>, <code>name</code>, and <code>password</code></td>
 </tr>
 <tr>
 <td>challenge</td>
@@ -1222,13 +1426,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>authentication with a digital signature</td>
 </tr>
 </tbody></table>
-
-<h2 id="init-client-authentication">Init Client Authentication</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='init-client-authentication'>Init Client Authentication</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"initauth"</span><span class="p">,</span><span class="w">
@@ -1262,7 +1464,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>method</td>
 <td>NO</td>
 <td>string</td>
-<td>one of the names returned by &ldquo;Get Client Authentication&rdquo;</td>
+<td>one of the names returned by &quot;Get Client Authentication&quot;</td>
 </tr>
 <tr>
 <td>email</td>
@@ -1283,13 +1485,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>base64 public key</td>
 </tr>
 </tbody></table>
-
-<h3 id="response">Response</h3>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h3 id='response-2'>Response</h3><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -1307,13 +1507,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <li>input for creating authentication data, if any;</li>
 <li>requesting the server to use an alternative communication channel to provide the requestor with data out-of-band </li>
 </ul>
-
-<h2 id="register-client">Register Client</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='register-client'>Register Client</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"create"</span><span class="p">,</span><span class="w">
@@ -1329,10 +1527,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL: </p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
-
-<h3 id="parameters">Parameters</h3>
-
+<p><code>https://hut:8445/api/v1/client</code></p>
+<h3 id='parameters-2'>Parameters</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1357,13 +1553,13 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>function</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;create&rdquo;</td>
+<td>must be &quot;create&quot;</td>
 </tr>
 <tr>
 <td>environment</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td>must be &quot;dev&quot;, &quot;test&quot;, or &quot;prod&quot;</td>
 </tr>
 <tr>
 <td><strong>client</strong></td>
@@ -1372,9 +1568,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>contains information about the new client</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-client">Structure of &lsquo;client&rsquo;</h3>
-
+<h3 id='structure-of-39-client-39'>Structure of &#39;client&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1399,7 +1593,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>authentication</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;type&rdquo;</td>
+<td>must be &quot;type&quot;</td>
 </tr>
 <tr>
 <td>type</td>
@@ -1414,11 +1608,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>authentication token for the client type</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -1469,9 +1663,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>data returned to the request</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-response">Structure of &lsquo;response&rsquo;</h3>
-
+<h3 id='structure-of-39-response-39'>Structure of &#39;response&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1517,13 +1709,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>max number of objects this client can create</td>
 </tr>
 </tbody></table>
-
-<h2 id="add-api-to-client">Add API to Client</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='add-api-to-client'>Add API to Client</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"d"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"addapi"</span><span class="p">,</span><span class="w">
@@ -1540,7 +1730,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+<p><code>https://hut:8445/api/v1/client</code></p>
 
 <table><thead>
 <tr>
@@ -1565,13 +1755,13 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <tr>
 <td>function</td>
 <td>NO</td>
-<td>must be &ldquo;addapi&rdquo;</td>
+<td>must be &quot;addapi&quot;</td>
 <td></td>
 </tr>
 <tr>
 <td>environment</td>
 <td>NO</td>
-<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td>must be &quot;dev&quot;, &quot;test&quot;, or &quot;prod&quot;</td>
 <td></td>
 </tr>
 <tr>
@@ -1587,9 +1777,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>properties of the client server to identify best Enigma Bridge servers</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-client">Structure of &lsquo;client&rsquo;</h3>
-
+<h3 id='structure-of-39-client-39-2'>Structure of &#39;client&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1602,7 +1790,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>authentication</td>
 <td>NO</td>
 <td>string</td>
-<td>at the moment must be &ldquo;password&rdquo;</td>
+<td>at the moment must be &quot;password&quot;</td>
 </tr>
 <tr>
 <td>username</td>
@@ -1617,9 +1805,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>as provided during registration</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-endpoint">Structure of &lsquo;endpoint&rsquo;</h3>
-
+<h3 id='structure-of-39-endpoint-39'>Structure of &#39;endpoint&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1683,11 +1869,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td></td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -1773,9 +1959,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>list of operations available for the API key</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-servers-each-item">Structure of &lsquo;servers&rsquo; each item</h3>
-
+<h3 id='structure-of-39-servers-39-each-item'>Structure of &#39;servers&#39; each item</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1800,7 +1984,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>environment</td>
 <td>NO</td>
 <td>string</td>
-<td>&ldquo;dev&rdquo; or &ldquo;test&rdquo; or &ldquo;prod&rdquo;</td>
+<td>&quot;dev&quot; or &quot;test&quot; or &quot;prod&quot;</td>
 </tr>
 <tr>
 <td>enrolendpoints</td>
@@ -1815,13 +1999,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>array of {protocol,port}</td>
 </tr>
 </tbody></table>
-
-<h2 id="view-api-of-client">View API of Client</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='view-api-of-client'>View API of Client</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"showapi"</span><span class="p">,</span><span class="w">
@@ -1838,7 +2020,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/client</code></p>
+<p><code>https://hut:8445/api/v1/client</code></p>
 
 <p>Clients can repeatedly request information about their API keys.</p>
 
@@ -1865,13 +2047,13 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <tr>
 <td>function</td>
 <td>NO</td>
-<td>must be &ldquo;showapi&rdquo;</td>
+<td>must be &quot;showapi&quot;</td>
 <td></td>
 </tr>
 <tr>
 <td>environment</td>
 <td>NO</td>
-<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td>must be &quot;dev&quot;, &quot;test&quot;, or &quot;prod&quot;</td>
 <td></td>
 </tr>
 <tr>
@@ -1884,12 +2066,10 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>apidata</td>
 <td>NO</td>
 <td>string</td>
-<td>sequence of just &ldquo;apikey&rdquo; - string</td>
+<td>sequence of just &quot;apikey&quot; - string</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-client">Structure of &lsquo;client&rsquo;</h3>
-
+<h3 id='structure-of-39-client-39-3'>Structure of &#39;client&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -1902,7 +2082,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>authentication</td>
 <td>NO</td>
 <td>string</td>
-<td>at the moment must be &ldquo;password&rdquo;</td>
+<td>at the moment must be &quot;password&quot;</td>
 </tr>
 <tr>
 <td>username</td>
@@ -1918,16 +2098,12 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </tr>
 </tbody></table>
 
-<p>Responses have the same format as for &ldquo;addapi&rdquo; requests.</p>
-
-<h1 id="apikey-endpoint-restful-api">APIkey Endpoint - RESTful API</h1>
-
-<h2 id="client-ip-address">Client IP Address</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<p>Responses have the same format as for &quot;addapi&quot; requests.</p>
+<h1 id='apikey-endpoint-restful-api'>APIkey Endpoint - RESTful API</h1><h2 id='client-ip-address'>Client IP Address</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"clientip"</span><span class="w">
@@ -1935,16 +2111,14 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
-<p>This function is generally available, it doesn&rsquo;t require any authentication of the client.</p>
-
-<h3 id="response">Response</h3>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<p>This function is generally available, it doesn&#39;t require any authentication of the client.</p>
+<h3 id='response-3'>Response</h3><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -1979,13 +2153,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>it can be NULL</td>
 </tr>
 </tbody></table>
-
-<h2 id="list-operations">List Operations</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='list-operations'>List Operations</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"listops"</span><span class="p">,</span><span class="w">
@@ -1998,10 +2170,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL: </p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
-
-<h3 id="parameters">Parameters</h3>
-
+<p><code>https://hut:8445/api/v1/apikey</code></p>
+<h3 id='parameters-3'>Parameters</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2026,20 +2196,20 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>function</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;listops&rdquo;</td>
+<td>must be &quot;listops&quot;</td>
 </tr>
 <tr>
 <td>environment</td>
 <td>NO</td>
 <td>string</td>
-<td>must be &ldquo;dev&rdquo;, &ldquo;test&rdquo;, or &ldquo;prod&rdquo;</td>
+<td>must be &quot;dev&quot;, &quot;test&quot;, or &quot;prod&quot;</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
   </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
   </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
   </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2091,9 +2261,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td><strong>operations</strong></td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-operations">Structure of &lsquo;operations&rsquo;</h3>
-
+<h3 id='structure-of-39-operations-39'>Structure of &#39;operations&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2109,17 +2277,15 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>definition for new operations</td>
 </tr>
 </tbody></table>
-
-<h2 id="enrol-for-dns-domain">Enrol for DNS Domain</h2>
-
+<h2 id='enrol-for-dns-domain'>Enrol for DNS Domain</h2>
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enroldomain"</span><span class="p">,</span><span class="w">
@@ -2133,10 +2299,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
-
-<h3 id="structure-of-apidata">Structure of &lsquo;apidata&rsquo;</h3>
-
+<p><code>https://hut:8445/api/v1/apikey</code></p>
+<h3 id='structure-of-39-apidata-39'>Structure of &#39;apidata&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2164,13 +2328,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>base64 encoded certificate - vehicle to provide public key</td>
 </tr>
 </tbody></table>
-
-<h3 id="response">Response</h3>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h3 id='response-4'>Response</h3><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2186,17 +2348,15 @@ User Manager is available on the following domain names managed by Enigma Bridge
         </span><span class="s2">"status"</span><span class="p">:</span><span class="s2">"enabled"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h2 id="get-challenge">Get Challenge</h2>
-
+</span></code></pre><h2 id='get-challenge'>Get Challenge</h2>
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"getdomainchallenge"</span><span class="p">,</span><span class="w">
@@ -2212,7 +2372,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
 <table><thead>
 <tr>
@@ -2244,16 +2404,16 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>private</td>
 <td>NO</td>
 <td>boolean</td>
-<td>default value is &ldquo;false&rdquo;; if true, the supplied IP addresses are private and will not be used for any verification</td>
+<td>default value is &quot;false&quot;; if true, the supplied IP addresses are private and will not be used for any verification</td>
 </tr>
 </tbody></table>
 
 <p>If IP addresses are marked as private, we will check whether they are from the expected range. I.e., fc00::/7 for IPv6 and 10.0.0.0/8, 172.16.0.0/12, or 192.168.0.0/16 for IPv4.</p>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2266,17 +2426,15 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The response to these requests provides a <strong>challenge</strong> that has to be used to authenticate requests like <strong>Update Domain</strong>.</p>
-
-<h2 id="update-domain">Update Domain</h2>
-
+<h2 id='update-domain'>Update Domain</h2>
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updatedomain"</span><span class="p">,</span><span class="w">
@@ -2305,7 +2463,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
 <table><thead>
 <tr>
@@ -2325,12 +2483,10 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>signature</td>
 <td>YES</td>
 <td>string</td>
-<td>only if method is &ldquo;signature&rdquo;;</td>
+<td>only if method is &quot;signature&quot;;</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-apidata">Structure of &lsquo;apidata&rsquo;</h3>
-
+<h3 id='structure-of-39-apidata-39-2'>Structure of &#39;apidata&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2370,10 +2526,8 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>either the challenge itself or a derived value (e.g., OCRA)</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-dnsdata">Structure of &lsquo;dnsdata&rsquo;</h3>
-
-<p>We currently support &ldquo;TXT&rdquo; and &ldquo;CNAME&rdquo; DNS records only.</p>
+<h3 id='structure-of-39-dnsdata-39'>Structure of &#39;dnsdata&#39;</h3>
+<p>We currently support &quot;TXT&quot; and &quot;CNAME&quot; DNS records only.</p>
 
 <table><thead>
 <tr>
@@ -2387,7 +2541,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>type</td>
 <td>NO</td>
 <td>string</td>
-<td>&ldquo;TXT&rdquo;</td>
+<td>&quot;TXT&quot;</td>
 </tr>
 <tr>
 <td>name</td>
@@ -2421,7 +2575,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>type</td>
 <td>NO</td>
 <td>string</td>
-<td>&ldquo;CNAME&rdquo;</td>
+<td>&quot;CNAME&quot;</td>
 </tr>
 <tr>
 <td>name</td>
@@ -2436,11 +2590,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>a particular domain to be updated, if not present, all relevant domains will be udpated, if none matches -&gt; error</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2453,9 +2607,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"enabled"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="structure-of-response">Structure of &lsquo;response&rsquo;</h3>
-
+</span></code></pre><h3 id='structure-of-39-response-39-2'>Structure of &#39;response&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2489,19 +2641,17 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>a status of the DNS registration (disabled, enabled, removed, created, unlocked, not_assigned</td>
 </tr>
 </tbody></table>
-
-<h2 id="install-status">Install Status</h2>
-
+<h2 id='install-status'>Install Status</h2>
 <p>This function allows the API key announce its current status and communicate any additional context information that may be needed for support or communication requiring an independent channel for security.</p>
 
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"installstatus"</span><span class="p">,</span><span class="w">
@@ -2523,11 +2673,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
 <p>This function will update status of the APIkey consumer/host. This information can be used for further communication with clients or contact clients. </p>
 
-<p>The structure and particular meaning of items in &ldquo;statusdata&rdquo; depends on the client type.</p>
+<p>The structure and particular meaning of items in &quot;statusdata&quot; depends on the client type.</p>
 
 <table><thead>
 <tr>
@@ -2550,9 +2700,7 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>as assigned</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-statusdata">Structure of &lsquo;statusdata&rsquo;</h3>
-
+<h3 id='structure-of-39-statusdata-39'>Structure of &#39;statusdata&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2604,11 +2752,11 @@ User Manager is available on the following domain names managed by Enigma Bridge
 <td>contact details of whoever will be contacted</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2618,17 +2766,15 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 <p>The response to this query is just a result of the processing.</p>
-
-<h2 id="unlock-domain">Unlock Domain</h2>
-
+<h2 id='unlock-domain'>Unlock Domain</h2>
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unlockdomain"</span><span class="p">,</span><span class="w">
@@ -2641,9 +2787,9 @@ User Manager is available on the following domain names managed by Enigma Bridge
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
-<p>This function will &ldquo;unlock&rdquo; the domain record for the given API key so it can be
+<p>This function will &quot;unlock&quot; the domain record for the given API key so it can be
 assigned to a new IP address.</p>
 
 <table><thead>
@@ -2661,9 +2807,7 @@ assigned to a new IP address.</p>
 <td>authentication of the client</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-apidata">Structure of &lsquo;apidata&rsquo;</h3>
-
+<h3 id='structure-of-39-apidata-39-3'>Structure of &#39;apidata&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2685,11 +2829,11 @@ assigned to a new IP address.</p>
 <td>as assigned</td>
 </tr>
 </tbody></table>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2699,17 +2843,15 @@ assigned to a new IP address.</p>
         </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"status of the domain in EB backend"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h2 id="send-log-data">Send Log Data</h2>
-
+</span></code></pre><h2 id='send-log-data'>Send Log Data</h2>
 <aside class="notice">
 <strong>api</strong> endpoint does not use client password. This password is not needed for APIkey related calls and should not be present in the client endpoint.
 </aside>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"my nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="w"> </span><span class="s2">"sendlog"</span><span class="p">,</span><span class="w">
@@ -2728,11 +2870,11 @@ assigned to a new IP address.</p>
 </span></code></pre>
 <p>The request uses the following URL:</p>
 
-<p><code class="prettyprint">https://hut:8445/api/v1/apikey</code></p>
+<p><code>https://hut:8445/api/v1/apikey</code></p>
 
 <p>This function will store log data from the endpoint. If the endpoint has its API key, it should be used as it may be used as a protection against DDoS attacks. However, its presence is optional.</p>
 
-<p>If the &ldquo;apidata&rdquo; is not present or invalid, the &ldquo;effort&rdquo; item must be present. Otherwise the request will be unsuccessful. The &ldquo;effort&rdquo; is not required if valid &ldquo;apidata&rdquo; is provided. The effort&rsquo;s goal is to slow down DDoS attacks by requiring clients to comput SHA-1 function collisions.</p>
+<p>If the &quot;apidata&quot; is not present or invalid, the &quot;effort&quot; item must be present. Otherwise the request will be unsuccessful. The &quot;effort&quot; is not required if valid &quot;apidata&quot; is provided. The effort&#39;s goal is to slow down DDoS attacks by requiring clients to comput SHA-1 function collisions.</p>
 
 <table><thead>
 <tr>
@@ -2755,9 +2897,7 @@ assigned to a new IP address.</p>
 <td></td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-apidata">Structure of &lsquo;apidata&rsquo;</h3>
-
+<h3 id='structure-of-39-apidata-39-4'>Structure of &#39;apidata&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2779,9 +2919,7 @@ assigned to a new IP address.</p>
 <td>as assigned</td>
 </tr>
 </tbody></table>
-
-<h3 id="structure-of-effort">Structure of &lsquo;effort&rsquo;</h3>
-
+<h3 id='structure-of-39-effort-39'>Structure of &#39;effort&#39;</h3>
 <table><thead>
 <tr>
 <th>name</th>
@@ -2794,7 +2932,7 @@ assigned to a new IP address.</p>
 <td>preimage</td>
 <td>NO</td>
 <td>string</td>
-<td>unique identifier of the request, the format is random-number &ldquo;;&rdquo; timestamp &ldquo;;&rdquo; IP_address &ldquo;;&rdquo; client_version &ldquo;;&rdquo; nonce. All numbers are in decadic form.</td>
+<td>unique identifier of the request, the format is random-number &quot;;&quot; timestamp &quot;;&quot; IP_address &quot;;&quot; client_version &quot;;&quot; nonce. All numbers are in decadic form.</td>
 </tr>
 <tr>
 <td>collision</td>
@@ -2805,11 +2943,11 @@ assigned to a new IP address.</p>
 </tbody></table>
 
 <p>The server will compare the strength of the collision and if not satisfactory, the request will be declined.</p>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"error"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success (ok)"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"status"</span><span class="p">:</span><span class="w"> </span><span class="mi">36864</span><span class="p">,</span><span class="w">
@@ -2844,21 +2982,17 @@ assigned to a new IP address.</p>
 </tbody></table>
 
 <p>If the request is declined because of insufficent collision strength, the required length/strength is present in the result</p>
-
-          <h1 id="authorizations-restful-api">Authorizations - RESTful API</h1>
-
+<h1 id='authorizations-restful-api'>Authorizations - RESTful API</h1>
 <p>Following sections are for internal use by Enigma Bridge. The APIs are not currently available to clients.</p>
 
 <p>The request uses the following URL:</p>
 
 <p>https://hut:8445/api/v1/business</p>
-
-<h2 id="authorize-create">Authorize Create</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+<h2 id='authorize-create'>Authorize Create</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"authorizecreate"</span><span class="p">,</span><span class="w">
@@ -2871,13 +3005,11 @@ assigned to a new IP address.</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="response">Response</h3>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span></code></pre><h3 id='response'>Response</h3><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"authorizecreate"</span><span class="p">,</span><span class="w">
@@ -2890,13 +3022,11 @@ assigned to a new IP address.</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h2 id="submit-new-object">Submit new Object</h2>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="p">{</span><span class="w">
+</span></code></pre><h2 id='submit-new-object'>Submit new Object</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
     </span><span class="s2">"nonce"</span><span class="p">:</span><span class="s2">"nonce"</span><span class="p">,</span><span class="w">
     </span><span class="s2">"version"</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="w">
     </span><span class="s2">"function"</span><span class="p">:</span><span class="s2">"authorizecreate"</span><span class="p">,</span><span class="w">
@@ -2909,27 +3039,15 @@ assigned to a new IP address.</p>
         </span><span class="p">}</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">}</span><span class="w">
-</span></code></pre>
-<h3 id="response">Response</h3>
-
-          <h1 id="keychest-api-overview">KeyChest API Overview</h1>
-
+</span></code></pre><h3 id='response-2'>Response</h3><h1 id='keychest-api-overview'>KeyChest API Overview</h1>
 <aside class="notice">
-We are working on the first version of the API documentation. It&rsquo;s coming &hellip;.
+We are working on the first version of the API documentation. It's coming ....
 </aside>
-
-<h1 id="unauthenticated-functions">Unauthenticated Functions</h1>
-
-<h2 id="register">Register</h2>
-
-<h1 id="authenticated-functions">Authenticated Functions</h1>
-
-<h1 id="register">Register</h1>
-<pre class="highlight java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
-</code></pre><pre class="highlight python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
-</code></pre><pre class="highlight shell"><code>see the RESTful column
-</code></pre><pre class="highlight json"><code><span class="err">this</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">RESTful</span><span class="w"> </span><span class="err">column</span><span class="w">
+<h1 id='unauthenticated-functions'>Unauthenticated Functions</h1><h2 id='register'>Register</h2><h1 id='authenticated-functions'>Authenticated Functions</h1><h2 id='register-2'>Register</h2><pre class="highlight java tab-java"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight javascript tab-javascript"><code><span class="nx">see</span> <span class="nx">the</span> <span class="nx">RESTful</span> <span class="nx">column</span>
+</code></pre><pre class="highlight python tab-python"><code><span class="n">see</span> <span class="n">the</span> <span class="n">RESTful</span> <span class="n">column</span>
+</code></pre><pre class="highlight shell tab-shell"><code>see the RESTful column
+</code></pre><pre class="highlight json tab-json"><code><span class="err">this</span><span class="w"> </span><span class="err">is</span><span class="w"> </span><span class="err">RESTful</span><span class="w"> </span><span class="err">column</span><span class="w">
 </span></code></pre>
       </div>
       <div class="dark-box">
