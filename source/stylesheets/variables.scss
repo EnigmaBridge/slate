@@ -27,8 +27,9 @@ $nav-bg: white;//#00a7d7;
 $examples-bg: #ffffff; // #0088ad;
 $code-bg: #333333;
 $code-annotation-bg: #005e78;//#1c1c1c;
-$nav-subitem-bg: #dddddd;//#00a7d7;
+$nav-subitem-bg: white;//#00a7d7;
 $nav-active-bg: #00a7d7;//#004457;
+$nav-active-parent-bg: #00a7d7 !default;
 $lang-select-border: #000;
 $lang-select-bg: #00a7d7; //#222;
 $lang-select-active-bg: black;//$examples-bg; // feel free to change this to blue or something
@@ -43,8 +44,9 @@ $search-notice-bg: #c97a7e;
 // TEXT COLORS
 ////////////////////
 $main-text: #333; // main content text color
-$nav-text: #00a7d7; //#fff;
+$nav-text: #00a7d7 !default; //#fff;
 $nav-active-text: #fff;
+$nav-active-parent-text: #fff !default; // parent links of the current section
 $lang-select-text: #fff; // color of unselected language tab text
 $lang-select-active-text: #fff; // color of selected language tab text
 $lang-select-pressed-text: #fff; // color of language tab text when mouse is pressed

@@ -8,9 +8,9 @@ We are working on the first version of the API documentation. It's coming ....
 
 ## Register
 
-#Authenticated Functions
+# Authenticated Functions
 
-# Register
+## Register
 
 ```java
 see the RESTful column
