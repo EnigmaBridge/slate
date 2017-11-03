@@ -1,7 +1,7 @@
 # KeyChest 
 
 <aside class="notice">
-We are working on the first version of the API documentation. It's coming ....
+We are working on the first version of the API documentation and more functions will be added.
 </aside>
 
 Calls of the KeyChest API require an API key. Each client has to create its API key themselves but it can also request the 
